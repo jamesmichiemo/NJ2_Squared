@@ -6,6 +6,7 @@ package
 	
 	import starling.core.Starling;
 	
+	[SWF(frameRate="60", width="1240", height="720", backgroundColor="0x333333")]
 	public class NJ_Squared extends Sprite
 	{
 		private var stats:Stats;
