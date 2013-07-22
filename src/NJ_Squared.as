@@ -9,12 +9,17 @@ package
 	[SWF(frameRate="60", width="1240", height="720", backgroundColor="0x333333")]
 	public class NJ_Squared extends Sprite
 	{
-		private var stats:Stats;
+		private var _stats:Stats;
 		private var myStartling:Starling;
 		public function NJ_Squared()
 		{
-			stats = new Stats();
-			this.addChild(stats);
+			initStarling();
+		}
+		
+		private function initStarling():void
+		{
+			_stats = new Stats();
+			this.addChild(_stats);
 			
 			myStartling = new Starling(Game, stage);
 			myStartling.antiAliasing = 1;
