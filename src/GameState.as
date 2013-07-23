@@ -12,10 +12,12 @@ package
 	
 	public class GameState extends StarlingState
 	{
+		private var _citrusEngine:CitrusEngine;
+		
 		public function GameState()
 		{
 			super();
-			_ce = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance();
 		}
 		
 		override public function initialize():void
