@@ -63,13 +63,13 @@ package
 		
 		private function heroHurt():void
 		{
-			//_ce.sound.playSound("Hurt",1,0);
+			_citrusEngine.sound.playSound("Hurt"); // completely different parameter settings from first tutorial; update here: https://github.com/alamboley/Citrus-Engine-Examples/blob/master/src/soundpatchdemo/Main.as
 			trace("trigger hero hurt sound");
 		}
 		
 		private function heroAttack():void
 		{
-			//_ce.sound.playSound("Kill",1,0);
+			_citrusEngine.sound.playSound("Kill");
 			trace("trigger hero attack sound");
 		}
 		

@@ -1,6 +1,7 @@
 package
 {
 	import citrus.core.starling.StarlingCitrusEngine;
+	import citrus.sounds.CitrusSoundGroup;
 	
 	import flash.display.Sprite;
 	
@@ -17,8 +18,9 @@ package
 			setUpStarling(true); //http://citrusengine.com/getting-started-citrus-starling-box2d/
 			
 			state = new GameState();
+			
+			sound.addSound("Hurt", {sound:"sounds/hurt.mp3",group:CitrusSoundGroup.SFX}); // completely different parameter setting from first tutorial; updated sounds parameters shown here: https://github.com/alamboley/Citrus-Engine-Examples/blob/master/src/soundpatchdemo/Main.as
+			sound.addSound("Kill", {sound:"sounds/kill.mp3",group:CitrusSoundGroup.SFX});
 		}
-		
-		
 	}
 }
