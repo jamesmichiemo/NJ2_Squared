@@ -29,11 +29,9 @@ package
 			add(box2D);
 			
 			add(new Platform("bottom", {x:stage.stageWidth / 2, y:stage.stageHeight, width:stage.stageWidth}));
-<<<<<<< HEAD
-			add(new Platform("cloud", {x:170/2, y:600, width:170, oneWay:true}));
-=======
+
 			add(new Platform("cloud", {x:600, y:500, width:170, oneWay:true}));
->>>>>>> 7189bc90e653e65a85dc03fd840b688e4628fd85
+
 			// step:5
 			var coin:Coin = new Coin("coin", {x:360, y:500/*, view:"levels/SoundPatchDemo/jewel.png"*/});
 			add(coin);
