@@ -29,13 +29,13 @@ package
 			add(box2D);
 			
 			add(new Platform("bottom", {x:stage.stageWidth / 2, y:stage.stageHeight, width:stage.stageWidth}));
-			add(new Platform("cloud", {x:250, y:250, width:170, oneWay:true}));
+			add(new Platform("cloud", {x:170/2, y:600, width:170, oneWay:true}));
 			// step:5
 			var coin:Coin = new Coin("coin", {x:360, y:500/*, view:"levels/SoundPatchDemo/jewel.png"*/});
 			add(coin);
 			coin.onBeginContact.add(coinTouched);
 			
-			var hero:Hero = new Hero("hero", {x:100, y:350, width:60, height:135});
+			var hero:Hero = new Hero("hero", {x:100, y:350, width:60, height:235});
 			add(hero);
 			hero.onGiveDamage.add(heroAttack);
 			hero.onTakeDamage.add(heroHurt);
