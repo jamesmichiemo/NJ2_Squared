@@ -1,4 +1,4 @@
-package
+package com.NJSquared.state
 {
 	import Box2D.Dynamics.Contacts.b2Contact;
 	
@@ -7,6 +7,7 @@ package
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.MovingPlatform;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
@@ -31,6 +32,8 @@ package
 			add(new Platform("bottom", {x:stage.stageWidth / 2, y:stage.stageHeight, width:stage.stageWidth}));
 
 			add(new Platform("cloud", {x:600, y:500, width:170, oneWay:true}));
+			
+			add(new MovingPlatform("movingPlat", {x:220, y:700, width:200, height:40, startX:220, startY:700, endX:500, endY:151}));
 
 			// step:5
 			var coin:Coin = new Coin("coin", {x:360, y:500/*, view:"levels/SoundPatchDemo/jewel.png"*/});

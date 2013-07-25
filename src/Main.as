@@ -11,6 +11,7 @@ package
 	import net.hires.debug.Stats;
 	
 	import starling.core.Starling;
+	import com.NJSquared.state.GameState;
 	
 	[SWF(frameRate="60", width="1240", height="720", backgroundColor="0x333333")]
 	public class Main extends StarlingCitrusEngine
@@ -27,6 +28,7 @@ package
 			
 			sound.addSound("Hurt", {sound:"sounds/hurt.mp3",group:CitrusSoundGroup.SFX}); // completely different parameter setting from first tutorial; updated sounds parameters shown here: https://github.com/alamboley/Citrus-Engine-Examples/blob/master/src/soundpatchdemo/Main.as
 			sound.addSound("Kill", {sound:"sounds/kill.mp3",group:CitrusSoundGroup.SFX});
+<<<<<<< HEAD
 				
 		}
 		
@@ -62,6 +64,8 @@ package
 			var gameLevel:Class = getDefinitionByName("src.state.level.level" + String(level)) as Class;
 			
 			state = new gameLevel(level);
+=======
+>>>>>>> 79f7bc8b55f5ea7989676902d5bbcfb88cd98a6c
 		}
 	}
 }
