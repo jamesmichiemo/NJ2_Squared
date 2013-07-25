@@ -18,7 +18,7 @@ package com.NJSquared.state
 		public function GameState()
 		{
 			super();
-			_citrusEngine = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance(); // register the Citrus Engine to have an access to the sound class 
 		}
 		
 		override public function initialize():void
@@ -40,7 +40,7 @@ package com.NJSquared.state
 			add(coin);
 			coin.onBeginContact.add(coinTouched);
 			
-			var hero:Hero = new Hero("hero", {x:100, y:350, width:40, height:150});
+			var hero:Hero = new Hero("hero", {x:100, y:350, width:40, height:150 /*view:"assets/images/hero.png"*/});
 			add(hero);
 			hero.onGiveDamage.add(heroAttack);
 			hero.onTakeDamage.add(heroHurt);

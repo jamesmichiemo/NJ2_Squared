@@ -1,9 +1,17 @@
 package com.NJSquared.gameCore
 {
-	public class assets
+	import starling.textures.Texture;
+
+	public class Assets
 	{
-		public function assets()
+		public function Assets()
 		{
+			// get the assets
+			
+			// embed the background texture
+			[Embed(source="assets/images/menubg.png")]
+			private static var menuBG:Class;
+			public static var menuBGTexture:Texture;
 		}
 	}
 }
