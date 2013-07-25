@@ -35,7 +35,7 @@ package
 		{
 			super.handleAddedToStage(e);
 			
-			changeState(MENU_STATE);
+			//changeState(MENU_STATE);
 		}
 		
 		public function changeState(newState:String):void
