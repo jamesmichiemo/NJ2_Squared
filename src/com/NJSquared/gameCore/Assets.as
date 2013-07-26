@@ -3,7 +3,7 @@ package com.NJSquared.gameCore
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 
-	public class GameAssets
+	public class Assets
 	{
 		
 	    // get the assets

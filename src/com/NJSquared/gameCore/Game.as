@@ -4,7 +4,7 @@ package com.NJSquared.gameCore
 	import citrus.core.State;
 	import citrus.core.starling.StarlingState;
 	
-	import com.NJSquared.gameCore.GameAssets;
+	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.Key;
 	import com.NJSquared.state.GameOver;
 	import com.NJSquared.state.StarGameState;
@@ -23,7 +23,7 @@ package com.NJSquared.gameCore
 		public function Game()
 		{
 			// initialize the assets
-			GameAssets.init();
+			Assets.init();
 			
 			// listen for game to be added
 			addEventListener(Event.ADDED_TO_STAGE, init);

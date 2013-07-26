@@ -4,7 +4,7 @@ package com.NJSquared.state
 	import citrus.core.State;
 	import citrus.core.starling.StarlingState;
 	
-	import com.NJSquared.gameCore.GameAssets;
+	import com.NJSquared.gameCore.Assets;
 	
 	import starling.display.Button;
 	import starling.display.DisplayObject;
