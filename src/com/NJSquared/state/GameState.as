@@ -1,86 +1,58 @@
-package com.NJSquared.state
+	package com.NJSquared.state
 {
-	import Box2D.Dynamics.Contacts.b2Contact;
-	
-	import citrus.core.CitrusEngine;
-	import citrus.core.starling.StarlingState;
-	import citrus.objects.platformer.box2d.Coin;
-	import citrus.objects.platformer.box2d.Enemy;
-	import citrus.objects.platformer.box2d.Hero;
-	import citrus.objects.platformer.box2d.MovingPlatform;
-	import citrus.objects.platformer.box2d.Platform;
-	import citrus.physics.box2d.Box2D;
-	
-	public class GameState extends StarlingState
-	{
-		private var _citrusEngine:CitrusEngine;
+		import citrus.core.State;
+		import citrus.core.starling.StarlingState;
+		import citrus.objects.platformer.box2d.Hero;
+		import citrus.objects.platformer.box2d.Platform;
+		import citrus.physics.box2d.Box2D;
+		import citrus.utils.objectmakers.ObjectMaker2D;
+		import citrus.utils.objectmakers.ObjectMakerStarling;
+		import citrus.view.spriteview.SpriteArt;
+		import citrus.view.starlingview.StarlingArt;
 		
-		public function GameState()
-		{
+		import flash.display.Bitmap;
+		import flash.geom.Point;
+		import flash.geom.Rectangle;
+		
+		import starling.textures.Texture;
+		import starling.textures.TextureAtlas;
+	
+	public class GameState extends State
+	{
+		[Embed(source="assets/tmx/Tileset.tmx", mimeType="application/octet-stream")]
+		private const _Map:Class;
+		
+		[Embed(source="assets/tmx/Tileset.png")]
+		private const _ImgTiles:Class;
+		
+		public function GameState() {
+			
 			super();
-			_citrusEngine = CitrusEngine.getInstance(); // register the Citrus Engine to have an access to the sound class 
+			
+			// Useful for not forgetting to import object from the Level Editor
+			var objects:Array = [Hero, Platform];
 		}
 		
-		override public function initialize():void
-		{
+		override public function initialize():void {
+			
 			super.initialize();
 			
 			var box2D:Box2D = new Box2D("box2D");
-			box2D.visible = true;
+			//box2D.visible = true;
 			add(box2D);
 			
-			add(new Platform("bottom", {x:stage.stageWidth / 2, y:stage.stageHeight, width:stage.stageWidth}));
-
-			add(new Platform("cloud", {x:600, y:500, width:170, oneWay:true}));
+			var bmp:Bitmap = new _ImgTiles();
+			// we must add the image name so we know which image is chosen.
+			bmp.name = "Tileset.png";
 			
-			add(new MovingPlatform("movingPlat", {x:220, y:700, width:200, height:40, startX:220, startY:700, endX:500, endY:151}));
-
-			// step:5
-			var coin:Coin = new Coin("coin", {x:360, y:500/*, view:"levels/SoundPatchDemo/jewel.png"*/});
-			add(coin);
-			coin.onBeginContact.add(coinTouched);
+			ObjectMaker2D.FromTiledMap(XML(new _Map()), [bmp]);
 			
-			var hero:Hero = new Hero("hero", {x:100, y:350, width:40, height:150 /*view:"assets/images/hero.png"*/});
-			add(hero);
-			hero.onGiveDamage.add(heroAttack);
-			hero.onTakeDamage.add(heroHurt);
+			var hero:Hero = getObjectByName("hero") as Hero;
 			
-			var enemy:Enemy = new Enemy("enemy", {x:stage.stageWidth - 50, y:350, width:46, height:68, leftBound:20, rightBound:stage.stageWidth - 20});
-			add(enemy);
+			view.camera.setUp(hero, new Point(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new Point(.25, .05));
 			
-			
-			// Step:5 For animations embed art and xml and create an AnimationSequence
-			/*[Embed(source="/../embed/Hero.xml", mimeType="application/octet-stream")]
-			
-			private var _heroConfig:Class;
-			
-			[Embed(source="/../embed/Hero.png")]
-			
-			private var _heroPng:Class;
-			
-			var bitmap:Bitmap = new _heroPng();
-			var texture:Texture = Texture.fromBitmap(bitmap);
-			var xml:XML = XML(new _heroConfig());
-			var sTextureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
-			
-			hero.view = new AnimationSequence(sTextureAtlas, ["walk", "duck", "idle", "jump", "hurt"], "idle");*/
+			(view.getArt(getObjectByName("hero")) as SpriteArt).alpha = 0.3;
 		}
 		
-		private function heroHurt():void
-		{
-			_citrusEngine.sound.playSound("Hurt"); // completely different parameter settings from first tutorial; update here: https://github.com/alamboley/Citrus-Engine-Examples/blob/master/src/soundpatchdemo/Main.as
-			trace("trigger hero hurt sound");
-		}
-		
-		private function heroAttack():void
-		{
-			_citrusEngine.sound.playSound("Kill");
-			trace("trigger hero attack sound");
-		}
-		
-		private function coinTouched(contact:b2Contact):void
-		{
-			trace('coin touched by an object');
-		}
 	}
-}
+	}
