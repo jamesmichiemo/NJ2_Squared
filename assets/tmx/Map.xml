@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objectgroup>
+	<object name="hero" x="70" y="80" width="84" height="105"/>
+	<object name="platform" side="bottom" x="1890" y="780" width="3780" height="51"/>
+	<object name="platform" side="left" x="25.5" y="577.5" width="51" height="1155"/>
+</objectgroup>
