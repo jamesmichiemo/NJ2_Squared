@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:becaf5f39733d5311ee1ca25366f1824:1/1$ -->
+<TextureAtlas imagePath="texturepacker-tiles-atlas.png">
+    <SubTexture name="images02" x="146" y="40" width="70" height="26" frameX="0" frameY="-44" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_01" x="2" y="74" width="70" height="70"/>
+    <SubTexture name="images_03" x="218" y="2" width="32" height="38" frameX="-19" frameY="-32" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_04" x="74" y="44" width="40" height="30" frameX="-15" frameY="-40" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_05" x="2" y="2" width="70" height="70"/>
+    <SubTexture name="images_06" x="146" y="2" width="70" height="36" frameX="0" frameY="-34" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_07" x="2" y="194" width="70" height="42" frameX="0" frameY="-28" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_08" x="2" y="146" width="70" height="46" frameX="0" frameY="-24" frameWidth="70" frameHeight="70"/>
+    <SubTexture name="images_09" x="74" y="2" width="70" height="40" frameX="0" frameY="-30" frameWidth="70" frameHeight="70"/>
+</TextureAtlas>
