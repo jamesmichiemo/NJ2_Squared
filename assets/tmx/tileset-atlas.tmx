@@ -2,6 +2,61 @@
 <map version="1.0" orientation="orthogonal" width="72" height="22" tilewidth="70" tileheight="70" backgroundcolor="#a8fffc">
  <tileset firstgid="1" name="Tileset.png" tilewidth="70" tileheight="70" spacing="1">
   <image source="Tileset.png" width="852" height="856"/>
+  <tile id="0">
+   <properties>
+    <property name="name" value="images_02"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="name" value="images_05"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="name" value="images_01"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="names" value="images_04"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="name" value="images_03"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="name" value="images_07"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="name" value="images_06"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="name" value="images_09"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="name" value="images_08"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="name" value="images_08"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="name" value="images_01"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Tile Layer 1" width="72" height="22">
   <data encoding="base64" compression="zlib">
