@@ -26,7 +26,7 @@ package com.NJSquared.state
 		
 		[Embed(source="assets/tmx/NewTileset.xml", mimeType="application/octet-stream")]
 		private const _MapAtlasConfig:Class;
-		
+
 		public function TestTwoGameState()
 		{
 			super();
