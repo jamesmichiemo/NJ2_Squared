@@ -9,7 +9,7 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="72" height="22">
-  <object type="citrus.objects.platformer.box2d.Platform" x="18" y="1400" width="614" height="250"/>
+  <object type="citrus.objects.platformer.box2d.Platform" x="0" y="1400" width="614" height="250"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="638" y="1500" width="134" height="52"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="776" y="1404" width="340" height="144"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="1122" y="1450" width="414" height="100"/>

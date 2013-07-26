@@ -15,7 +15,7 @@
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="1122" y="1450" width="414" height="100"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="1550" y="1406" width="414" height="142"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="1966" y="1338" width="136" height="216"/>
-  <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2110" y="1266" width="548" height="370"/>
+  <object name="platform" type="citrus.objezcts.platformer.box2d.Platform" x="2110" y="1266" width="548" height="370"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2802" y="1402" width="280" height="36"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2666" y="1502" width="552" height="82"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="3230" y="1410" width="1036" height="146"/>
