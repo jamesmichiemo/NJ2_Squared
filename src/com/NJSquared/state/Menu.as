@@ -30,6 +30,7 @@ package com.NJSquared.state
 		
 		public function initialize():void
 		{
+			
 		}
 		
 		public function update(timeDelta:Number):void
