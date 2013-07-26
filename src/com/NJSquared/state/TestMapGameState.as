@@ -4,7 +4,7 @@
 		
 		import citrus.objects.CitrusSprite;
 		
-		import com.NJSquared.gameCore.GameAssets;
+		import com.NJSquared.gameCore.Assets;
 		import com.citrusengine.core.CitrusEngine;
 		import com.citrusengine.core.StarlingState;
 		import com.citrusengine.math.MathVector;
@@ -47,9 +47,9 @@
 			
 			super.initialize();
 			
-			GameAssets.init();
+			Assets.init();
 			
-			_bg= new Image(GameAssets.gameBGTexture);
+			_bg= new Image(Assets.gameBGTexture);
 			addChild(_bg);
 			
 			var box2D:Box2D = new Box2D("box2D");
