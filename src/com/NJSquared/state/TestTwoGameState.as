@@ -23,10 +23,10 @@ package com.NJSquared.state
 		[Embed(source="assets/tmx/tileset-atlas.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
 		
-		[Embed(source="assets/tmx/Tilemap.xml", mimeType="application/octet-stream")]
+		[Embed(source="assets/tmx/texturepacker-tiles-atlas.xml", mimeType="application/octet-stream")]
 		private const _MapAtlasConfig:Class;
 		
-		[Embed(source="assets/tmx/Tileset.png")]
+		[Embed(source="assets/tmx/texturepacker-tiles-atlas.png")]
 		private const _MapAtlasPng:Class;
 		
 		public function TestTwoGameState()
