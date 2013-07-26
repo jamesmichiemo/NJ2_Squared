@@ -21,11 +21,15 @@
 	
 	public class StarGameState extends StarlingState	
 	{
-		[Embed(source="assets/tmx/Tileset.tmx", mimeType="application/octet-stream")]
+		[Embed(source="assets/tileset-atlas.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
 		
-		[Embed(source="assets/tmx/Tileset.png")]
-		private const _ImgTiles:Class;
+		[Embed(source="assets/texturepacker-tiles-atlas.xml", mimeType="application/octet-stream")]
+		private const _MapAtlasConfig:Class;
+		
+		[Embed(source="assets/texturepacker-tiles-atlas.png")]
+		private const _MapAtlasPng:Class;
+		
 		
 		private var _ce:CitrusEngine;
 		
