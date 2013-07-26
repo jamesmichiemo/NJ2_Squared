@@ -99,9 +99,6 @@
 			add(new Crate("crate9", {x:5500, y:350, width:100, height:100}));
 			add(new Crate("crate10", {x:6400, y:350, width:100, height:100}));
 			
-			
-			
-			
 			view.setupCamera(hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 10000, 450), new MathVector(.25, .05));
 			
 			// Step:5 For animations embed art and xml and create an AnimationSequence
