@@ -7,7 +7,7 @@ package com.NJSquared.gameCore
 	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.Key;
 	import com.NJSquared.state.GameOver;
-	import com.NJSquared.state.GameState;
+	import com.NJSquared.state.StarGameState;
 	
 	import flash.events.KeyboardEvent;
 	
@@ -52,7 +52,7 @@ package com.NJSquared.gameCore
 					break;
 				
 				case PLAY_STATE:
-					current_state = new GameState(this);
+					current_state = new StarGameState(this);
 					break;
 				
 				case GAME_OVER_STATE:
