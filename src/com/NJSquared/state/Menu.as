@@ -8,14 +8,28 @@ package com.NJSquared.state
 	
 	import flashx.textLayout.formats.BackgroundColor;
 	
+	import starling.display.Button;
+	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.events.Event;
 	
 	public class Menu extends Sprite implements IState
 	{
+		[Embed(source="assets/images/play_btn.png")]
+		private const _playBtn:Class;
+		
 		private var background:BackgroundColor;
-		public function Menu()
+		private var callToState:CallToState;
+		private var background:Image;
+		private var play:Button;
+		
+		public function Menu(callToState:CallToState)
 		{
 			super();
+			
+			this.callToState = callToState;
+			
+			addEventListener(Event.ADDED_TO_STAGE, initialize);
 		}
 		
 		public function destroy():void
@@ -30,7 +44,7 @@ package com.NJSquared.state
 		
 		public function initialize():void
 		{
-			
+
 		}
 		
 		public function update(timeDelta:Number):void
