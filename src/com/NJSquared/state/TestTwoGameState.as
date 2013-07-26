@@ -2,6 +2,7 @@ package com.NJSquared.state
 {
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	
+	import com.NJSquared.gameCore.Assets;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.platformer.awayphysics.Hero;
@@ -23,11 +24,8 @@ package com.NJSquared.state
 		[Embed(source="assets/tmx/tileset-atlas.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
 		
-		[Embed(source="assets/tmx/Tilemap.xml", mimeType="application/octet-stream")]
+		[Embed(source="assets/tmx/NewTileset.xml", mimeType="application/octet-stream")]
 		private const _MapAtlasConfig:Class;
-		
-		[Embed(source="assets/tmx/Tileset.png")]
-		private const _MapAtlasPng:Class;
 		
 		public function TestTwoGameState()
 		{
@@ -41,14 +39,15 @@ package com.NJSquared.state
 			
 			super.initialize();
 			
+			Assets.init();
+			
 			var box2D:Box2D = new Box2D("box2D");
 			// box2D.visible = true;
 			add(box2D);
 			
-			var bitmap:Bitmap = new _MapAtlasPng();
-			var texture:Texture = Texture.fromBitmap(bitmap);
-			var xml:XML = XML(new _MapAtlasConfig());
-			var sTextureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
+			//var xml:XML = XML(new _MapAtlasConfig());
+			var sTextureAtlas:TextureAtlas = new TextureAtlas(Assets.MapAtlasPngTexture, XML(new _MapAtlasConfig()));
+			
 			
 			ObjectMakerStarling.FromTiledMap(XML(new _Map()), sTextureAtlas);
 			
