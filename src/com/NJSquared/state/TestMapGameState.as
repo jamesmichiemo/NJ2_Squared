@@ -8,6 +8,7 @@
 		import com.citrusengine.core.CitrusEngine;
 		import com.citrusengine.core.StarlingState;
 		import com.citrusengine.math.MathVector;
+		import com.citrusengine.objects.APhysicsObject;
 		import com.citrusengine.objects.platformer.box2d.Coin;
 		import com.citrusengine.objects.platformer.box2d.Crate;
 		import com.citrusengine.objects.platformer.box2d.Enemy;
@@ -28,7 +29,7 @@
 	
 	public class TestMapGameState extends StarlingState
 	{
-		[Embed(source="assets/tmx/Map.xml", mimeType="application/octet-stream")]
+		[Embed(source="assets/tmx/NewTileset.xml", mimeType="application/octet-stream")]
 		private const _Tilemap:Class;
 		
 		private var _ce:CitrusEngine;
@@ -67,32 +68,33 @@
 			var xml:XML = XML(new _Tilemap());
 			trace(xml);
 			
-			for each(var object:XML in xml.object)
+			for each(var object:XML in xml.objectgroup.object)
 			{
 				if(object.@name == "platform")
 				{
-					add(new Platform("platform", {x:object.@x, y:object.@y, height:object.@height, width:object.@width}));
+					var platform:Platform = new Platform("platform", {x:object.@x - (object.@width), y:object.@y, height:object.@height, width:object.@width});
+					//add(platform);
 					trace("platform");
 				}
 				
 				if(object.@name == "tile")
 				{
 					var coin:Coin = new Coin("coin", {x:object.@x, y:object.@y});
-					add(coin);
+					//add(coin);
 
 				}
 				
 				if(object.@name == "hero")
 				{
-					_hero = new Hero("hero", {x:object.@x, y:object.@y, height:object.@height, width:object.@width});
-					add(_hero);
+//					_hero = new Hero("hero", {x:object.@x, y:object.@y, height:object.@height, width:object.@width});
+					//add(_hero);
 					trace("hero");
 					view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 805.5), new MathVector(.25, .05));
 				}
 				
 				if(object.@name == "Enemy")
 				{
-					add(new Enemy("enemy", {x:object.@x, y:object.@y, height:object.@height, width:object.@width, leftBound:5, rightBound:10}));
+					//add(new Enemy("enemy", {x:object.@x, y:object.@y, height:object.@height, width:object.@width, leftBound:5, rightBound:10}));
 				}
 			}
 		}
@@ -100,16 +102,16 @@
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
-			trace(_hero.x);
-			if(_hero.x >= 660)
-			{
-				_bg.x = -_hero.x + 10;
-			}
-			if(_hero.x <=600)
-			{
-				_bg.x = 0;
-			}
-			_bg.y = -_hero.y + 268;
+//			trace(_hero.x);
+//			if(_hero.x >= 660)
+//			{
+//				_bg.x = -_hero.x + 10;
+//			}
+//			if(_hero.x <=600)
+//			{
+//				_bg.x = 0;
+//			}
+//			_bg.y = -_hero.y + 268;
 		}
 	}
 }
