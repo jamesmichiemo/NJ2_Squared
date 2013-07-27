@@ -28,7 +28,7 @@ package com.NJSquared.gameCore
 		[Embed(source = "assets/images/images_01.png")]
 		private static var ONE:Class;
 		
-		public static var oneImage:Image;
+		public static var oneImage:Image = new Image(Texture.fromBitmap(new ONE()));
 
 		public function Assets()
 		{
@@ -44,7 +44,7 @@ package com.NJSquared.gameCore
 			
 			MapAtlasPngTexture = Texture.fromBitmap(new MapAtlasPng());
 			
-			oneImage = new Image(Texture.fromBitmap(new ONE()));
+			//oneImage = new Image(Texture.fromBitmap(new ONE()));
 
 			
 			//menuBGTexture = new TextureAtlas(Texture.fromBitmap(new menuBGTexture()), XML(new atlasXML()));
