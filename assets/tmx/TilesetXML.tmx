@@ -1632,7 +1632,7 @@
   <object type="citrus.objects.platformer.box2d.Platform" x="0" y="70" width="64" height="1320"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="76" y="568" width="264" height="124"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="346" y="590" width="144" height="110"/>
-  <object type="citrus.objects.platformer.box2d.Platform" x="500" y="496" width="260" height="198"/>
+  <object type="citrus.objects.platformer.box2d.Platform" x="500" y="491" width="260" height="198"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="914" y="284" width="270" height="134"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="1192" y="320" width="134" height="102"/>
   <object type="citrus.objects.platformer.box2d.Platform" x="1334" y="284" width="622" height="62"/>

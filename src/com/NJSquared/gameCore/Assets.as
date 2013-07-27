@@ -1,5 +1,6 @@
 package com.NJSquared.gameCore
 {
+	import starling.display.Image;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	
@@ -24,9 +25,10 @@ package com.NJSquared.gameCore
 		public static var MapAtlasPngTexture:Texture;
 		
 		//image_1 png 
-		[Embed(source="assets/images/images_01.png")]
-		private static var imageOne:Class;
-		public static var imageOneTexture:Texture;
+		[Embed(source = "assets/images/images_01.png")]
+		private static var ONE:Class;
+		
+		public static var oneImage:Image;
 
 		public function Assets()
 		{
@@ -42,7 +44,8 @@ package com.NJSquared.gameCore
 			
 			MapAtlasPngTexture = Texture.fromBitmap(new MapAtlasPng());
 			
-			imageOneTexture = Texture.fromBitmap(new imageOne());
+			oneImage = new Image(Texture.fromBitmap(new ONE()));
+
 			
 			//menuBGTexture = new TextureAtlas(Texture.fromBitmap(new menuBGTexture()), XML(new atlasXML()));
 			

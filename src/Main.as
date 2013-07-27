@@ -3,10 +3,6 @@ package
 	import citrus.sounds.CitrusSoundGroup;
 	
 	import com.NJSquared.state.ArrayGameState;
-	import com.NJSquared.state.StarGameState;
-	import com.NJSquared.state.TestMapGameState;
-	import com.NJSquared.state.TestThreeGameState;
-	import com.NJSquared.state.TestTwoGameState;
 	import com.citrusengine.core.StarlingCitrusEngine;
 	
 	import flash.display.Sprite;
