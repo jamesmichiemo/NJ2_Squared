@@ -22,6 +22,11 @@ package com.NJSquared.gameCore
 		[Embed(source="assets/tmx/Tileset.png")]
 		private static var MapAtlasPng:Class;
 		public static var MapAtlasPngTexture:Texture;
+		
+		//image_1 png 
+		[Embed(source="assets/images/images_01.png")]
+		private static var imageOne:Class;
+		public static var imageOneTexture:Texture;
 
 		public function Assets()
 		{
@@ -36,6 +41,8 @@ package com.NJSquared.gameCore
 			gameBGTexture = Texture.fromBitmap(new gameBG());
 			
 			MapAtlasPngTexture = Texture.fromBitmap(new MapAtlasPng());
+			
+			imageOneTexture = Texture.fromBitmap(new imageOne());
 			
 			//menuBGTexture = new TextureAtlas(Texture.fromBitmap(new menuBGTexture()), XML(new atlasXML()));
 			

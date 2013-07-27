@@ -61,7 +61,7 @@
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2591" y="624" width="203" height="145"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2803" y="706" width="348" height="67"/>
   <object name="platform" type="citrus.objects.platformer.box2d.Platform" x="2594" y="282" width="552" height="73"/>
-  <object name="hero" type="citrus.objects.platformer.box2d.Hero" x="147" y="1289" width="84" height="105"/>
+  <object name="hero" type="citrus.objects.platformer.box2d.Hero" x="70" y="70" width="84" height="105"/>
   <object name="Enemy" type="citrus.objects.platformer.box2d.Enemy" x="1885" y="1309" width="70" height="84"/>
   <object name="Enemy" type="citrus.objects.platformer.box2d.Enemy" x="972" y="889" width="70" height="84"/>
   <object name="Enemy" type="citrus.objects.platformer.box2d.Enemy" x="273" y="472" width="70" height="84"/>
