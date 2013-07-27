@@ -31,7 +31,7 @@ package com.NJSquared.Core
 		}
 		
 		override public function handleBeginContact(contact:b2Contact):void {
-		//	var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
+			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
 		}
 	}
 }
