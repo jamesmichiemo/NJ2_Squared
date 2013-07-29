@@ -23,7 +23,6 @@ package com.NJSquared.state
 		private var _levelOne:Array = [];
 		private var _hero:Hero;
 		
-		private var _ce:CitrusEngine;
 		
 		[Embed(source = '../assets/images/images_01.png')]
 		private var ONE:Class;
@@ -39,6 +38,7 @@ package com.NJSquared.state
 		private var NINE:Class;
 		[Embed(source = '../assets/images/blockerMad.png')]
 		private var SEVEN:Class;
+		private var _citrusEngine:CitrusEngine;
 		
 
 		
@@ -46,13 +46,16 @@ package com.NJSquared.state
 		{
 			super();
 			
-			_ce = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance();
+			_citrusEngine.sound.playSound("Song");
+			
 		}
 		
 		override public function initialize():void 
 		{
 			
 			super.initialize();
+		
 			
 			Assets.init();
 			stage.color = 0x8becfb;
@@ -150,6 +153,7 @@ package com.NJSquared.state
 					}
 				}
 			}
+			
 			addFauxPlatforms();
 			addHero();
 		}
@@ -162,6 +166,14 @@ package com.NJSquared.state
 
 			add(_hero);
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+		}
+		
+		private function handleHeroGiveDamage():void {
+			_citrusEngine.sound.playSound("Kill", 1, 0);
+		}
+		
+		private function handleHeroTakeDamage():void {
+			_citrusEngine.sound.playSound("Hurt", 1, 0);
 		}
 		
 		private function addFauxPlatforms():void
