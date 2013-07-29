@@ -153,7 +153,7 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new Hero("hero", {x:100, y:90, height:40, width:30, view: heroImage});
+			_hero = new Hero("hero", {x:40, y:40, height:40, width:30, view: heroImage});
 			add(_hero);
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}
