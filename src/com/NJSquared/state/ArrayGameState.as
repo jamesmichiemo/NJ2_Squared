@@ -185,49 +185,37 @@ package com.NJSquared.state
 					}
 				}
 			}
-			
-<<<<<<< HEAD
-			addFauxPlatforms();
-=======
+			 
 			var bitmapImage:Bitmap = new Bitmap(bd1);
 			var bg:Platform = new Platform("platform", {x:0, y:0, height:height, width:width, view:bitmapImage, oneWay:true});
 			bg.x = width / 2 - 35;
 			bg.y = height / 2 - 35;
-//			add(bg);
+			add(bg);
 			
->>>>>>> 89771522242819b603c181ac4672f06354e54e68
+
 			addHero();
 		}
 		
 		private function addHero():void
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> 739b03b1ee67bf12b3cc208f3c626de98e5e6c3f
 			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
+			_hero.onGiveDamage.add(handleHeroGiveDamage);
+			_hero.onTakeDamage.add(handleHeroTakeDamage);
+			
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}
 		
-<<<<<<< HEAD
 		private function handleHeroGiveDamage():void {
-			_citrusEngine.sound.playSound("Kill", 1, 0);
+			_citrusEngine.sound.playSound("Kill", 11, 0);
 		}
 		
 		private function handleHeroTakeDamage():void {
-			_citrusEngine.sound.playSound("Hurt", 1, 0);
+			_citrusEngine.sound.playSound("Hurt", 11, 0);
 		}
 		
-		private function addFauxPlatforms():void
-=======
-		private function platforms():void
->>>>>>> 89771522242819b603c181ac4672f06354e54e68
-		{
-			
-		}
 	}
 }
