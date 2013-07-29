@@ -195,7 +195,11 @@ package com.NJSquared.state
 		private function addHero():void
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> 739b03b1ee67bf12b3cc208f3c626de98e5e6c3f
 			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
