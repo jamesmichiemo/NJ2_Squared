@@ -4,6 +4,7 @@
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="Starling/Hi-ReS-Stats-master/src"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="Starling/PrimaryFeather-Starling-Framework-0ac3592/starling/src"/>
+      <compilerSourcePathEntry kind="1" linkType="1" path="assets/images"/>
     </compilerSourcePath>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
@@ -69,5 +70,3 @@
     </buildTarget>
   </buildTargets>
 </actionScriptProperties>
-
-

@@ -5,11 +5,12 @@ package com.NJSquared.Core
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
-
+	
+	import citrus.physics.box2d.Box2DUtils;
+	import citrus.physics.box2d.IBox2DPhysicsObject;
 	
 	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.physics.PhysicsCollisionCategories;
-
 	import com.citrusengine.utils.Box2DShapeMaker;
 	
 	import flash.utils.clearTimeout;
@@ -31,7 +32,7 @@ package com.NJSquared.Core
 		}
 		
 		override public function handleBeginContact(contact:b2Contact):void {
-//			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
+			//var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
 		}
 	}
 }

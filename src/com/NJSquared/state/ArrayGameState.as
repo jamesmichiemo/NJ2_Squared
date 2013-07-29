@@ -1,11 +1,11 @@
 package com.NJSquared.state
 {	
-	import com.NJSquared.Core.Enemy;
 	import com.NJSquared.gameCore.Assets;
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.platformer.box2d.Coin;
+	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.physics.box2d.Box2D;
@@ -20,7 +20,7 @@ package com.NJSquared.state
 	
 	public class ArrayGameState extends StarlingState
 	{
-		private var levelOne:Array = [];
+		private var _levelOne:Array = [];
 		private var _hero:Hero;
 		
 		private var _ce:CitrusEngine;
@@ -58,10 +58,10 @@ package com.NJSquared.state
 			stage.color = 0x8becfb;
 			
 			var box2D:Box2D = new Box2D("box2D");
-			//box2D.visible = true;
+			box2D.visible = true;
 			add(box2D);
 			
-			levelOne = [
+			_levelOne = [
 				[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -91,61 +91,66 @@ package com.NJSquared.state
 		
 		private function placeTiles():void
 		{
-			for(var i:int = 0; i < levelOne.length; i++)
+			for(var i:int = 0; i < _levelOne.length; i++)
 			{
 				
-				for(var j:int = 0; j < levelOne[i].length; j++)
+				for(var j:int = 0; j < _levelOne[i].length; j++)
 				{
 					var image:Image;
 					
-					if(levelOne[i][j] != 0)
+					if(_levelOne[i][j] != 0)
 					{
-						if(levelOne[i][j] == 1)
+						if(_levelOne[i][j] == 1)
 						{
 							image = new Image(starling.textures.Texture.fromBitmap(new ONE()));
 						}
-						else if(levelOne[i][j] == 5)
+						else if(_levelOne[i][j] == 5)
 						{
 							image = new Image(starling.textures.Texture.fromBitmap(new FIVE()));
 						}
-						else if(levelOne[i][j] == 6)
+						else if(_levelOne[i][j] == 6)
 						{
 							image = new Image(starling.textures.Texture.fromBitmap(new SIX()));
 						}
-						else if(levelOne[i][j] == 8)
-						{
-							image = new Image(starling.textures.Texture.fromBitmap(new EIGHT()));
-						}
-						
-						else if(levelOne[i][j] == 9)
-						{
-							image = new Image(starling.textures.Texture.fromBitmap(new NINE()));
-						}
-						else if(levelOne[i][j] == 7)
+						else if(_levelOne[i][j] == 7)
 						{
 							image = new Image(starling.textures.Texture.fromBitmap(new SEVEN()));
 						}
+						else if(_levelOne[i][j] == 8)
+						{
+							image = new Image(starling.textures.Texture.fromBitmap(new EIGHT()));
+						}
+						else if(_levelOne[i][j] == 9)
+						{
+							image = new Image(starling.textures.Texture.fromBitmap(new NINE()));
+						}
 					
-					 	if(levelOne[i][j] == 9)
+					 	if(_levelOne[i][j] == 9)
 						{
 							var coin:Coin = new Coin("coin", {x:j*70+90, y:i*70+35, height:70, width:70, view: image});
 							add(coin);
 						}
-						else if(levelOne[i][j] == 7)
+						else if(_levelOne[i][j] == 7)
 						{
-							var enemy:Enemy = new Enemy("enemy", {x:j*70+90, y:i*70+35, height:70, width:70, view: image, leftBound:0});
+							var enemy:Enemy = new Enemy("enemy", {x:j*70+140, y:i*70+35, height:70, width:70, view: image, leftBound:0});
 							add(enemy);
 						}
 						
 						else
 						{
-							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image});
-							add(platform);
-						}
+							//var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image});
+							//var fauxPlatform:Platform = new Platform("platform", {x:140, y:630, height:70, width:700});
+							//add(platform);
+							//add(fauxPlatform);
+							
+							//fauxPlatform.visible = true;
+							
+							//trace(platform.x);
+						} 
 					}
 				}
 			}
-			
+			addFauxPlatforms();
 			addHero();
 		}
 		
@@ -153,9 +158,19 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new Hero("hero", {x:100, y:90, height:40, width:30, view: heroImage});
+			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 			add(_hero);
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+		}
+		
+		private function addFauxPlatforms():void
+		{
+			
+			var fauxPlatform:Platform = new Platform("platform", {x:140, y:630, height:70, width:700});
+			add(fauxPlatform);
+			
+			var vertical:Platform = new Platform("platform", {x:500, y:630, height:100, width:70});
+			add(vertical);
 		}
 	}
 }
