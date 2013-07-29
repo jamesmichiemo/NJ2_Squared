@@ -1,1 +1,4 @@
-bin-debug/Main.swf
+bin-debug/*
+!bin-debug/trackme
+bin-release/
+.DS_Store
