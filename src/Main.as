@@ -3,6 +3,7 @@ package
 	import citrus.sounds.CitrusSoundGroup;
 	
 	import com.NJSquared.state.ArrayGameState;
+	import com.NJSquared.state.BridgeGameState;
 	import com.citrusengine.core.StarlingCitrusEngine;
 	
 	import flash.display.Sprite;
@@ -15,7 +16,7 @@ package
 		{
 			setUpStarling(true); //http://citrusengine.com/getting-started-citrus-starling-box2d/
 			
-			state = new ArrayGameState();
+			state = new BridgeGameState();
 			
 			sound.addSound("Hurt", "../sounds/hurt.mp3");
 			sound.addSound("Kill", "../sounds/kill.mp3");
