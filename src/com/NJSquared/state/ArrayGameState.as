@@ -157,12 +157,9 @@ package com.NJSquared.state
 		private function addHero():void
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
-			
-<<<<<<< HEAD
+
 			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
-=======
-			_hero = new Hero("hero", {x:40, y:40, height:40, width:30, view: heroImage});
->>>>>>> f20e1b70ea994b15e8928de7fb8945b5df09f2dd
+
 			add(_hero);
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}

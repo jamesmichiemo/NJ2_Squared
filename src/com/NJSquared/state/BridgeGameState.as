@@ -97,7 +97,7 @@ package com.NJSquared.state
 							image = new Image(starling.textures.Texture.fromBitmap(new ONE()));
 						}
 						
-						var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image, oneWay: true});
+						var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image});
 						add(platform);
 					}
 				}
