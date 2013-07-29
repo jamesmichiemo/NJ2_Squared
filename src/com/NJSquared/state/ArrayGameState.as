@@ -45,6 +45,10 @@ package com.NJSquared.state
 		private var NINE:Class;
 		[Embed(source = '../assets/images/blockerMad.png')]
 		private var SEVEN:Class;
+
+		private var _height2:uint;
+
+		private var _width2:uint;
 		
 
 		
@@ -112,12 +116,12 @@ package com.NJSquared.state
 		
 		private function placeTiles():void
 		{
-			var width:uint = _levelOne[0].length * 70;
-			var height:uint = _levelOne.length * 70;
+			_width2 = _levelOne[0].length * 70;
+			_height2 = _levelOne.length * 70;
 			
-			trace(width);
+			trace(_width2);
 			
-			var bd1:BitmapData=new BitmapData(width,height, false, 0x000000);
+			var bd1:BitmapData=new BitmapData(_width2,_height2, false, 0x000000);
 			
 			for(var i:int = 0; i < _levelOne.length; i++)
 			{
@@ -176,18 +180,17 @@ package com.NJSquared.state
 							
 							
 							bd1.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
-							
-							
+					
 						} 
 					}
 				}
 			}
 			
 			var bitmapImage:Bitmap = new Bitmap(bd1);
-			var bg:Platform = new Platform("platform", {x:0, y:0, height:height, width:width, view:bitmapImage, oneWay:true});
-			bg.x = width / 2 - 35;
-			bg.y = height / 2 - 35;
-//			add(bg);
+			var bg:Platform = new Platform("platform", {x:0, y:0, height:_height2, width:_width2, view:bitmapImage, oneWay:true});
+			bg.x = _width2 / 2 - 35;
+			bg.y = _height2 / 2 - 3;
+			add(bg);
 			
 			addHero();
 		}
@@ -195,15 +198,11 @@ package com.NJSquared.state
 		private function addHero():void
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
-<<<<<<< HEAD
 			
-=======
-
->>>>>>> 739b03b1ee67bf12b3cc208f3c626de98e5e6c3f
 			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
-			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, _width2, _height2), new MathVector(.25, .05));
 		}
 		
 		private function platforms():void
