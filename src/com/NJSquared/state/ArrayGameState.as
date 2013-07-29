@@ -44,7 +44,14 @@ package com.NJSquared.state
 		private var NINE:Class;
 		[Embed(source = '../assets/images/blockerMad.png')]
 		private var SEVEN:Class;
+<<<<<<< HEAD
 		private var _citrusEngine:CitrusEngine;
+=======
+
+		private var _height2:uint;
+
+		private var _width2:uint;
+>>>>>>> 4b0711630bcea9950fc632525d6763739f9ed1e8
 		
 
 		
@@ -115,12 +122,12 @@ package com.NJSquared.state
 		
 		private function placeTiles():void
 		{
-			var width:uint = _levelOne[0].length * 70;
-			var height:uint = _levelOne.length * 70;
+			_width2 = _levelOne[0].length * 70;
+			_height2 = _levelOne.length * 70;
 			
-			trace(width);
+			trace(_width2);
 			
-			var bd1:BitmapData=new BitmapData(width,height, false, 0x000000);
+			var bd1:BitmapData=new BitmapData(_width2,_height2, false, 0x000000);
 			
 			for(var i:int = 0; i < _levelOne.length; i++)
 			{
@@ -179,17 +186,22 @@ package com.NJSquared.state
 							
 							
 							bd1.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
-							
-							
+					
 						} 
 					}
 				}
 			}
 			 
 			var bitmapImage:Bitmap = new Bitmap(bd1);
+<<<<<<< HEAD
 			var bg:Platform = new Platform("platform", {x:0, y:0, height:height, width:width, view:bitmapImage, oneWay:true});
 			bg.x = width / 2 - 35;
 			bg.y = height / 2 - 35;
+=======
+			var bg:Platform = new Platform("platform", {x:0, y:0, height:_height2, width:_width2, view:bitmapImage, oneWay:true});
+			bg.x = _width2 / 2 - 35;
+			bg.y = _height2 / 2 - 3;
+>>>>>>> 4b0711630bcea9950fc632525d6763739f9ed1e8
 			add(bg);
 			
 
@@ -199,6 +211,7 @@ package com.NJSquared.state
 		private function addHero():void
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
+<<<<<<< HEAD
 
 			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
@@ -207,6 +220,13 @@ package com.NJSquared.state
 			_hero.onTakeDamage.add(handleHeroTakeDamage);
 			
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+=======
+			
+			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
+
+			add(_hero);
+			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, _width2, _height2), new MathVector(.25, .05));
+>>>>>>> 4b0711630bcea9950fc632525d6763739f9ed1e8
 		}
 		
 		private function handleHeroGiveDamage():void {
