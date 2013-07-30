@@ -1,11 +1,10 @@
 package com.NJSquared.state
 {	
 	import com.NJSquared.gameCore.Assets;
+	import com.NJSquared.gameCore.Tile;
 	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Coin;
 	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
@@ -16,11 +15,7 @@ package com.NJSquared.state
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import flashx.textLayout.formats.BackgroundColor;
-	
 	import starling.display.Image;
-	import starling.display.Quad;
-	import starling.display.Sprite;
 	import starling.textures.Texture;
 	
 	public class ArrayGameState extends StarlingState
@@ -59,7 +54,13 @@ package com.NJSquared.state
 		{
 			super();
 			
+<<<<<<< HEAD
 			_ce = CitrusEngine.getInstance();
+=======
+			_citrusEngine = CitrusEngine.getInstance();
+			_citrusEngine.sound.playSound("Collector");
+			
+>>>>>>> 69801b6a62344bbacccb52638f472f89674243d3
 		}
 		
 		override public function initialize():void 
@@ -203,8 +204,11 @@ package com.NJSquared.state
 					
 					 	if(_levelOne[i][j] == 9)
 						{
-							var coin:Coin = new Coin("coin", {x:j*70+90, y:i*70+35, height:70, width:70, view: image});
-							add(coin);
+							// tile class extends coin
+							// still have to figure out how to decide on color...
+							// for every tile, pass a color string - red blue green
+							var tile:Tile = new Tile("red", "coin", {x:j*70+90, y:i*70+35, height:70, width:70, view: image});
+							add(tile);
 						}
 						else if(_levelOne[i][j] == 7)
 						{

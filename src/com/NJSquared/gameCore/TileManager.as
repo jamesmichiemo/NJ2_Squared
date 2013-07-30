@@ -1,15 +1,34 @@
 package com.NJSquared.gameCore
 {
-	import starling.display.Sprite;
-
-	public class TileManager extends Sprite
+	public class TileManager
 	{
-		public var redTileCount:uint = 0;
-		public var blueTileCount:uint = 0;
-		public var greenTileCount:uint = 0;
+		public static var _redTileCount:uint = 0;
+		public static var _blueTileCount:uint = 0;
+		public static var _greenTileCount:uint = 0;
 		
 		public function TileManager()
 		{
 		}
+		
+		public static function increaseTileCount(color:String):void
+		{
+			if(color == "red")
+				_redTileCount++;
+			else if(color == "blue")
+				_blueTileCount++;
+			else if(color == "green")
+				_greenTileCount++;
+		}
+		
+		public static function decreaseTileCount(color:String):void
+		{
+			if(color == "red")
+				_redTileCount--;
+			else if(color == "blue")
+				_blueTileCount--;
+			else if(color == "green")
+				_greenTileCount--;
+		}
+
 	}
 }

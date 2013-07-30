@@ -1,11 +1,5 @@
 package com.NJSquared.state
-{
-	import citrus.core.CitrusObject;
-	import citrus.core.IState;
-	import citrus.system.Entity;
-	import citrus.system.components.ViewComponent;
-	import citrus.view.ACitrusView;
-	
+{	
 	import com.NJSquared.gameCore.Assets;
 	
 	import starling.display.Sprite;
@@ -19,7 +13,7 @@ package com.NJSquared.state
 		public static const GAME_OVER_STATE:int = 2;
 		
 		// Current state of game
-		private var current_state:IState;
+		private var current_state:IStates;
 		
 		public function CallToState()
 		{
@@ -34,7 +28,7 @@ package com.NJSquared.state
 		
 		private function init(event:Event):void
 		{
-			changeState(MENU_STATE); //start game on Menu
+			changeState(PLAY_STATE); //start game on Menu
 		}
 		
 		public function changeState(state:int):void
@@ -49,23 +43,25 @@ package com.NJSquared.state
 			switch(state) // different switch states
 			{
 				case MENU_STATE:
-					current_state = new Menu(this);
+					//current_state = new Menu(this);
 					break;
 				
 				case PLAY_STATE:
-					current_state = new TestMapGameState(this); //change this according to the play game class
+					//current_state = new BridgeGameState(this); //change this according to the play game class
 					break;
 				
 				case GAME_OVER_STATE:
-					current_state = new GameOver(this);
+					//current_state = new GameOver(this);
 					break;
 			}
 			
 			addChild(Sprite(current_state)); // typecast current state and add it to the display
 		}
 		
-		private function update():void
+		public function update(timeDelta:Number):void
 		{
 			// whatever state is currently active, update yourself! before you wreck yourself.
-			current_state.update();
+			current_state.update(timeDelta);
 		}
+	}
+}
