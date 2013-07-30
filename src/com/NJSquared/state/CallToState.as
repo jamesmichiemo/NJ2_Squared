@@ -53,7 +53,7 @@ package com.NJSquared.state
 					break;
 				
 				case PLAY_STATE:
-					current_state = new TestMapGameState(this); //change this according to the play game class
+					current_state = new ArrayGameState(this); //change this according to the play game class
 					break;
 				
 				case GAME_OVER_STATE:

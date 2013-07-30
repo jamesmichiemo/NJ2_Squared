@@ -1,6 +1,7 @@
 package com.NJSquared.state
 {	
 	import com.NJSquared.gameCore.Assets;
+	import com.NJSquared.gameCore.Tile;
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.core.StarlingState;
@@ -170,8 +171,11 @@ package com.NJSquared.state
 					
 					 	if(_levelOne[i][j] == 9)
 						{
-							var coin:Coin = new Coin("coin", {x:j*70+90, y:i*70+35, height:70, width:70, view: image});
-							add(coin);
+							// tile class extends coin
+							// still have to figure out how to decide on color...
+							// for every tile, pass a color string - red blue green
+							var tile:Tile = new Tile("red", "coin", {x:j*70+90, y:i*70+35, height:70, width:70, view: image});
+							add(tile);
 						}
 						else if(_levelOne[i][j] == 7)
 						{
