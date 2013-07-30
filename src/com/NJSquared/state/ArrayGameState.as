@@ -54,13 +54,11 @@ package com.NJSquared.state
 		{
 			super();
 			
-<<<<<<< HEAD
+
 			_ce = CitrusEngine.getInstance();
-=======
-			_citrusEngine = CitrusEngine.getInstance();
-			_citrusEngine.sound.playSound("Collector");
+
+			_ce.sound.playSound("Collector");
 			
->>>>>>> 69801b6a62344bbacccb52638f472f89674243d3
 		}
 		
 		override public function initialize():void 

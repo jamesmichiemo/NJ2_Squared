@@ -61,12 +61,12 @@ package com.NJSquared.state
 		{
 			super();
 			_ce = CitrusEngine.getInstance();
-<<<<<<< HEAD
+
 			_ce.sound.playSound("Puzzle");
-=======
+
 
 			//addEventListener(Event.ADDED_TO_STAGE, init);
->>>>>>> 9bfc7a0c8267e2bb2516652943ae64be3c3c9530
+
 		}
 		
 		override public function initialize():void 
