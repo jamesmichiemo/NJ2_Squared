@@ -1,14 +1,11 @@
 package com.NJSquared.state
 {
+	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
+	import citrus.objects.platformer.awayphysics.Platform;
+	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.TileManager;
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
 	
 	import flash.geom.Rectangle;
 	
@@ -35,9 +32,7 @@ package com.NJSquared.state
 		private var _barrier:Platform
 		
 		private var levelOneBridge:Array = [];
-		private var _hero:Hero;
-		
-		private var _ce:CitrusEngine;
+		private var _hero:ConcreteHero;
 		
 		[Embed(source = '../assets/images/images_01.png')]
 		private var ONE:Class;
@@ -57,9 +52,7 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
-			_ce = CitrusEngine.getInstance();
 			_ce.sound.playSound("Puzzle");
-
 		}
 		
 		override public function initialize():void 
@@ -131,9 +124,9 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new Hero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
+			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
+//			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
 		}
 		
 		private function onKey(event:KeyboardEvent):void
@@ -258,7 +251,7 @@ package com.NJSquared.state
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
-			CitrusEngine.getInstance().state = new GameOver();
+			_ce.state = new GameOver();
 		}
 		
 	}

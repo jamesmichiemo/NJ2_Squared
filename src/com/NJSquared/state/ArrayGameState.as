@@ -1,19 +1,26 @@
 package com.NJSquared.state
 {	
+	import citrus.core.CitrusEngine;
+	import citrus.core.starling.StarlingState;
+	import citrus.input.InputAction;
+	import citrus.input.InputController;
+	import citrus.input.controllers.Keyboard;
+	import citrus.objects.platformer.box2d.Enemy;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	
 	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.Tile;
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Enemy;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
+	import flash.events.KeyboardEvent;
+	import flash.events.MouseEvent;
 	import flash.geom.Matrix;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.ui.Mouse;
 	
 	import starling.display.Image;
 	import starling.textures.Texture;
@@ -22,9 +29,9 @@ package com.NJSquared.state
 	{
 		private var _levelOne:Array = [];
 		private var _levelOneBit:BitmapData;
-		private var _hero:Hero;
+		private var _hero:ConcreteHero;
 		
-		private var _ce:CitrusEngine;
+		private var _citrusEngine:CitrusEngine;
 		
 		[Embed(source = '../assets/images/images_01.png')]
 		private var ONE:Class;
@@ -53,11 +60,8 @@ package com.NJSquared.state
 		public function ArrayGameState()
 		{
 			super();
-			
 
-			_ce = CitrusEngine.getInstance();
-
-			_ce.sound.playSound("Collector");
+			//_ce.sound.playSound("Collector");
 			
 		}
 		
@@ -217,7 +221,7 @@ package com.NJSquared.state
 						else
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
-							
+							add(platform);
 							bd1.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
 							bd2.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
 						} 
@@ -244,10 +248,10 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new Hero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
+			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
-			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
 		}
 		
 /*		private function enemies():void
