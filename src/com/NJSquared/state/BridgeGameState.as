@@ -1,7 +1,6 @@
 package com.NJSquared.state
 {
 	import citrus.core.starling.StarlingState;
-	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.awayphysics.Platform;
 	import citrus.physics.box2d.Box2D;
 	
@@ -15,7 +14,7 @@ package com.NJSquared.state
 	import starling.textures.Texture;
 	
 	
-	public class BridgeGameState extends StarlingState implements IStates
+	public class BridgeGameState extends StarlingState 
 	{
 		private var _bridgeFinished:Boolean = false;
 		
