@@ -250,6 +250,12 @@ package com.NJSquared.state
 			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}
 		
+		override public function destroy():void
+		{
+			super.destroy();			
+			CitrusEngine.getInstance().state = new BridgeGameState();
+		}
+		
 /*		private function enemies():void
 		{
 			var enemyImage:Image = new Image(starling.textures.Texture.fromBitmap(new SEVEN()));
