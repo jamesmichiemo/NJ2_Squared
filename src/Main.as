@@ -1,5 +1,6 @@
 package
 {	
+	import com.NJSquared.state.ArrayGameState;
 	import com.NJSquared.state.BridgeGameState;
 	import com.NJSquared.state.Menu;
 	import com.citrusengine.core.StarlingCitrusEngine;
@@ -18,7 +19,8 @@ package
 			sound.addSound("Gameover", "../sounds/gameover.mp3");
 			sound.addSound("Hurt", "../sounds/hurt.mp3");
 			sound.addSound("Kill", "../sounds/kill.mp3");
-			state = new Menu();
+			
+			state = new ArrayGameState();
 		}
 	}
 }
