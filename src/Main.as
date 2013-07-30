@@ -23,6 +23,10 @@ package
 //			sound.addSound("Hurt", "../sounds/hurt.mp3");
 //			sound.addSound("Kill", "../sounds/kill.mp3");
 
+<<<<<<< HEAD
+=======
+			state = new BridgeGameState();
+>>>>>>> 3c17799d91af78709934ce254e10be547d90a5c8
 
 			state = new BridgeGameState();
 

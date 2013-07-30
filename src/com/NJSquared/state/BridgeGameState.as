@@ -3,6 +3,7 @@ package com.NJSquared.state
 	
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingState;
+
 	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
@@ -15,8 +16,12 @@ package com.NJSquared.state
 	import starling.events.KeyboardEvent;
 	
 	
+<<<<<<< HEAD
 	
 	public class BridgeGameState extends StarlingState implements IState
+=======
+	public class BridgeGameState extends StarlingState 
+>>>>>>> 3c17799d91af78709934ce254e10be547d90a5c8
 	{
 		private var _bridgeFinished:Boolean = false;
 		
