@@ -3,10 +3,8 @@ package com.NJSquared.state
 	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.Tile;
 	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Coin;
 	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
@@ -17,11 +15,7 @@ package com.NJSquared.state
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import flashx.textLayout.formats.BackgroundColor;
-	
 	import starling.display.Image;
-	import starling.display.Quad;
-	import starling.display.Sprite;
 	import starling.textures.Texture;
 	
 	public class ArrayGameState extends StarlingState

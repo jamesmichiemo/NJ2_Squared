@@ -3,7 +3,6 @@ package com.NJSquared.gameCore
 	
 	import Box2D.Dynamics.Contacts.b2Contact;
 	
-	import com.NJSquared.gameCore.TileManager;
 	import com.citrusengine.objects.platformer.box2d.Coin;
 
 	

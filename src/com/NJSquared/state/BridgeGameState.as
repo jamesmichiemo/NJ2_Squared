@@ -1,21 +1,17 @@
 package com.NJSquared.state
 {
 	import citrus.input.controllers.Keyboard;
-	import com.NJSquared.gameCore.Assets;
+	
+	import com.NJSquared.gameCore.TileManager;
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Coin;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.physics.box2d.Box2D;
 	
-	import flash.display3D.textures.Texture;
 	import flash.geom.Rectangle;
 	
-	import flashx.textLayout.formats.BackgroundColor;
-	
-	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.events.KeyboardEvent;
@@ -179,6 +175,8 @@ package com.NJSquared.state
 				
 					_tileXCount++;
 					_lastColor = color;
+					
+					TileManager.decreaseTileCount("red");
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _green))
 				{	
@@ -192,6 +190,8 @@ package com.NJSquared.state
 					
 					_tileXCount++;
 					_lastColor = color;
+					
+					TileManager.decreaseTileCount("blue");
 				}
 				else if(_lastColor == _red && (_currentColor == _green || _currentColor == _red))
 				{	
@@ -205,6 +205,8 @@ package com.NJSquared.state
 					
 					_tileXCount++;
 					_lastColor = color;
+					
+					TileManager.decreaseTileCount("green");
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
@@ -218,6 +220,8 @@ package com.NJSquared.state
 				
 					_tileXCount++;
 					_lastColor = color;
+					
+					TileManager.decreaseTileCount("red");
 				}
 				else if(_lastColor == _green && (_currentColor == _blue || _currentColor == _green))
 				{	

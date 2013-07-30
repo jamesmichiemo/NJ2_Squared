@@ -1,10 +1,6 @@
 package com.NJSquared.state
 {
-	import citrus.core.CitrusObject;
 	import citrus.core.IState;
-	import citrus.system.Entity;
-	import citrus.system.components.ViewComponent;
-	import citrus.view.ACitrusView;
 	
 	import com.NJSquared.gameCore.Assets;
 	

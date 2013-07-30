@@ -2,7 +2,6 @@ package com.NJSquared.gameCore
 {
 	import starling.display.Image;
 	import starling.textures.Texture;
-	import starling.textures.TextureAtlas;
 	
 	public class Assets
 	{
