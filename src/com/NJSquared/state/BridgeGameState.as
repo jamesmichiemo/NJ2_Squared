@@ -3,7 +3,9 @@ package com.NJSquared.state
 	import citrus.input.controllers.Keyboard;
 	
 	import com.NJSquared.gameCore.TileManager;
+	import com.NJSquared.state.IStates;
 	import com.citrusengine.core.CitrusEngine;
+	import com.citrusengine.core.StarlingCitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.platformer.box2d.Hero;
@@ -14,12 +16,15 @@ package com.NJSquared.state
 	
 	import starling.display.Image;
 	import starling.display.Quad;
+	import starling.events.Event;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
 	
-	public class BridgeGameState extends StarlingState
+	public class BridgeGameState extends StarlingState implements IStates
 	{
+		private var _bridgeFinished:Boolean = false;
+		
 		private var _tileXCount:uint = 0;
 		private var _tileYCount:uint = 0;
 		private var _tileYPos:uint = 665;
@@ -55,8 +60,9 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
-
 			_ce = CitrusEngine.getInstance();
+
+			//addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		override public function initialize():void 
@@ -228,12 +234,32 @@ package com.NJSquared.state
 					trace("wrongg");
 				}
 			}
-			// if the bridge is finished
-			else
+			
+			// if the bridge is finished	
+			if(_tileYCount == 1 && _tileXCount == 14)
 			{
 				trace("bridge finished");
 				remove(_barrier);
+				_bridgeFinished = true;
 			}
+		}
+		
+		override public function update(timeDelta:Number):void
+		{
+			super.update(timeDelta);
+
+			if(_bridgeFinished == true && _hero.x >= 1290)
+			{
+				trace("GAME OVER");
+				destroy();
+			}
+		}
+		
+		override public function destroy():void
+		{
+			super.destroy();
+			
+			CitrusEngine.getInstance().state = new GameOver();
 		}
 		
 	}
