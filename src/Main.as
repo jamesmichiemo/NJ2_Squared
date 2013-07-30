@@ -24,7 +24,7 @@ package
 //			sound.addSound("Kill", "../sounds/kill.mp3");
 
 			state = new ArrayGameState();
-			
+
 		}
 	}
 }

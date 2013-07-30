@@ -159,7 +159,7 @@ package com.NJSquared.state
 			bg.x = _width2/2 - 35;
 			bg.y = _height2 / 2 - 35;
 			add(bg);
-		
+
 			addHero();
 			addEnemies();
 			addTiles();
@@ -216,5 +216,11 @@ package com.NJSquared.state
 			tile = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
 			add(tile);
 		}
+		
+/*		override public function destroy():void
+		{
+			super.destroy();			
+			CitrusEngine.getInstance().state = new BridgeGameState();
+		}	*/	
 	}
 }
