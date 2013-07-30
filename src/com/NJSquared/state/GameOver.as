@@ -1,41 +1,34 @@
 package com.NJSquared.state
 {
-	import citrus.core.IState;
-	import citrus.core.State;
-	import citrus.core.starling.StarlingState;
+	import com.NJSquared.state.IStates;
+	import com.citrusengine.core.StarlingState;
 	
-	import com.NJSquared.gameCore.Assets;
-	
-	import starling.display.Button;
-	import starling.display.DisplayObject;
-	import starling.display.Image;
-	import starling.display.Sprite;
+	import starling.core.Starling;
 	import starling.events.Event;
 	
-	public class GameOver extends State implements IState
-	{
-		
+	public class GameOver extends StarlingState implements IStates
+	{	
 		public function GameOver()
 		{
-			
+			trace("game over state");
 		}
 		
-		private function init(event:Event):void
+		public function init(event:Event):void
 		{
-			;
+
 		}
 		
-		private function onPlayAgain():void
-		{
-			
-		}
-		
-		public function update():void
+		override public function update(timeDelta:Number):void
 		{
 			// we need this because this class is an IState
 		}
 		
-		public function destroy():void
+		override public function destroy():void
+		{
+			
+		}
+		
+		private function onPlayAgain():void
 		{
 			
 		}
