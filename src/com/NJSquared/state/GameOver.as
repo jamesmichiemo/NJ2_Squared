@@ -1,21 +1,43 @@
 package com.NJSquared.state
 {
-	import com.NJSquared.state.IStates;
-	import com.citrusengine.core.StarlingState;
+	import citrus.input.controllers.Keyboard;
 	
-	import starling.core.Starling;
-	import starling.events.Event;
+	import com.citrusengine.core.CitrusEngine;
+	import com.citrusengine.core.StarlingState;
+	import com.citrusengine.objects.platformer.box2d.Platform;
+	import com.citrusengine.physics.box2d.Box2D;
+	
+	import starling.events.KeyboardEvent;
 	
 	public class GameOver extends StarlingState implements IStates
 	{	
+		private var _ce:CitrusEngine;
+		
 		public function GameOver()
 		{
 			trace("game over state");
+			_ce = CitrusEngine.getInstance();
 		}
 		
-		public function init(event:Event):void
+		public function init():void
 		{
-
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onRestart);
+			
+			var box2D:Box2D = new Box2D("box2D");
+			box2D.visible = true;
+			add(box2D);
+			
+			var platform:Platform = new Platform("platform", {x:100, y:100, height:70, width:70});
+			add(platform);
+		}
+		
+		private function onRestart(event:KeyboardEvent):void
+		{
+			if(event.keyCode == Keyboard.R)
+			{
+				trace("r");
+				destroy();
+			}
 		}
 		
 		override public function update(timeDelta:Number):void
@@ -25,13 +47,8 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			
+			super.destroy();
+			CitrusEngine.getInstance().state = new BridgeGameState();
 		}
-		
-		private function onPlayAgain():void
-		{
-			
-		}
-		
 	}
 }

@@ -3,9 +3,7 @@ package com.NJSquared.state
 	import citrus.input.controllers.Keyboard;
 	
 	import com.NJSquared.gameCore.TileManager;
-	import com.NJSquared.state.IStates;
 	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingCitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.platformer.box2d.Hero;
@@ -16,7 +14,6 @@ package com.NJSquared.state
 	
 	import starling.display.Image;
 	import starling.display.Quad;
-	import starling.events.Event;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
@@ -61,8 +58,6 @@ package com.NJSquared.state
 		{
 			super();
 			_ce = CitrusEngine.getInstance();
-
-			//addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
 		override public function initialize():void 
@@ -250,7 +245,7 @@ package com.NJSquared.state
 
 			if(_bridgeFinished == true && _hero.x >= 1290)
 			{
-				trace("GAME OVER");
+				trace("game over");
 				destroy();
 			}
 		}
@@ -258,6 +253,8 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
+			
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
 			CitrusEngine.getInstance().state = new GameOver();
 		}

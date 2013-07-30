@@ -55,6 +55,7 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
+			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
 			CitrusEngine.getInstance().state = new BridgeGameState();
 		}
 	}
