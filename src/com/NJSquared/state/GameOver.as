@@ -33,6 +33,8 @@ package com.NJSquared.state
 		
 		private function onRestart(event:KeyboardEvent):void
 		{
+			trace("key pressed");
+			
 			if(event.keyCode == Keyboard.R)
 			{
 				trace("r");
