@@ -2,16 +2,12 @@ package com.NJSquared.state
 {
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
-	import citrus.objects.platformer.awayphysics.Platform;
+	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.TileManager;
 	
-	import flash.display.Bitmap;
-	import flash.geom.Rectangle;
-	
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
@@ -30,7 +26,7 @@ package com.NJSquared.state
 		private var _yellow:uint = 0x00ff00;
 		private var _blue:uint = 0x0000ff;
 		
-		private var _barrier:Platform
+		private var _barrier:Platform;
 		
 		private var levelOneBridge:Array = [];
 		private var _hero:ConcreteHero;
