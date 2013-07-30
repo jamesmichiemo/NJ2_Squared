@@ -1,12 +1,9 @@
 package com.NJSquared.state
 {
 	import citrus.core.starling.StarlingState;
-<<<<<<< HEAD
-	import citrus.objects.platformer.awayphysics.Platform;
-=======
+
 	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.box2d.Platform;
->>>>>>> 12a51e95efc917e09af0022c2998d29e2853274b
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.TileManager;
