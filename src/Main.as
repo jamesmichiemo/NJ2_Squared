@@ -13,7 +13,10 @@ package
 			setUpStarling(true); //http://citrusengine.com/getting-started-citrus-starling-box2d/
 			
 			// create sound assets
-			sound.addSound("Song", "../sounds/song.mp3");
+			sound.addSound("Title", "../sounds/title.mp3");
+			sound.addSound("Collector", "../sounds/collector.mp3");
+			sound.addSound("Puzzle", "../sounds/puzzle.mp3");
+			sound.addSound("Gameover", "../sounds/gameover.mp3");
 			sound.addSound("Hurt", "../sounds/hurt.mp3");
 			sound.addSound("Kill", "../sounds/kill.mp3");
 			

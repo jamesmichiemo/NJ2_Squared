@@ -54,7 +54,7 @@ package com.NJSquared.state
 			super();
 			
 			_citrusEngine = CitrusEngine.getInstance();
-			_citrusEngine.sound.playSound("Song");
+			_citrusEngine.sound.playSound("Collector");
 			
 		}
 		

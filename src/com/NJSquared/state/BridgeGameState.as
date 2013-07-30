@@ -57,6 +57,7 @@ package com.NJSquared.state
 			super();
 
 			_ce = CitrusEngine.getInstance();
+			_ce.sound.playSound("Puzzle");
 		}
 		
 		override public function initialize():void 
