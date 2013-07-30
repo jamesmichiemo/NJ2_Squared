@@ -9,7 +9,7 @@ package com.NJSquared.state
 	
 	import starling.events.KeyboardEvent;
 	
-	public class GameOver extends StarlingState implements IStates
+	public class GameOver extends StarlingState
 	{	
 		private var _ce:CitrusEngine;
 		
@@ -35,7 +35,7 @@ package com.NJSquared.state
 		
 		private function onRestart(event:KeyboardEvent):void
 		{	
-			if(event.keyCode == Keyboard.R)
+			if(event.keyCode == 82)
 			{
 				trace("r");
 				destroy();

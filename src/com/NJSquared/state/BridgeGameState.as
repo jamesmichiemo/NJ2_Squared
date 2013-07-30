@@ -157,17 +157,17 @@ package com.NJSquared.state
 		
 		private function onKey(event:KeyboardEvent):void
 		{
-		 	if(event.keyCode == Keyboard.A)
+		 	if(event.keyCode == 65)
 			{
 				trace("a");
 				buildBridge(_red);
 			}
-			else if(event.keyCode == Keyboard.S)
+			else if(event.keyCode == 83)
 			{
 				trace("s");
 				buildBridge(_blue);
 			}
-			else if(event.keyCode == Keyboard.D)
+			else if(event.keyCode == 68)
 			{
 				trace("d");
 				buildBridge(_yellow);
