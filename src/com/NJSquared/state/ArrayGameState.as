@@ -5,6 +5,7 @@ package com.NJSquared.state
 	import citrus.input.InputAction;
 	import citrus.input.InputController;
 	import citrus.input.controllers.Keyboard;
+	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -259,7 +260,7 @@ package com.NJSquared.state
 			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
-			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
+			view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}
 		
 		override public function destroy():void

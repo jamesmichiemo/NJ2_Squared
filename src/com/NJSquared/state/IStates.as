@@ -1,6 +1,6 @@
 package com.NJSquared.state
 {
-	import starling.events.Event;
+
 
 	public interface IStates 
 	{
