@@ -250,7 +250,6 @@ package com.NJSquared.state
 			add(bgTwo);*/
 		
 			addHero();
-			addEnemies();
 		}
 		
 		private function addHero():void
@@ -263,17 +262,11 @@ package com.NJSquared.state
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
 		}
 		
-		private function addEnemies():void
+		override public function destroy():void
 		{
-			var enemy:Enemy;
-			var enemyImage:Image = new Image(Texture.fromBitmap(new SEVEN()));
-			
-			enemy = new Enemy("enemy", {x:400, y:300, height:70, width:70, view: enemyImage, leftBound:0});
-			add(enemy);
-			
-			/*enemy = new Enemy("enemy", {x:400, y:200, height:70, width:70, view: enemyImage, leftBound:0});
-			add(enemy);*/
-			
+			super.destroy();			
+			CitrusEngine.getInstance().state = new BridgeGameState();
 		}
+			
 	}
 }

@@ -19,8 +19,10 @@ package com.NJSquared.state
 			_ce = CitrusEngine.getInstance();
 		}
 		
-		public function init():void
+		override public function initialize():void
 		{
+			super.initialize();
+			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			
 			var box2D:Box2D = new Box2D("box2D");
@@ -32,9 +34,7 @@ package com.NJSquared.state
 		}
 		
 		private function onRestart(event:KeyboardEvent):void
-		{
-			trace("key pressed");
-			
+		{	
 			if(event.keyCode == Keyboard.R)
 			{
 				trace("r");
@@ -50,6 +50,7 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			CitrusEngine.getInstance().state = new BridgeGameState();
 		}
 	}

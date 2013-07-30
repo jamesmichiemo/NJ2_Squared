@@ -23,8 +23,13 @@ package
 //			sound.addSound("Hurt", "../sounds/hurt.mp3");
 //			sound.addSound("Kill", "../sounds/kill.mp3");
 
+<<<<<<< HEAD
 			state = new BridgeGameState();
 			
+=======
+			state = new ArrayGameState();
+
+>>>>>>> 12a51e95efc917e09af0022c2998d29e2853274b
 		}
 	}
 }

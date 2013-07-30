@@ -4,7 +4,7 @@ package com.NJSquared.gameCore
 	{
 		public static var _redTileCount:uint = 0;
 		public static var _blueTileCount:uint = 0;
-		public static var _greenTileCount:uint = 0;
+		public static var _yellowTileCount:uint = 0;
 		
 		public function TileManager()
 		{
@@ -16,8 +16,8 @@ package com.NJSquared.gameCore
 				_redTileCount++;
 			else if(color == "blue")
 				_blueTileCount++;
-			else if(color == "green")
-				_greenTileCount++;
+			else if(color == "yellow")
+				_yellowTileCount++;
 		}
 		
 		public static function decreaseTileCount(color:String):void
@@ -26,8 +26,8 @@ package com.NJSquared.gameCore
 				_redTileCount--;
 			else if(color == "blue")
 				_blueTileCount--;
-			else if(color == "green")
-				_greenTileCount--;
+			else if(color == "yellow")
+				_yellowTileCount--;
 		}
 
 	}

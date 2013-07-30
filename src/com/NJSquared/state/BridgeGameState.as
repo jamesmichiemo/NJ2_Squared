@@ -2,15 +2,12 @@ package com.NJSquared.state
 {
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
-	import citrus.objects.platformer.awayphysics.Platform;
+	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.TileManager;
 	
-	import flash.geom.Rectangle;
-	
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
@@ -26,28 +23,42 @@ package com.NJSquared.state
 		private var _currentColor:uint;
 		
 		private var _red:uint = 0xff0000;
-		private var _green:uint = 0x00ff00;
+		private var _yellow:uint = 0x00ff00;
 		private var _blue:uint = 0x0000ff;
 		
-		private var _barrier:Platform
+		private var _barrier:Platform;
 		
 		private var levelOneBridge:Array = [];
 		private var _hero:ConcreteHero;
 		
-		[Embed(source = '../assets/images/images_01.png')]
+		[Embed(source = '../assets/images/groundTile.png')]
 		private var ONE:Class;
 		[Embed(source = '../assets/images/images_04.png')]
 		private var FOUR:Class;
-		[Embed(source = '../assets/images/images_05.png')]
+		[Embed(source = '../assets/images/grassTile.png')]
 		private var FIVE:Class;
 		[Embed(source = '../assets/images/images_06.png')]
 		private var SIX:Class;
-		[Embed(source = '../assets/images/images_08.png')]
+		[Embed(source = '../assets/images/waterTile.png')]
 		private var EIGHT:Class;
 		[Embed(source = '../assets/images/keyYellow.png')]
 		private var NINE:Class;
 		[Embed(source = '../assets/images/blockerMad.png')]
 		private var SEVEN:Class;
+		[Embed(source = '../assets/images/rightCornerGrassTile.png')]
+		private var TEN:Class;
+		[Embed(source = '../assets/images/leftCornerGrassTile.png')]
+		private var ELEVEN:Class;
+		[Embed(source = '../assets/images/portalTile.png')]
+		private var TWELVE:Class;
+		
+		[Embed(source = '../assets/images/redBridgeTile.png')]
+		private var RED:Class;
+		[Embed(source = '../assets/images/blueBridgeTile.png')]
+		private var BLUE:Class;
+		[Embed(source = '../assets/images/yellowBridgeTile.png')]
+		private var YELLOW:Class;
+
 		
 		public function BridgeGameState()
 		{
@@ -58,6 +69,8 @@ package com.NJSquared.state
 		override public function initialize():void 
 		{
 			super.initialize();
+			
+			trace("bridge state");
 			
 			stage.color = 0x8becfb;
 			
@@ -75,8 +88,8 @@ package com.NJSquared.state
 				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-				[1, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 1],
+				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12],
+				[1, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 1],
 				[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
 				[1, 1, 1, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 1, 1, 1],
 			];
@@ -106,6 +119,18 @@ package com.NJSquared.state
 						else if(levelOneBridge[i][j] == 8)
 						{
 							image = new Image(starling.textures.Texture.fromBitmap(new EIGHT()));
+						}
+						else if(levelOneBridge[i][j] == 10)
+						{
+							image = new Image(starling.textures.Texture.fromBitmap(new TEN()));
+						}
+						else if(levelOneBridge[i][j] == 11)
+						{
+							image = new Image(starling.textures.Texture.fromBitmap(new ELEVEN()));
+						}
+						else if(levelOneBridge[i][j] == 12)
+						{
+							image = new Image(starling.textures.Texture.fromBitmap(new TWELVE()));
 						}
 						
 						var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image});
@@ -144,12 +169,16 @@ package com.NJSquared.state
 			else if(event.keyCode == Keyboard.D)
 			{
 				trace("d");
-				buildBridge(_green);
+				buildBridge(_yellow);
 			}
 		}
 		
 		private function buildBridge(color:uint):void
 		{
+			var redTile:Image = new Image(starling.textures.Texture.fromBitmap(new RED()));
+			var blueTile:Image = new Image(starling.textures.Texture.fromBitmap(new BLUE()));
+			var yellowTile:Image = new Image(starling.textures.Texture.fromBitmap(new YELLOW()));
+			
 			_currentColor = color;
 			
 			// if the first row of tiles have been placed
@@ -166,7 +195,7 @@ package com.NJSquared.state
 				// first tile must be red
 				if(_lastColor == 0 && _currentColor == _red)
 				{	
-					var tileOne:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: new Quad(70, 70, _currentColor)});
+					var tileOne:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: redTile});
 					add(tileOne);
 				
 					_tileXCount++;
@@ -174,14 +203,14 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("red");
 				}
-				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _green))
+				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
 					trace("wrongg");
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue)
 				{	
-					var tileBlue:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: new Quad(70, 70, _currentColor)});
+					var tileBlue:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: blueTile});
 					add(tileBlue);
 					
 					_tileXCount++;
@@ -189,29 +218,29 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("blue");
 				}
-				else if(_lastColor == _red && (_currentColor == _green || _currentColor == _red))
+				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
 					trace("wrongg");
 				}
-				// green can only go after blue
-				else if(_lastColor == _blue && _currentColor == _green)
+				// yellow can only go after blue
+				else if(_lastColor == _blue && _currentColor == _yellow)
 				{	
-					var tileGreen:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: new Quad(70, 70, _currentColor)});
-					add(tileGreen);
+					var tileyellow:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: yellowTile});
+					add(tileyellow);
 					
 					_tileXCount++;
 					_lastColor = color;
 					
-					TileManager.decreaseTileCount("green");
+					TileManager.decreaseTileCount("yellow");
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
 					trace("wrongg");
 				}
-				// red can only go after green
-				else if(_lastColor == _green && _currentColor == _red)
+				// red can only go after yellow
+				else if(_lastColor == _yellow && _currentColor == _red)
 				{	
-					var tileRed:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: new Quad(70, 70, _currentColor)});
+					var tileRed:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: redTile});
 					add(tileRed);
 				
 					_tileXCount++;
@@ -219,7 +248,7 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("red");
 				}
-				else if(_lastColor == _green && (_currentColor == _blue || _currentColor == _green))
+				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
 					trace("wrongg");
 				}
