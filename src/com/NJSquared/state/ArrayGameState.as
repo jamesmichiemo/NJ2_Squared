@@ -24,7 +24,7 @@ package com.NJSquared.state
 	
 	import starling.display.Image;
 	import starling.textures.Texture;
-	import com.citrusengine.core.CitrusObject;
+	
 	
 	public class ArrayGameState extends StarlingState
 	{
@@ -63,16 +63,11 @@ package com.NJSquared.state
 		public function ArrayGameState()
 		{
 			super();
-<<<<<<< HEAD
 
-			//_ce.sound.playSound("Collector");
-			
-=======
 
 			_ce = CitrusEngine.getInstance();
 
 			_ce.sound.playSound("Collector");
->>>>>>> 2f216e569fdcb7ec84007d5a9eeeecd84961c8e7
 		}
 		
 		override public function initialize():void 
