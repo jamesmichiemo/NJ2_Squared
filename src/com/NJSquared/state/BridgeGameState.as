@@ -52,7 +52,7 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
-			_ce.sound.playSound("Puzzle");
+			//_ce.sound.playSound("Puzzle");
 		}
 		
 		override public function initialize():void 
