@@ -348,25 +348,14 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("red");
 					
-					if(wrongTile == true)
-					{
-						removeChild(_wrongTileSign);
-						wrongTile = false;
-					}
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					if(wrongTile == true)
-					{
+
 						trace("wrongg");
+						_ce.sound.playSound("Hurt");
 						
-						var _wrongtileImage2:Texture = Texture.fromBitmap(new WRONG());
-						_wrongTileSign = new Image(_wrongtileImage2);
-						_wrongTileSign.x = 400;
-						_wrongTileSign.y = 350;
-						addChild(_wrongTileSign);	
-						wrongTile = true;
-					}
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
@@ -381,24 +370,12 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("blue");
 					
-					if(wrongTile == false)
-					{
-						removeChild(_wrongTileSign);
-						wrongTile = false;
-					}
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
-					if(wrongTile == true)
-					{   
 						trace("wrongg");
-						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
-						_wrongTileSign = new Image(_wrongtileImage2);
-						_wrongTileSign.x = 400;
-						_wrongTileSign.y = 350;
-						addChild(_wrongTileSign);
-						wrongTile = true;
-					}
+						_ce.sound.playSound("Hurt");
 				}
 				// yellow can only go after blue
 				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
@@ -410,26 +387,12 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("yellow");
-					
-					if(wrongTile == false)
-					{
-						removeChild(_wrongTileSign);
-						wrongTile = true;
-					}
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
-					if(wrongTile == true)
-					{
 						trace("wrongg");
-						
-						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
-						_wrongTileSign = new Image(_wrongtileImage2);
-						_wrongTileSign.x = 400;
-						_wrongTileSign.y = 350;
-						addChild(_wrongTileSign);
-						wrongTile = true;
-					}
+						_ce.sound.playSound("Hurt");
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
@@ -442,25 +405,12 @@ package com.NJSquared.state
 					
 					TileManager.decreaseTileCount("red");
 					
-					if(wrongTile == true)
-					{
-						removeChild(_wrongTileSign);
-						wrongTile = false;
-					}
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					if(wrongTile == true)
-					{
 						trace("wrongg");
-						
-						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
-						_wrongTileSign = new Image(_wrongtileImage2);
-						_wrongTileSign.x = 400;
-						_wrongTileSign.y = 350;
-						addChild(_wrongTileSign);
-						wrongTile = true;
-					}
+						_ce.sound.playSound("Hurt");
 				}
 			}
 			
