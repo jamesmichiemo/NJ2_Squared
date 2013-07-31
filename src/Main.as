@@ -1,6 +1,8 @@
 package
 {	
+	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingCitrusEngine;
+	import citrus.sounds.CitrusSoundGroup;
 	
 	import com.NJSquared.state.ArrayGameState;
 	import com.NJSquared.state.BridgeGameState;
@@ -15,12 +17,12 @@ package
 			setUpStarling(true); //http://citrusengine.com/getting-started-citrus-starling-box2d/
 			
 			// create sound assets
-//			sound.addSound("Title", "../sounds/title.mp3");
-//			sound.addSound("Collector", "../sounds/collector.mp3");
-//			sound.addSound("Puzzle", "../sounds/puzzle.mp3");
-//			sound.addSound("Gameover", "../sounds/gameover.mp3");
-//			sound.addSound("Hurt", "../sounds/hurt.mp3");
-//			sound.addSound("Kill", "../sounds/kill.mp3");
+			sound.addSound("Title", {sound:"../sounds/title.mp3", group:CitrusSoundGroup.BGM});
+			sound.addSound("Collector", {sound:"../sounds/collector.mp3", group:CitrusSoundGroup.BGM});
+			sound.addSound("Puzzle", {sound:"../sounds/puzzle.mp3", group:CitrusSoundGroup.BGM});
+			sound.addSound("Gameover", {sound:"../sounds/gameover.mp3", group:CitrusSoundGroup.BGM});
+			sound.addSound("Hurt", {sound:"../sounds/hurt.mp3", group:CitrusSoundGroup.SFX});
+			sound.addSound("Kill", {sound:"../sounds/kill.mp3", group:CitrusSoundGroup.SFX});
 
 			state = new ArrayGameState();
 

@@ -1,8 +1,12 @@
 package com.NJSquared.state
 {	
+	import Box2D.Dynamics.Contacts.b2Contact;
+	
 	import citrus.core.CitrusEngine;
+	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
+	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
@@ -25,6 +29,7 @@ package com.NJSquared.state
 		private var _levelOne:Array = [];
 		private var _levelOneBit:BitmapData;
 		private var _hero:ConcreteHero;
+		private var _tiles:Vector.<CitrusObject>;
 		
 		private var _citrusEngine:CitrusEngine;
 		
@@ -51,14 +56,15 @@ package com.NJSquared.state
 		private var _levelOneTwo:Array;
 
 		private var level:Array;
+		private var _tile:Tile;
 		
 		public function ArrayGameState()
 		{
 			super();
 
-			_ce = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance();
 
-			_ce.sound.playSound("Collector");
+			_citrusEngine.sound.playSound("Collector");
 		}
 		
 		override public function initialize():void 
@@ -165,10 +171,26 @@ package com.NJSquared.state
 			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
+			
+			_hero.onJump.add(handleHeroJump);
+			_hero.onGiveDamage.add(handleHeroGiveDamage);
+			_hero.onTakeDamage.add(handleHeroTakeDamage);
 
-
+			
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
 
+		}
+		
+		private function handleHeroJump():void {
+			//_ce.sound.playSound("Jump");
+		}
+		
+		private function handleHeroGiveDamage():void {
+			_ce.sound.playSound("Kill");
+		}
+		
+		private function handleHeroTakeDamage():void {
+			_ce.sound.playSound("Hurt");
 		}
 		
 		private function addEnemies():void
@@ -204,11 +226,21 @@ package com.NJSquared.state
 		
 		private function addTiles():void
 		{
-			var tile:Tile;
+			
 			
 			var tileImage1:Image = new Image(Texture.fromBitmap(new  NINE()));
-			tile = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
-			add(tile);
+			_tile = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
+			add(_tile);
+			
+			_tiles = getObjectsByType(Coin);
+			for each (var tile:Coin in _tiles)
+			  tile.onBeginContact.add(handleJewelCollected);
+		}
+		
+		private function handleJewelCollected(contact:b2Contact):void
+		{
+			_citrusEngine.sound.playSound("Hurt");
+			
 		}
 		
 /*		override public function destroy():void
