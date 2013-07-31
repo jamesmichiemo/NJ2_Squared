@@ -13,6 +13,7 @@ package com.NJSquared.state
 	
 	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.Tile;
+	import com.NJSquared.gameCore.TileManager;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -27,9 +28,10 @@ package com.NJSquared.state
 	public class ArrayGameState extends StarlingState
 	{
 		private var _levelOne:Array = [];
-		private var _levelOneBit:BitmapData;
+
 		private var _hero:ConcreteHero;
 		private var _tiles:Vector.<CitrusObject>;
+		private var _totalCollectedTiles:TileManager;
 		
 		private var _citrusEngine:CitrusEngine;
 		
@@ -235,7 +237,6 @@ package com.NJSquared.state
 			_hero.onGiveDamage.add(handleHeroGiveDamage);
 			_hero.onTakeDamage.add(handleHeroTakeDamage);
 
-
 			_hero.jumpHeight = 12;
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1920, 1500), new Point(.25, .05)); // x should be 1960 however not showing up beyond the bitmap
@@ -372,10 +373,21 @@ package com.NJSquared.state
 			_citrusEngine.sound.playSound("Hurt");			
 		}
 		
-/*		override public function destroy():void
+		override public function update(timeDelta:Number):void
+		{
+			super.update(timeDelta);
+			
+			if(/*_totalCollectedTiles._totalCollected == 14 &&*/ _hero.x >= 1880 && _hero.y == 1190)
+			{
+				trace("switch to bridge");
+				destroy();
+			}
+		}
+		
+		override public function destroy():void
 		{
 			super.destroy();			
-			CitrusEngine.getInstance().state = new BridgeGameState();
-		}	*/	
+			_ce.state = new BridgeGameState();
+		}		
 	}
 }

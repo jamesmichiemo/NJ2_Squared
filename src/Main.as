@@ -24,7 +24,7 @@ package
 			sound.addSound("Hurt", {sound:"../sounds/hurt.mp3", group:CitrusSoundGroup.SFX});
 			sound.addSound("Kill", {sound:"../sounds/kill.mp3", group:CitrusSoundGroup.SFX});
 
-			state = new ArrayGameState();
+			state = new Menu();
 
 		}	
 	}

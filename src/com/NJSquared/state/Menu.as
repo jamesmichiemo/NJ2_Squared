@@ -52,7 +52,7 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
-			CitrusEngine.getInstance().state = new BridgeGameState();
+			_ce.state = new ArrayGameState();
 		}
 	}
 }

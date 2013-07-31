@@ -6,6 +6,8 @@ package com.NJSquared.gameCore
 		public static var _blueTileCount:uint = 0;
 		public static var _yellowTileCount:uint = 0;
 		
+		public static var _totalCollected:uint = _redTileCount + _blueTileCount + _yellowTileCount;
+		
 		public function TileManager()
 		{
 		}
