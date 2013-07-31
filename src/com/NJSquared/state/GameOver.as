@@ -5,11 +5,23 @@ package com.NJSquared.state
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
+	import starling.display.Button;
+	import starling.display.Image;
+	import starling.events.Event;
 	import starling.events.KeyboardEvent;
+	import starling.textures.Texture;
 	
 	public class GameOver extends StarlingState
 	{	
 		private var _citrusEngine:CitrusEngine;
+		
+		// embed button
+		[Embed(source="../assets/images/playBtn.png")]
+		private var btn:Class;
+		
+		// embed bg
+		[Embed(source="../assets/images/menu_bg.png")]
+		private var bg:Class;
 		
 		public function GameOver()
 		{
@@ -23,6 +35,20 @@ package com.NJSquared.state
 		{
 			super.initialize();
 			
+			var bgImage:Texture = Texture.fromBitmap(new bg());
+			
+			var bg:Image = new Image(bgImage);
+			//button.pivotX = _playBtn.width * 0.5;
+			addChild(bg);
+			
+			
+			var buttonImage:Texture = Texture.fromBitmap(new btn());
+			var button:Button = new Button(buttonImage);
+			button.x = 400;
+			button.y = 350;
+			addChild(button);	
+			button.addEventListener(Event.TRIGGERED, onRestart);
+			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			
 			var box2D:Box2D = new Box2D("box2D");
@@ -33,13 +59,13 @@ package com.NJSquared.state
 			add(platform);
 		}
 		
-		private function onRestart(event:KeyboardEvent):void
+		private function onRestart(event:Event):void
 		{	
-			if(event.keyCode == 65)
-			{
+			/*if(event.keyCode == 65)
+			{*/
 				trace("restart");
 				destroy();
-			}
+			//}
 		}
 		
 		override public function destroy():void

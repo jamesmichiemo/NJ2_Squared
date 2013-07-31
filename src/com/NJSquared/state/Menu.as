@@ -27,7 +27,10 @@ package com.NJSquared.state
 		// embed button
 		[Embed(source="../assets/images/playBtn.png")]
 		private var btn:Class;
-		public static var btnTexture:Texture;
+		
+		// embed bg
+		[Embed(source="../assets/images/menu_bg.png")]
+		private var bg:Class;
 		
 		public function Menu()
 		{
@@ -39,18 +42,21 @@ package com.NJSquared.state
 		{
 			super.initialize();
 			
-			//var button:Button;
-			var buttonImage1:Image = new Image(Texture.fromBitmap(new btn()));
+			var bgImage:Texture = Texture.fromBitmap(new bg());
 			
-			var button:Button = new Button(buttonImage1);
+			var bg:Image = new Image(bgImage);
 			//button.pivotX = _playBtn.width * 0.5;
+			addChild(bg);	
+			
+			var buttonImage:Texture = Texture.fromBitmap(new btn());
+			var button:Button = new Button(buttonImage);
 			button.x = 400;
 			button.y = 350;
 			addChild(button);	
 			button.addEventListener(Event.TRIGGERED, onPlay);
 			
 			trace("menu state");
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
+			//stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
 			
 			var box2D:Box2D = new Box2D("box2D");
 			box2D.visible = true;
@@ -60,12 +66,12 @@ package com.NJSquared.state
 			add(platform);
 		}
 		
-		private function onPlay(event:KeyboardEvent):void
+		private function onPlay(event:Event):void
 		{
-			if(event.keyCode == 65)
-			{
+			//if(event.keyCode == 65)
+			//{
 				destroy();
-			}
+			//}
 		}
 		
 		override public function destroy():void
