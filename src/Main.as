@@ -29,7 +29,7 @@ package
 			sound.addSound("Jump", {sound:"../sounds/jump.mp3", group:CitrusSoundGroup.SFX});
 			sound.addSound("Pick", {sound:"../sounds/pick.mp3", group:CitrusSoundGroup.SFX});
 
-			state = new BridgeGameState();
+			state = new Menu();
 
 		}	
 	}
