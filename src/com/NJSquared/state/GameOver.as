@@ -16,11 +16,11 @@ package com.NJSquared.state
 		private var _citrusEngine:CitrusEngine;
 		
 		// embed button
-		[Embed(source="../assets/images/playBtn.png")]
+		[Embed(source="../assets/images/replayBtn.png")]
 		private var btn:Class;
 		
 		// embed bg
-		[Embed(source="../assets/images/menu_bg.png")]
+		[Embed(source="../assets/images/game_bg.png")]
 		private var bg:Class;
 		
 		public function GameOver()
