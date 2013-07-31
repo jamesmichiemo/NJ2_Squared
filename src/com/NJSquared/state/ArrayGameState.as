@@ -67,6 +67,13 @@ package com.NJSquared.state
 		[Embed(source = '../assets/images/lifeHeart.png')] // lives text
 		private var HEART:Class;
 		
+		[Embed(source = '../assets/images/blueTileDisplay.png')] // blue tile display
+		private var BLUE_DISPLAY:Class;
+		[Embed(source = '../assets/images/redTileDisplay.png')] // red tile display
+		private var RED_DISPLAY:Class;
+		[Embed(source = '../assets/images/yellowTileDisplay.png')] // blue tile display
+		private var YELLOW_DISPLAY:Class;
+		
 		private var _livesArray:Array = [];
 
 		private var _height2:uint;
@@ -79,6 +86,10 @@ package com.NJSquared.state
 		private var level:Array;
 		private var _tile:Tile;
 		private var contact:b2Contact;
+
+		private var _yellowTileCount:TextField;
+		private var _redTileCount:TextField;
+		private var _blueTileCount:TextField;
 		
 		public function ArrayGameState()
 		{
@@ -223,6 +234,7 @@ package com.NJSquared.state
 		
 		private function addHud():void
 		{
+			// lives display
 			var livesTexture:Texture = Texture.fromBitmap(new LIVES());
 			var livesImage:Image = new Image(livesTexture);
 			livesImage.x = 20;
@@ -233,14 +245,59 @@ package com.NJSquared.state
 			var heartsImageOne:Image = new Image(heartsTexture);
 			var heartsImageTwo:Image = new Image(heartsTexture);
 			var heartsImageThree:Image = new Image(heartsTexture);
+			
 			heartsImageOne.y = heartsImageTwo.y = heartsImageThree.y = 34;
 			heartsImageOne.x = 140;
 			heartsImageTwo.x = 200;
 			heartsImageThree.x = 260;
+			
 			_livesArray = [heartsImageOne, heartsImageTwo, heartsImageThree];
 			addChild(heartsImageOne);
 			addChild(heartsImageTwo);
 			addChild(heartsImageThree);
+			
+			// tile displays
+			// yellow tiles
+			var yellowDisplayTexture:Texture = Texture.fromBitmap(new YELLOW_DISPLAY());
+			var yellowDisplayImage:Image = new Image(yellowDisplayTexture);
+			yellowDisplayImage.x = 840;
+			yellowDisplayImage.y = 20;
+			addChild(yellowDisplayImage);
+			
+			_yellowTileCount = new TextField(100,100,"00", "Helvetica");
+			_yellowTileCount.fontSize = 32;
+			_yellowTileCount.color = 0x282828;
+			_yellowTileCount.x = 885;
+			_yellowTileCount.y = 10;
+			addChild(_yellowTileCount);
+			
+			// red tiles
+			var redDisplayTexture:Texture = Texture.fromBitmap(new RED_DISPLAY());
+			var redDisplayImage:Image = new Image(redDisplayTexture);
+			redDisplayImage.x = 980;
+			redDisplayImage.y = 20;
+			addChild(redDisplayImage);
+			
+			_redTileCount = new TextField(100,100,"00", "Helvetica");
+			_redTileCount.fontSize = 32;
+			_redTileCount.color = 0x282828;
+			_redTileCount.x = 1025;
+			_redTileCount.y = 10;
+			addChild(_redTileCount);
+			
+			// blue tiles
+			var blueDisplayTexture:Texture = Texture.fromBitmap(new BLUE_DISPLAY());
+			var blueDisplayImage:Image = new Image(blueDisplayTexture);
+			blueDisplayImage.x = 1120;
+			blueDisplayImage.y = 20;
+			addChild(blueDisplayImage);
+			
+			_blueTileCount = new TextField(100,100,"00", "Helvetica");
+			_blueTileCount.fontSize = 32;
+			_blueTileCount.color = 0x282828;
+			_blueTileCount.x = 1165;
+			_blueTileCount.y = 10;
+			addChild(_blueTileCount);
 			
 		}
 		
@@ -400,6 +457,10 @@ package com.NJSquared.state
 	override public function update(timeDelta:Number):void
 	{
 		super.update(timeDelta);
+		
+		_yellowTileCount.text = String(TileManager.yellowTileCount);
+		_redTileCount.text = String(TileManager.redTileCount);
+		_blueTileCount.text = String(TileManager.blueTileCount);
 		
 		if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
 		{
