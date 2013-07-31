@@ -120,8 +120,8 @@ package com.NJSquared.state
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 08, 10, 00, 11, 05, 05, 05, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 05, 12, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 05, 10, 00, 11, 05, 05, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 01, 12, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 11, 10, 00, 00, 00, 00, 00, 00, 01],
@@ -430,37 +430,37 @@ package com.NJSquared.state
 			var tileImage15:Image = new Image(Texture.fromBitmap(new  NINE()));
 			
 			
-			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
+ 			tile1 = new Tile("red", "coin", {x:1600, y:1305, height:70, width:70, view: tileImage1});
 			add(tile1);
 			
-			tile2 = new Tile("blue", "coin", {x:420, y:1210, height:70, width:70, view: tileImage2});
+			tile2 = new Tile("blue", "coin", {x:1300, y:1305, height:70, width:70, view: tileImage2});
 			add(tile2);
 			
-			tile3 = new Tile("red", "coin", {x:350, y:1210, height:70, width:70, view: tileImage3});
+			tile3 = new Tile("red", "coin", {x:350, y:1280, height:70, width:70, view: tileImage3});
 			add(tile3);
 			
 			tile4 = new Tile("yellow", "coin", {x:1820, y:1050, height:70, width:70, view: tileImage4});
 			add(tile4);
 			
-			tile5 = new Tile("blue", "coin", {x:1220, y:1000, height:70, width:70, view: tileImage5});
+			tile5 = new Tile("blue", "coin", {x:1740, y:540, height:70, width:70, view: tileImage5});
 			add(tile5);
 			
-			tile6 = new Tile("red", "coin", {x:140, y:1390, height:70, width:70, view: tileImage6});
+			tile6 = new Tile("red", "coin", {x:130, y:1125, height:70, width:70, view: tileImage6});
 			add(tile6);
 			
-			tile7 = new Tile("blue", "coin", {x:140, y:770, height:70, width:70, view: tileImage7});
+			tile7 = new Tile("blue", "coin", {x:380, y:840, height:70, width:70, view: tileImage7});
 			add(tile7);
 			
-			tile8 = new Tile("yellow", "coin", {x:1680, y:460, height:70, width:70, view: tileImage8});
+			tile8 = new Tile("yellow", "coin", {x:1155, y:1100, height:70, width:70, view: tileImage8});
 			add(tile8);
 			
-			tile9 = new Tile("red", "coin", {x:1190, y:480, height:70, width:70, view: tileImage9});
+			tile9 = new Tile("red", "coin", {x:1150, y:560, height:70, width:70, view: tileImage9});
 			add(tile9); 
 			
-			tile10 = new Tile("yellow", "coin", {x:1050, y:460, height:70, width:70, view: tileImage10});
+			tile10 = new Tile("yellow", "coin", {x:960, y:560, height:70, width:70, view: tileImage10});
 			add(tile10); 
 			
-			tile11 = new Tile("blue", "coin", {x:1400, y:470, height:70, width:70, view: tileImage11});
+			tile11 = new Tile("blue", "coin", {x:1400, y:490, height:70, width:70, view: tileImage11});
 			add(tile11);
 			
 			tile12 = new Tile("yellow", "coin", {x:1680, y:140, height:70, width:70, view: tileImage12});
@@ -469,10 +469,10 @@ package com.NJSquared.state
 			tile13 = new Tile("blue", "coin", {x:770, y:280, height:70, width:70, view: tileImage13});
 			add(tile13);
 			
-			tile14 = new Tile("yellow", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
+			tile14 = new Tile("yellow", "coin", {x:1060, y:190, height:70, width:70, view: tileImage14});
 			add(tile14);
 			
-			tile15 = new Tile("red", "coin", {x:350, y:210, height:70, width:70, view: tileImage15});
+			tile15 = new Tile("red", "coin", {x:480, y:340, height:70, width:70, view: tileImage15});
 			add(tile15);
 
 
