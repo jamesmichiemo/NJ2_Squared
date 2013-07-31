@@ -13,6 +13,7 @@ package com.NJSquared.state
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
@@ -165,7 +166,7 @@ package com.NJSquared.state
 
 			add(_hero);
 
-			view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
 		}
 		
 		private function addEnemies():void
