@@ -139,7 +139,7 @@ package com.NJSquared.state
 			
 			trace(_width2);
 			
-			var bd1:BitmapData=new BitmapData(_width2,_height2, false, 0xeeeeee);
+			var bd1:BitmapData=new BitmapData(_width2,_height2, false, 0xaedfe8);
 			
 			for(var i:int = 0; i < level.length; i++)
 			{
@@ -406,6 +406,11 @@ package com.NJSquared.state
 			trace("game over");
 			destroy();
 		}
+		
+/*		if(enemy.hit())
+		{	
+			killed();
+		}*/
 	}
 		
 		override public function destroy():void
@@ -414,7 +419,16 @@ package com.NJSquared.state
 			_ce.sound.removeSound("Collector");
 			_ce.sound.playSound("Start");
 			_ce.state = new BridgeGameState();
+		}	
+		
+		public function killed():void	
+		{
+			super.destroy();
 			
-		}		
+			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
+			_ce.sound.removeSound("Puzzle");
+			//_ce.sound.playSound("Victory");
+			_ce.state = new GameOver();
+		}
 	}
 }
