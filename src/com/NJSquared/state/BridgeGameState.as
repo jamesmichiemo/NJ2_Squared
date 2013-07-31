@@ -71,6 +71,9 @@ package com.NJSquared.state
 		[Embed(source = '../assets/images/lifeHeart.png')] // lives text
 		private var HEART:Class;
 		
+		[Embed(source = '../assets/images/portalTile.png')] // portal
+		private var FOURTEEN:Class;
+		
 		private var _livesArray:Array = [];
 
 		
@@ -103,7 +106,7 @@ package com.NJSquared.state
 				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 12],
+				[00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 12],
 				[01, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
 				[01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01, 01],
 				[01, 01, 01, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 01, 01, 01],
@@ -154,8 +157,13 @@ package com.NJSquared.state
 				}
 			}
 			
-			_barrier = new Platform ("barrier", {x:245, y:525, height:370, width:70});
+			_barrier = new Platform ("barrier", {x:245, y:525, height:500, width:70});
 			add(_barrier);
+			
+			var portal:Platform;
+			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
+			portal = new Platform("cloud", {x:0, y:520, height:70, width:70, view:portalImage, oneWay:true});
+			add(portal);
 			
 			addHud();
 			addHero();
@@ -313,6 +321,13 @@ package com.NJSquared.state
 		{
 			super.update(timeDelta);
 
+			if(_hero.x == 0 && _hero.y >= 560)
+			{
+				trace("game over");
+				destroy();
+				_ce.state = new ArrayGameState();
+			}
+			
 			if(_bridgeFinished == true && _hero.x >= 1290)
 			{
 				trace("game over");
