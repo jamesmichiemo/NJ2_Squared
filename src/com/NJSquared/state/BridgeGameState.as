@@ -5,11 +5,13 @@ package com.NJSquared.state
 	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
+	import citrus.sounds.CitrusSoundGroup;
 	
 	import com.NJSquared.gameCore.TileManager;
 	
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.media.Sound;
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
@@ -292,9 +294,10 @@ package com.NJSquared.state
 			super.destroy();
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
-			
+			_ce.sound.removeSound("Puzzle");
+			//_ce.sound.playSound("Victory");
+		
 			_ce.state = new GameOver();
 		}
-		
 	}
 }
