@@ -1,22 +1,25 @@
 package com.NJSquared.state
 {
-	import citrus.core.IState;
+	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
-
-	import citrus.input.controllers.Keyboard;
+	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
-	import com.NJSquared.gameCore.Key;
+	import com.NJSquared.gameCore.TileManager;
 	
-	import flash.events.KeyboardEvent;
+	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
+	import starling.textures.Texture;
+
 	
 
 	public class BridgeGameState extends StarlingState
 	{
+		private var _citrusEngine:CitrusEngine;
+		
 		private var _bridgeFinished:Boolean = false;
 		
 		private var _tileXCount:uint = 0;
@@ -66,6 +69,7 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
+			_citrusEngine = CitrusEngine.getInstance();
 			//_ce.sound.playSound("Puzzle");
 		}
 		
@@ -113,27 +117,27 @@ package com.NJSquared.state
 					{
 						if(levelOneBridge[i][j] == 1)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new ONE()));
+							image = new Image(Texture.fromBitmap(new ONE()));
 						}
 						else if(levelOneBridge[i][j] == 5)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new FIVE()));
+							image = new Image(Texture.fromBitmap(new FIVE()));
 						}
 						else if(levelOneBridge[i][j] == 8)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new EIGHT()));
+							image = new Image(Texture.fromBitmap(new EIGHT()));
 						}
 						else if(levelOneBridge[i][j] == 10)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new TEN()));
+							image = new Image(Texture.fromBitmap(new TEN()));
 						}
 						else if(levelOneBridge[i][j] == 11)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new ELEVEN()));
+							image = new Image(Texture.fromBitmap(new ELEVEN()));
 						}
 						else if(levelOneBridge[i][j] == 12)
 						{
-							image = new Image(starling.textures.Texture.fromBitmap(new TWELVE()));
+							image = new Image(Texture.fromBitmap(new TWELVE()));
 						}
 						
 						var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70, view: image});
@@ -154,10 +158,10 @@ package com.NJSquared.state
 			
 			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-			//view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
+			//view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
 		}
 		
-		private function onKey(event:com.NJSquared.state.Keyboard):void
+		private function onKey(event:KeyboardEvent):void
 		{
 		 	if(event.keyCode == 65)
 			{

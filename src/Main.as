@@ -2,11 +2,9 @@ package
 {	
 	import citrus.core.starling.StarlingCitrusEngine;
 	
-	import com.NJSquared.state.ArrayGameState;
 	import com.NJSquared.state.BridgeGameState;
+	import com.NJSquared.state.GameOver;
 	import com.NJSquared.state.Menu;
-	
-	import flash.events.MouseEvent;
 	
 	[SWF(frameRate="60", width="1280", height="720", backgroundColor="0xe8f2fe")]
 	public class Main extends StarlingCitrusEngine
@@ -23,7 +21,7 @@ package
 //			sound.addSound("Hurt", "../sounds/hurt.mp3");
 //			sound.addSound("Kill", "../sounds/kill.mp3");
 
-			state = new BridgeGameState();
+			state = new Menu();
 
 		}	
 	}

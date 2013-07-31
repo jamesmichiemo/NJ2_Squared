@@ -2,12 +2,8 @@ package com.NJSquared.state
 {	
 	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
-	import citrus.input.InputAction;
-	import citrus.input.InputController;
-	import citrus.input.controllers.Keyboard;
 	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Enemy;
-	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
@@ -16,12 +12,8 @@ package com.NJSquared.state
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
-	import flash.events.KeyboardEvent;
-	import flash.events.MouseEvent;
 	import flash.geom.Matrix;
-	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.ui.Mouse;
 	
 	import starling.display.Image;
 	import starling.textures.Texture;
@@ -62,7 +54,6 @@ package com.NJSquared.state
 		public function ArrayGameState()
 		{
 			super();
-
 
 			_ce = CitrusEngine.getInstance();
 
@@ -173,13 +164,8 @@ package com.NJSquared.state
 			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
-<<<<<<< HEAD
+
 			view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
-=======
-			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
-		
-			_hero.jumpHeight = 13;
->>>>>>> 3c17799d91af78709934ce254e10be547d90a5c8
 		}
 		
 		private function addEnemies():void
