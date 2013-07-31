@@ -35,7 +35,7 @@ package com.NJSquared.gameCore
 		{
 		//	menuBGTexture = Texture.fromBitmap(new menuBG());
 			
-			//btnTexture = Texture.fromBitmap(new btn());
+			btnTexture = Texture.fromBitmap(new btn());
 			
 			//oneImage = new Image(Texture.fromBitmap(new ONE()));
 		}

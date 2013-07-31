@@ -216,7 +216,7 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(Texture.fromBitmap(new FOUR()));
 			
-			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
+			_hero = new ConcreteHero("hero", {x:100, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
 			
@@ -288,7 +288,7 @@ package com.NJSquared.state
 			var tile10:Tile;
 			var tile11:Tile;
 			var tile12:Tile;
-			var tile13:Tile;
+			var tile13:Tile; 
 			var tile14:Tile;
 			
 			var tileImage1:Image = new Image(Texture.fromBitmap(new  NINE()));
@@ -328,14 +328,14 @@ package com.NJSquared.state
 			tile7 = new Tile("blue", "coin", {x:140, y:770, height:70, width:70, view: tileImage7});
 			add(tile7);
 			
-			tile8 = new Tile("yellow", "coin", {x:850, y:910, height:70, width:70, view: tileImage8});
+			tile8 = new Tile("yellow", "coin", {x:1680, y:460, height:70, width:70, view: tileImage8});
 			add(tile8);
 			
 			tile9 = new Tile("red", "coin", {x:1190, y:480, height:70, width:70, view: tileImage9});
-			add(tile9);
+			add(tile9); 
 			
 			tile10 = new Tile("yellow", "coin", {x:1050, y:460, height:70, width:70, view: tileImage10});
-			add(tile10);
+			add(tile10); 
 			
 			tile11 = new Tile("blue", "coin", {x:1400, y:470, height:70, width:70, view: tileImage11});
 			add(tile11);
