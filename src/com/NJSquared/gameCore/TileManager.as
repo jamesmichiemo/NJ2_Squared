@@ -6,7 +6,7 @@ package com.NJSquared.gameCore
 		public static var blueTileCount:uint = 0;
 		public static var yellowTileCount:uint = 0;
 		
-		public static var _totalCollected:uint = 0;
+		public static var totalCollected:uint = 0;
 		
 		public function TileManager()
 		{
@@ -21,13 +21,13 @@ package com.NJSquared.gameCore
 			else if(color == "yellow")
 				yellowTileCount++;
 			
-			_totalCollected = redTileCount + blueTileCount + yellowTileCount;
+			totalCollected = redTileCount + blueTileCount + yellowTileCount;
 			
 			trace("red ", redTileCount);
 			trace("blue ", blueTileCount);
 			trace("yellow ", yellowTileCount);
 			
-			trace("total collected ", _totalCollected);
+			trace("total collected ", totalCollected);
 		}
 		
 		public static function decreaseTileCount(color:String):void
@@ -39,13 +39,13 @@ package com.NJSquared.gameCore
 			else if(color == "yellow")
 				yellowTileCount--;
 			
-			_totalCollected = redTileCount + blueTileCount + yellowTileCount;
+			totalCollected = redTileCount + blueTileCount + yellowTileCount;
 			
 			trace("red ", redTileCount);
 			trace("blue ", blueTileCount);
 			trace("yellow ", yellowTileCount);
 			
-			trace("total collected ", _totalCollected);
+			trace("total collected ", totalCollected);
 		}
 
 	}

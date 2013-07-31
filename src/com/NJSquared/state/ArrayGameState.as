@@ -363,7 +363,7 @@ package com.NJSquared.state
 	{
 		super.update(timeDelta);
 		
-		if(_hero.x >= 1820 && _hero.y >= 1330)
+		if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
 		{
 			trace("game over");
 			destroy();
