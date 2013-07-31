@@ -18,6 +18,8 @@ package com.NJSquared.gameCore
 				_blueTileCount++;
 			else if(color == "yellow")
 				_yellowTileCount++;
+			
+			trace("red ", _redTileCount);
 		}
 		
 		public static function decreaseTileCount(color:String):void
