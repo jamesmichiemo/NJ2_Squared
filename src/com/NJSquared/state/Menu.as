@@ -2,6 +2,7 @@ package com.NJSquared.state
 {
 	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
+	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
@@ -54,10 +55,10 @@ package com.NJSquared.state
 			button.x = 400;
 			button.y = 350;
 			addChild(button);	
-			button.addEventListener(Event.TRIGGERED, onPlay);
+			//button.addEventListener(Event.TRIGGERED, onPlay);
 			
 			trace("menu state");
-			//stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
 			
 			var box2D:Box2D = new Box2D("box2D");
 			//box2D.visible = true;
@@ -67,13 +68,14 @@ package com.NJSquared.state
 			add(platform);
 		}
 		
-		private function onPlay(event:Event):void
+		private function onPlay(event:KeyboardEvent):void
 		{
-			_ce.sound.playSound("Start");
-			//if(event.keyCode == 65)
-			//{
+			
+			if(event.keyCode == 13)
+			{
+				_ce.sound.playSound("Start");
 				destroy();
-			//}
+			}
 		}
 		
 		override public function destroy():void

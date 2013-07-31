@@ -291,4 +291,7 @@
 		]]></InfoAdditions>
         <requestedDisplayResolution>high</requestedDisplayResolution>
     </iPhone>
+<extensions>
+        <extensionID>com.gaslightgames.OUYAControllerANE</extensionID>
+    </extensions>
 </application>
