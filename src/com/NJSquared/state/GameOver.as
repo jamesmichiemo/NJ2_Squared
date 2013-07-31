@@ -52,7 +52,7 @@ package com.NJSquared.state
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			
 			var box2D:Box2D = new Box2D("box2D");
-			box2D.visible = true;
+			//box2D.visible = true;
 			add(box2D);
 			
 			var platform:Platform = new Platform("platform", {x:100, y:100, height:70, width:70});
