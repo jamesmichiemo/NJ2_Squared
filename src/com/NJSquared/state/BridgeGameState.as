@@ -81,6 +81,12 @@ package com.NJSquared.state
 
 		[Embed(source = '../assets/images/portalTile.png')] // portal
 		private var FOURTEEN:Class;
+		
+		[Embed(source = '../assets/images/signBridgeGame.png')] // sign
+		private var SIGN:Class;
+		
+		[Embed(source = '../assets/images/wrongTile.png')]
+		private var WRONG:Class;
 
 		
 		private var _livesArray:Array = [];
@@ -90,6 +96,11 @@ package com.NJSquared.state
 		private var _redTileCount:TextField;
 
 		private var _blueTileCount:TextField;
+
+		private var _wrongTileSign:Image;
+		private var wrongTile:Boolean = false;
+
+		private var wrongtileImage2:Texture;
 
 		
 		public function BridgeGameState()
@@ -180,6 +191,11 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
+			var sign:Platform;
+			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
+			sign = new Platform("cloud", {x:170, y:480, height:70, width:70, view:signImage, oneWay:true});
+			add(sign);
+			
 			addHud();
 			addHero();
 		}
@@ -256,7 +272,7 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
+			_hero = new ConcreteHero("hero", {x:120, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
 			
 
@@ -315,10 +331,26 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("red");
+					
+					if(wrongTile == true)
+					{
+						removeChild(_wrongTileSign);
+						wrongTile = false;
+					}
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					trace("wrongg");
+					if(wrongTile == true)
+					{
+						trace("wrongg");
+						
+						var _wrongtileImage2:Texture = Texture.fromBitmap(new WRONG());
+						_wrongTileSign = new Image(_wrongtileImage2);
+						_wrongTileSign.x = 400;
+						_wrongTileSign.y = 350;
+						addChild(_wrongTileSign);	
+						wrongTile = true;
+					}
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
@@ -329,11 +361,28 @@ package com.NJSquared.state
 					_tileXCount++;
 					_lastColor = color;
 					
+					removeChild(_wrongTileSign);
+					
 					TileManager.decreaseTileCount("blue");
+					
+					if(wrongTile == false)
+					{
+						removeChild(_wrongTileSign);
+						wrongTile = false;
+					}
 				}
 				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
-					trace("wrongg");
+					if(wrongTile == true)
+					{   
+						trace("wrongg");
+						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
+						_wrongTileSign = new Image(_wrongtileImage2);
+						_wrongTileSign.x = 400;
+						_wrongTileSign.y = 350;
+						addChild(_wrongTileSign);
+						wrongTile = true;
+					}
 				}
 				// yellow can only go after blue
 				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
@@ -345,10 +394,26 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("yellow");
+					
+					if(wrongTile == false)
+					{
+						removeChild(_wrongTileSign);
+						wrongTile = true;
+					}
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
-					trace("wrongg");
+					if(wrongTile == true)
+					{
+						trace("wrongg");
+						
+						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
+						_wrongTileSign = new Image(_wrongtileImage2);
+						_wrongTileSign.x = 400;
+						_wrongTileSign.y = 350;
+						addChild(_wrongTileSign);
+						wrongTile = true;
+					}
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
@@ -360,10 +425,26 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("red");
+					
+					if(wrongTile == true)
+					{
+						removeChild(_wrongTileSign);
+						wrongTile = false;
+					}
 				}
 				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					trace("wrongg");
+					if(wrongTile == true)
+					{
+						trace("wrongg");
+						
+						_wrongtileImage2 = Texture.fromBitmap(new WRONG());
+						_wrongTileSign = new Image(_wrongtileImage2);
+						_wrongTileSign.x = 400;
+						_wrongTileSign.y = 350;
+						addChild(_wrongTileSign);
+						wrongTile = true;
+					}
 				}
 			}
 			
