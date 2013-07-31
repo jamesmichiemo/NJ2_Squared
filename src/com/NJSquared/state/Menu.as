@@ -59,7 +59,6 @@ package com.NJSquared.state
 			addChild(button);	
 
 			button.addEventListener(Event.TRIGGERED, onPlayMouse);
-
 			
 			trace("menu state");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
@@ -74,13 +73,13 @@ package com.NJSquared.state
 		
 		private function onPlayMouse(event:Event):void
 		{
-			
-//			if(event.keyCode == 13)
-//			{
+
+			//if(event.keyCode == 13)
+			//
 				_ce.sound.playSound("Start");
 				destroy();
-//			}
-		}
+			//}
+
 		
 		private function onPlay(event:KeyboardEvent):void
 		{
