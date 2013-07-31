@@ -11,7 +11,7 @@ package com.NJSquared.state
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
-	public class GameOver extends StarlingState
+	public class GameWin extends StarlingState
 	{	
 		
 		// embed button
@@ -19,14 +19,13 @@ package com.NJSquared.state
 		private var btn:Class;
 		
 		// embed bg
-		[Embed(source="../assets/images/gameOver_bg.png")]
+		[Embed(source="../assets/images/gameWin_bg.png")]
 		private var bg:Class;
-		
-		public function GameOver()
+
+		public function GameWin()
 		{
 			trace("game over state");
-			_ce.sound.playSound("Gameover");
-
+			_ce.sound.playSound("Victory");
 		}
 		
 		override public function initialize():void
@@ -38,7 +37,8 @@ package com.NJSquared.state
 			var bg:Image = new Image(bgImage);
 			//button.pivotX = _playBtn.width * 0.5;
 			addChild(bg);
-						
+			
+			
 			var buttonImage:Texture = Texture.fromBitmap(new btn());
 			var button:Button = new Button(buttonImage);
 			button.x = 400;
@@ -60,8 +60,8 @@ package com.NJSquared.state
 		{	
 			/*if(event.keyCode == 65)
 			{*/
-				trace("restart");
-				destroy();
+			trace("restart");
+			destroy();
 			//}
 		}
 		
@@ -69,10 +69,9 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Gameover");
-			_ce.sound.playSound("Start");
-			//stage.removeEventListener(Event.TRIGGERED, onRestart);
-			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
-			_ce.state = new ArrayGameState();
+			stage.removeEventListener(Event.TRIGGERED, onRestart);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
+			_ce.state = new Menu();
 		}
 	}
 }

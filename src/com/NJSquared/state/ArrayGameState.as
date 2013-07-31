@@ -12,6 +12,7 @@ package com.NJSquared.state
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.Assets;
+	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.Tile;
 	import com.NJSquared.gameCore.TileManager;
 	
@@ -22,6 +23,7 @@ package com.NJSquared.state
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
+	import starling.events.KeyboardEvent;
 	import starling.text.TextField;
 	import starling.textures.Texture;
 	
@@ -71,8 +73,11 @@ package com.NJSquared.state
 		private var BLUE_DISPLAY:Class;
 		[Embed(source = '../assets/images/redTileDisplay.png')] // red tile display
 		private var RED_DISPLAY:Class;
-		[Embed(source = '../assets/images/yellowTileDisplay.png')] // blue tile display
+		[Embed(source = '../assets/images/yellowTileDisplay.png')] // yellow tile display
 		private var YELLOW_DISPLAY:Class;
+		
+		[Embed(source = '../assets/images/signMainGame.png')]
+		private var SIGN:Class;
 		
 		private var _livesArray:Array = [];
 
@@ -90,20 +95,21 @@ package com.NJSquared.state
 		private var _yellowTileCount:TextField;
 		private var _redTileCount:TextField;
 		private var _blueTileCount:TextField;
+		private var _signMessage:Object;
+		
+		private var _isDead:Boolean = false;
 		
 		public function ArrayGameState()
 		{
 			super();
-
 			_ce = CitrusEngine.getInstance();
 			_ce.sound.playSound("Collector");
 		}
 		
 		override public function initialize():void 
 		{
-			
 			super.initialize();
-			
+
 			Assets.init();
 			
 			var box2D:Box2D = new Box2D("box2D");
@@ -115,8 +121,8 @@ package com.NJSquared.state
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 08, 10, 00, 11, 05, 05, 05, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 05, 12, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 08, 08, 08, 11, 10, 00, 11, 05, 05, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 01, 12, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 11, 10, 00, 00, 00, 00, 00, 00, 01],
@@ -216,6 +222,18 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
+/*			var signImage:Texture = Texture.fromBitmap(new SIGN());
+			var sign:Image = new Image(signImage);
+			//button.pivotX = _playBtn.width * 0.5;
+			sign.x = 210;
+			sign.y = 560;
+			addChild(sign);*/
+			
+			var sign:Platform;
+			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
+			sign = new Platform("cloud", {x:210, y:466, height:70, width:70, view:signImage, oneWay:true});
+			add(sign);
+			
 
 //			SPLOOSH!
 //			var water:Platform;
@@ -224,7 +242,6 @@ package com.NJSquared.state
 //			add(water);
 
 			addHud();
-
 			
 			addHero();
 
@@ -330,6 +347,22 @@ package com.NJSquared.state
 		
 		private function handleHeroTakeDamage():void {
 			_ce.sound.playSound("Hurt");
+			
+			if(LivesManager.livesCount > 0)
+			{
+				LivesManager.livesCount--;
+				trace("lives", LivesManager.livesCount);
+				
+				removeChild(_livesArray[LivesManager.livesCount]);
+				trace(_livesArray);
+			}
+			
+			if(LivesManager.livesCount <= 0)
+			{
+				trace("died...");
+				_isDead = true;
+				destroy();
+			}
 		}
 		
 		private function addEnemies():void
@@ -398,37 +431,37 @@ package com.NJSquared.state
 			var tileImage15:Image = new Image(Texture.fromBitmap(new  NINE()));
 			
 			
-			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
+			tile1 = new Tile("red", "coin", {x:1600, y:1305, height:70, width:70, view: tileImage1});
 			add(tile1);
 			
-			tile2 = new Tile("blue", "coin", {x:420, y:1210, height:70, width:70, view: tileImage2});
+			tile2 = new Tile("blue", "coin", {x:1300, y:1305, height:70, width:70, view: tileImage2});
 			add(tile2);
 			
-			tile3 = new Tile("red", "coin", {x:350, y:1210, height:70, width:70, view: tileImage3});
+			tile3 = new Tile("red", "coin", {x:350, y:1280, height:70, width:70, view: tileImage3});
 			add(tile3);
 			
 			tile4 = new Tile("yellow", "coin", {x:1820, y:1050, height:70, width:70, view: tileImage4});
 			add(tile4);
 			
-			tile5 = new Tile("blue", "coin", {x:1220, y:1000, height:70, width:70, view: tileImage5});
+			tile5 = new Tile("blue", "coin", {x:1740, y:540, height:70, width:70, view: tileImage5});
 			add(tile5);
 			
-			tile6 = new Tile("red", "coin", {x:140, y:1390, height:70, width:70, view: tileImage6});
+			tile6 = new Tile("red", "coin", {x:130, y:1125, height:70, width:70, view: tileImage6});
 			add(tile6);
 			
-			tile7 = new Tile("blue", "coin", {x:140, y:770, height:70, width:70, view: tileImage7});
+			tile7 = new Tile("blue", "coin", {x:380, y:840, height:70, width:70, view: tileImage7});
 			add(tile7);
 			
-			tile8 = new Tile("yellow", "coin", {x:1680, y:460, height:70, width:70, view: tileImage8});
+			tile8 = new Tile("yellow", "coin", {x:1155, y:1100, height:70, width:70, view: tileImage8});
 			add(tile8);
 			
-			tile9 = new Tile("red", "coin", {x:1190, y:480, height:70, width:70, view: tileImage9});
+			tile9 = new Tile("red", "coin", {x:1150, y:560, height:70, width:70, view: tileImage9});
 			add(tile9); 
 			
-			tile10 = new Tile("yellow", "coin", {x:1050, y:460, height:70, width:70, view: tileImage10});
+			tile10 = new Tile("yellow", "coin", {x:960, y:560, height:70, width:70, view: tileImage10});
 			add(tile10); 
 			
-			tile11 = new Tile("blue", "coin", {x:1400, y:470, height:70, width:70, view: tileImage11});
+			tile11 = new Tile("blue", "coin", {x:1400, y:490, height:70, width:70, view: tileImage11});
 			add(tile11);
 			
 			tile12 = new Tile("yellow", "coin", {x:1680, y:140, height:70, width:70, view: tileImage12});
@@ -437,10 +470,10 @@ package com.NJSquared.state
 			tile13 = new Tile("blue", "coin", {x:770, y:280, height:70, width:70, view: tileImage13});
 			add(tile13);
 			
-			tile14 = new Tile("yellow", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
+			tile14 = new Tile("yellow", "coin", {x:1060, y:190, height:70, width:70, view: tileImage14});
 			add(tile14);
 			
-			tile15 = new Tile("red", "coin", {x:350, y:210, height:70, width:70, view: tileImage15});
+			tile15 = new Tile("red", "coin", {x:480, y:340, height:70, width:70, view: tileImage15});
 			add(tile15);
 
 
@@ -454,42 +487,39 @@ package com.NJSquared.state
 			_ce.sound.playSound("Pick");			
 		}
 	
-	override public function update(timeDelta:Number):void
-	{
-		super.update(timeDelta);
-		
-		_yellowTileCount.text = String(TileManager.yellowTileCount);
-		_redTileCount.text = String(TileManager.redTileCount);
-		_blueTileCount.text = String(TileManager.blueTileCount);
-		
-		if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
+		override public function update(timeDelta:Number):void
 		{
-			trace("game over");
-			destroy();
+			super.update(timeDelta);
+			
+			_yellowTileCount.text = String(TileManager.yellowTileCount);
+			_redTileCount.text = String(TileManager.redTileCount);
+			_blueTileCount.text = String(TileManager.blueTileCount);
+			
+			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
+			{
+				trace("game over");
+				destroy();
+			}
 		}
-		
-/*		if(enemy.hit())
-		{	
-			killed();
-		}*/
-	}
 		
 		override public function destroy():void
 		{
-			super.destroy();
+			//super.destroy();
 			_ce.sound.removeSound("Collector");
 			_ce.sound.playSound("Start");
-			_ce.state = new BridgeGameState();
-		}	
-		
-		public function killed():void	
-		{
-			super.destroy();
 			
-			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
-			_ce.sound.removeSound("Puzzle");
-			//_ce.sound.playSound("Victory");
-			_ce.state = new GameOver();
-		}
+			if(_isDead  == true)
+			{
+				LivesManager.livesCount = 3;
+				TileManager.yellowTileCount = 0;
+				TileManager.blueTileCount = 0;
+				TileManager.redTileCount = 0;
+				_ce.state = new GameOver();
+			}
+			else
+			{
+				_ce.state = new BridgeGameState();
+			}
+		}	
 	}
 }

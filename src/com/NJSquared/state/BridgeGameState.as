@@ -5,6 +5,7 @@ package com.NJSquared.state
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
+	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.TileManager;
 	
 	import flash.events.Event;
@@ -83,6 +84,12 @@ package com.NJSquared.state
 
 		[Embed(source = '../assets/images/portalTile.png')] // portal
 		private var FOURTEEN:Class;
+		
+		[Embed(source = '../assets/images/signBridgeGame.png')] // sign
+		private var SIGN:Class;
+		
+		[Embed(source = '../assets/images/wrongTile.png')]
+		private var WRONG:Class;
 
 		
 		private var _livesArray:Array = [];
@@ -95,6 +102,11 @@ package com.NJSquared.state
 		private var gameInput:GameInput;
 		private var _device:GameInputDevice;
 		
+
+		private var _wrongTileSign:Image;
+		private var wrongTile:Boolean = false;
+
+		private var wrongtileImage2:Texture;
 
 		
 		public function BridgeGameState()
@@ -180,7 +192,7 @@ package com.NJSquared.state
 			
 			trace("bridge state");
 			
-			stage.color = 0x8becfb;
+			stage.color = 0xaedfe8;
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
@@ -189,17 +201,17 @@ package com.NJSquared.state
 			add(box2D);
 			
 			levelOneBridge = [
-				[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-				[00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 12],
-				[01, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
-				[01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01, 01],
-				[01, 01, 01, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 01, 01, 01],
+				[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01],
+				[00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 12, 01],
+				[05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 01],
+				[01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01, 01, 01],
+				[01, 01, 01, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 08, 01, 01, 01, 01],
 			];
 			
 			createLevel();
@@ -254,6 +266,11 @@ package com.NJSquared.state
 			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
 			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
+
+			var sign:Platform;
+			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
+			sign = new Platform("cloud", {x:170, y:466, height:70, width:70, view:signImage, oneWay:true});
+			add(sign);
 			
 			var fixPortal:Platform = new Platform ("barrier", {x:-10, y:600, height:1000, width:70});
 			add(fixPortal);
@@ -272,18 +289,31 @@ package com.NJSquared.state
 			addChild(livesImage);
 			
 			var heartsTexture:Texture = Texture.fromBitmap(new HEART());
-			var heartsImageOne:Image = new Image(heartsTexture);
-			var heartsImageTwo:Image = new Image(heartsTexture);
-			var heartsImageThree:Image = new Image(heartsTexture);
-			heartsImageOne.y = heartsImageTwo.y = heartsImageThree.y = 34;
-			heartsImageOne.x = 140;
-			heartsImageTwo.x = 200;
-			heartsImageThree.x = 260;
-			_livesArray = [heartsImageOne, heartsImageTwo, heartsImageThree];
-			addChild(heartsImageOne);
-			addChild(heartsImageTwo);
-			addChild(heartsImageThree);
-			
+			if(LivesManager.livesCount >= 1)
+			{
+				var heartsImageOne:Image = new Image(heartsTexture);
+				heartsImageOne.x = 140;
+				heartsImageOne.y = 34;
+				addChild(heartsImageOne);
+				_livesArray.push(heartsImageOne);
+			}
+			else if(LivesManager.livesCount >= 2)
+			{
+				var heartsImageTwo:Image = new Image(heartsTexture);
+				heartsImageTwo.x = 200;
+				heartsImageTwo.y = 34;
+				addChild(heartsImageTwo);
+				_livesArray.push(heartsImageTwo);
+			}
+			else if(LivesManager.livesCount == 3)
+			{
+				var heartsImageThree:Image = new Image(heartsTexture);
+				heartsImageThree.x = 260;
+				heartsImageThree.y = 34;
+				addChild(heartsImageThree);
+				_livesArray.push(heartsImageThree);
+			}
+
 			// tile displays
 			// yellow tiles
 			var yellowDisplayTexture:Texture = Texture.fromBitmap(new YELLOW_DISPLAY());
@@ -334,9 +364,8 @@ package com.NJSquared.state
 		{
 			var heroImage:Image = new Image(starling.textures.Texture.fromBitmap(new FOUR()));
 			
-			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
+			_hero = new ConcreteHero("hero", {x:120, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-			
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new Point(.25, .05));
 			
@@ -393,10 +422,15 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("red");
+					
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					trace("wrongg");
+
+						trace("wrongg");
+						_ce.sound.playSound("Hurt");
+						
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
@@ -407,11 +441,16 @@ package com.NJSquared.state
 					_tileXCount++;
 					_lastColor = color;
 					
+					removeChild(_wrongTileSign);
+					
 					TileManager.decreaseTileCount("blue");
+					
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
-					trace("wrongg");
+						trace("wrongg");
+						_ce.sound.playSound("Hurt");
 				}
 				// yellow can only go after blue
 				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
@@ -423,10 +462,12 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("yellow");
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
-					trace("wrongg");
+						trace("wrongg");
+						_ce.sound.playSound("Hurt");
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
@@ -438,10 +479,13 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("red");
+					
+					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-					trace("wrongg");
+						trace("wrongg");
+						_ce.sound.playSound("Hurt");
 				}
 			}
 			
@@ -480,6 +524,11 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
+			
+			LivesManager.livesCount = 3;
+			TileManager.yellowTileCount = 0;
+			TileManager.blueTileCount = 0;
+			TileManager.redTileCount = 0;
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			_ce.sound.removeSound("Puzzle");
