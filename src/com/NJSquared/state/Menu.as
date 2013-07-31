@@ -78,10 +78,6 @@ package com.NJSquared.state
 				_ce.sound.playSound("Start");
 				destroy();
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> 4877affc5030dacb2219ffff709c6e205bc1bdb7
 		
 		private function onPlay(event:KeyboardEvent):void
 		{
@@ -97,12 +93,11 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Title");
-<<<<<<< HEAD
+
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
-=======
+
 			stage.removeEventListeners(Event.TRIGGERED);
-			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onPlay);
->>>>>>> 4877affc5030dacb2219ffff709c6e205bc1bdb7
+
 			_ce.state = new ArrayGameState();
 		}
 	}
