@@ -70,7 +70,7 @@ package com.NJSquared.state
 			super.destroy();
 			_ce.sound.removeSound("Gameover");
 			_ce.sound.playSound("Start");
-			//stage.removeEventListener(Event.TRIGGERED, onRestart);
+			stage.removeEventListener(Event.TRIGGERED, onRestart);
 			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			_ce.state = new ArrayGameState();
 		}
