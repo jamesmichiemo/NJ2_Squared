@@ -55,7 +55,11 @@ package com.NJSquared.state
 			button.x = 400;
 			button.y = 350;
 			addChild(button);	
+<<<<<<< HEAD
 			//button.addEventListener(Event.TRIGGERED, onPlay);
+=======
+			button.addEventListener(Event.TRIGGERED, onPlayMouse);
+>>>>>>> de973c89011a434c4b3ab3ec3fd6f87a8b18e5da
 			
 			trace("menu state");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
@@ -68,13 +72,26 @@ package com.NJSquared.state
 			add(platform);
 		}
 		
+<<<<<<< HEAD
 		private function onPlay(event:KeyboardEvent):void
+=======
+		private function onPlayMouse(event:Event):void
+>>>>>>> de973c89011a434c4b3ab3ec3fd6f87a8b18e5da
 		{
 			
 			if(event.keyCode == 13)
 			{
 				_ce.sound.playSound("Start");
 				destroy();
+			}
+		}
+		
+		private function onPlay(event:KeyboardEvent):void
+		{
+			_ce.sound.playSound("Start");
+			if(event.keyCode == 65)
+			{
+			destroy();
 			}
 		}
 		
