@@ -15,6 +15,7 @@ package com.NJSquared.state
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 
 	
@@ -70,6 +71,13 @@ package com.NJSquared.state
 		private var LIVES:Class;
 		[Embed(source = '../assets/images/lifeHeart.png')] // lives text
 		private var HEART:Class;
+		
+		[Embed(source = '../assets/images/blueTileDisplay.png')] // blue tile display
+		private var BLUE_DISPLAY:Class;
+		[Embed(source = '../assets/images/redTileDisplay.png')] // red tile display
+		private var RED_DISPLAY:Class;
+		[Embed(source = '../assets/images/yellowTileDisplay.png')] // blue tile display
+		private var YELLOW_DISPLAY:Class;
 		
 		private var _livesArray:Array = [];
 
@@ -163,6 +171,7 @@ package com.NJSquared.state
 		
 		private function addHud():void
 		{
+			//lives displays
 			var livesTexture:Texture = Texture.fromBitmap(new LIVES());
 			var livesImage:Image = new Image(livesTexture);
 			livesImage.x = 20;
@@ -181,6 +190,50 @@ package com.NJSquared.state
 			addChild(heartsImageOne);
 			addChild(heartsImageTwo);
 			addChild(heartsImageThree);
+			
+			// tile displays
+			// yellow tiles
+			var yellowDisplayTexture:Texture = Texture.fromBitmap(new YELLOW_DISPLAY());
+			var yellowDisplayImage:Image = new Image(yellowDisplayTexture);
+			yellowDisplayImage.x = 840;
+			yellowDisplayImage.y = 20;
+			addChild(yellowDisplayImage);
+			
+			var yellowTileCount:TextField = new TextField(100,100,"00", "Helvetica");
+			yellowTileCount.fontSize = 32;
+			yellowTileCount.color = 0x282828;
+			yellowTileCount.x = 885;
+			yellowTileCount.y = 10;
+			addChild(yellowTileCount);
+			
+			// red tiles
+			var redDisplayTexture:Texture = Texture.fromBitmap(new RED_DISPLAY());
+			var redDisplayImage:Image = new Image(redDisplayTexture);
+			redDisplayImage.x = 980;
+			redDisplayImage.y = 20;
+			addChild(redDisplayImage);
+			
+			var redTileCount:TextField = new TextField(100,100,"00", "Helvetica");
+			redTileCount.fontSize = 32;
+			redTileCount.color = 0x282828;
+			redTileCount.x = 1025;
+			redTileCount.y = 10;
+			addChild(redTileCount);
+			
+			// blue tiles
+			var blueDisplayTexture:Texture = Texture.fromBitmap(new BLUE_DISPLAY());
+			var blueDisplayImage:Image = new Image(blueDisplayTexture);
+			blueDisplayImage.x = 1120;
+			blueDisplayImage.y = 20;
+			addChild(blueDisplayImage);
+			
+			var blueTileCount:TextField = new TextField(100,100,"00", "Helvetica");
+			blueTileCount.fontSize = 32;
+			blueTileCount.color = 0x282828;
+			blueTileCount.x = 1165;
+			blueTileCount.y = 10;
+			addChild(blueTileCount);
+			
 			
 		}
 		
