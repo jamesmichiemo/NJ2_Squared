@@ -121,7 +121,7 @@ package com.NJSquared.state
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 05, 10, 00, 11, 05, 05, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 08, 08, 08, 11, 10, 00, 11, 05, 05, 05, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 01, 12, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
@@ -231,7 +231,7 @@ package com.NJSquared.state
 			
 			var sign:Platform;
 			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
-			sign = new Platform("cloud", {x:210, y:480, height:70, width:70, view:signImage, oneWay:true});
+			sign = new Platform("cloud", {x:210, y:466, height:70, width:70, view:signImage, oneWay:true});
 			add(sign);
 			
 
@@ -431,7 +431,7 @@ package com.NJSquared.state
 			var tileImage15:Image = new Image(Texture.fromBitmap(new  NINE()));
 			
 			
- 			tile1 = new Tile("red", "coin", {x:1600, y:1305, height:70, width:70, view: tileImage1});
+			tile1 = new Tile("red", "coin", {x:1600, y:1305, height:70, width:70, view: tileImage1});
 			add(tile1);
 			
 			tile2 = new Tile("blue", "coin", {x:1300, y:1305, height:70, width:70, view: tileImage2});
