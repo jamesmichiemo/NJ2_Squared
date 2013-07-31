@@ -21,6 +21,8 @@ package com.NJSquared.state
 		// embed bg
 		[Embed(source="../assets/images/gameOver_bg.png")]
 		private var bg:Class;
+
+		private var _button:Button;
 		
 		public function GameOver()
 		{
@@ -40,11 +42,11 @@ package com.NJSquared.state
 			addChild(bg);
 						
 			var buttonImage:Texture = Texture.fromBitmap(new btn());
-			var button:Button = new Button(buttonImage);
-			button.x = 400;
-			button.y = 350;
-			addChild(button);	
-			button.addEventListener(Event.TRIGGERED, onRestart);
+			_button = new Button(buttonImage);
+			_button.x = 400;
+			_button.y = 350;
+			addChild(_button);	
+			_button.addEventListener(Event.TRIGGERED, onRestart);
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			
@@ -70,8 +72,8 @@ package com.NJSquared.state
 			super.destroy();
 			_ce.sound.removeSound("Gameover");
 			_ce.sound.playSound("Start");
-			stage.removeEventListener(Event.TRIGGERED, onRestart);
-			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
+			_button.removeEventListener(Event.TRIGGERED, onRestart);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			_ce.state = new ArrayGameState();
 		}
 	}

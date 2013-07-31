@@ -534,7 +534,7 @@ package com.NJSquared.state
 			_ce.sound.removeSound("Puzzle");
 			//_ce.sound.playSound("Victory");
 		
-			_ce.state = new GameOver();
+			_ce.state = new GameWin();
 		}
 	}
 }
