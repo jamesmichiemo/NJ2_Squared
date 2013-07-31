@@ -169,16 +169,19 @@ package com.NJSquared.state
 			{
 				trace("a");
 				buildBridge(_red);
+				_ce.sound.playSound("Pick");
 			}
 			else if(event.keyCode == 83)
 			{
 				trace("s");
 				buildBridge(_blue);
+				_ce.sound.playSound("Pick");
 			}
 			else if(event.keyCode == 68)
 			{
 				trace("d");
 				buildBridge(_yellow);
+				_ce.sound.playSound("Pick");
 			}
 		}
 		

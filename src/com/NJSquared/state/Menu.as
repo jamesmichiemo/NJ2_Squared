@@ -69,7 +69,7 @@ package com.NJSquared.state
 		
 		private function onPlay(event:Event):void
 		{
-			_ce.sound.addSound("Start");
+			_ce.sound.playSound("Start");
 			//if(event.keyCode == 65)
 			//{
 				destroy();
