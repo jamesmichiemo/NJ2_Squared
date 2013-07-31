@@ -304,6 +304,7 @@ package com.NJSquared.state
 			var tile12:Tile;
 			var tile13:Tile; 
 			var tile14:Tile;
+			var tile15:Tile;
 			
 			var tileImage1:Image = new Image(Texture.fromBitmap(new  NINE()));
 			var tileImage2:Image = new Image(Texture.fromBitmap(new  THREE()));
@@ -319,6 +320,7 @@ package com.NJSquared.state
 			var tileImage12:Image = new Image(Texture.fromBitmap(new  TWO()));
 			var tileImage13:Image = new Image(Texture.fromBitmap(new  THREE()));
 			var tileImage14:Image = new Image(Texture.fromBitmap(new  TWO()));
+			var tileImage15:Image = new Image(Texture.fromBitmap(new  NINE()));
 			
 			
 			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
@@ -362,6 +364,10 @@ package com.NJSquared.state
 			
 			tile14 = new Tile("yellow", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
 			add(tile14);
+			
+			tile15 = new Tile("red", "coin", {x:350, y:210, height:70, width:70, view: tileImage15});
+			add(tile15);
+
 
 			_tiles = getObjectsByType(Coin);
 			for each (var tile:Coin in _tiles)
