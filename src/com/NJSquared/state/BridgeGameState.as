@@ -158,7 +158,7 @@ package com.NJSquared.state
 			
 			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-			//view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
+			view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
 		}
 		
 		private function onKey(event:KeyboardEvent):void

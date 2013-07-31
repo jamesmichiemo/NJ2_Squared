@@ -27,15 +27,15 @@ package com.NJSquared.state
 		
 		private var _citrusEngine:CitrusEngine;
 		
-		[Embed(source = '../assets/images/images_01.png')] //dirt
+		[Embed(source = '../assets/images/groundTile.png')] //dirt
 		private var ONE:Class;
 		[Embed(source = '../assets/images/images_04.png')] //hero
 		private var FOUR:Class;
-		[Embed(source = '../assets/images/images_05.png')] //grass
+		[Embed(source = '../assets/images/grassTile.png')] //grass
 		private var FIVE:Class;
 		[Embed(source = '../assets/images/images_06.png')] //spikes
 		private var SIX:Class;
-		[Embed(source = '../assets/images/images_08.png')] //water
+		[Embed(source = '../assets/images/waterTile.png')] //water
 		private var EIGHT:Class;
 		[Embed(source = '../assets/images/keyYellow.png')] //tiles
 		private var NINE:Class;
@@ -165,7 +165,7 @@ package com.NJSquared.state
 
 			add(_hero);
 
-			view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
+			//view.camera.setUp(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new MathVector(.25, .05));
 		}
 		
 		private function addEnemies():void
