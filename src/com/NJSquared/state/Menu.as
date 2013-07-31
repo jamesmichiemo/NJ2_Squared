@@ -96,12 +96,8 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Title");
-<<<<<<< HEAD
 			stage.removeEventListeners(Event.TRIGGERED);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onPlay);
-=======
-			stage.removeEventListeners(KeyboardEvent.KEY_DOWN, onPlay);
->>>>>>> 49db9c2069fe6c81cef8b80250f46d14d5569369
 			_ce.state = new ArrayGameState();
 		}
 	}
