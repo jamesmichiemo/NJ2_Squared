@@ -10,6 +10,8 @@ package com.NJSquared.state
 	
 	import flash.display.Bitmap;
 	
+	import flashx.textLayout.tlf_internal;
+	
 	import starling.display.Button;
 	import starling.display.Image;
 	import starling.events.Event;
@@ -76,12 +78,17 @@ package com.NJSquared.state
 				_ce.sound.playSound("Start");
 				destroy();
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4877affc5030dacb2219ffff709c6e205bc1bdb7
 		
 		private function onPlay(event:KeyboardEvent):void
 		{
-			_ce.sound.playSound("Start");
+			
 			if(event.keyCode == 13)
 			{
+			_ce.sound.playSound("Start");
 			destroy();
 			}
 		}
@@ -90,7 +97,12 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Title");
+<<<<<<< HEAD
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
+=======
+			stage.removeEventListeners(Event.TRIGGERED);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onPlay);
+>>>>>>> 4877affc5030dacb2219ffff709c6e205bc1bdb7
 			_ce.state = new ArrayGameState();
 		}
 	}
