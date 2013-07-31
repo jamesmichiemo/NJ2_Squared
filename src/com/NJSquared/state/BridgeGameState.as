@@ -177,7 +177,7 @@ package com.NJSquared.state
 			
 			var portal:Platform;
 			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
-			portal = new Platform("cloud", {x:0, y:520, height:70, width:70, view:portalImage, oneWay:true});
+			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
 			addHud();
