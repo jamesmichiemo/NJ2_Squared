@@ -33,9 +33,9 @@ package com.NJSquared.state
 		
 		private function onRestart(event:KeyboardEvent):void
 		{	
-			if(event.keyCode == 82)
+			if(event.keyCode == 65)
 			{
-				trace("r");
+				trace("restart");
 				destroy();
 			}
 		}
