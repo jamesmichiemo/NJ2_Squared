@@ -42,16 +42,11 @@ package com.NJSquared.state
 			}
 		}
 		
-		override public function update(timeDelta:Number):void
-		{
-			// we need this because this class is an IState
-		}
-		
 		override public function destroy():void
 		{
 			super.destroy();
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
-			CitrusEngine.getInstance().state = new BridgeGameState();
+			_ce.state = new BridgeGameState();
 		}
 	}
 }

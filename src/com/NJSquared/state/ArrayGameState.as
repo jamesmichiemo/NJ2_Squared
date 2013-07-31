@@ -35,27 +35,29 @@ package com.NJSquared.state
 		
 		private var _citrusEngine:CitrusEngine;
 		
-		[Embed(source = '../assets/images/groundTile.png')] //dirt
+		[Embed(source = '../assets/images/groundTile.png')] // dirt
 		private var ONE:Class;
-		[Embed(source = '../assets/images/images_04.png')] //hero
+		[Embed(source = '../assets/images/yellowTile.png')] // yellow tile
+		private var TWO:Class;
+		[Embed(source = '../assets/images/blueTile.png')] // blue tiles
+		private var THREE:Class;
+		[Embed(source = '../assets/images/images_04.png')] // hero
 		private var FOUR:Class;
-		[Embed(source = '../assets/images/grassTile.png')] //grass
+		[Embed(source = '../assets/images/grassTile.png')] // grass
 		private var FIVE:Class;
-		[Embed(source = '../assets/images/images_06.png')] //spikes
-		private var SIX:Class;
-		[Embed(source = '../assets/images/blockerMad.png')] //enemy
+		[Embed(source = '../assets/images/blockerMad.png')] // enemy
 		private var SEVEN:Class;
-		[Embed(source = '../assets/images/waterTile.png')] //water
+		[Embed(source = '../assets/images/waterTile.png')] // water
 		private var EIGHT:Class;
-		[Embed(source = '../assets/images/keyYellow.png')] //tiles
+		[Embed(source = '../assets/images/redTile.png')] // red tiles
 		private var NINE:Class;
 		[Embed(source = '../assets/images/rightCornerGrassTile.png')] // grass right corner
 		private var TEN:Class;
 		[Embed(source = '../assets/images/leftCornerGrassTile.png')] // grass left corner
 		private var ELEVEN:Class;
-		[Embed(source = '../assets/images/rightCornerGroundTile.png')] // grass right corner
+		[Embed(source = '../assets/images/rightCornerGroundTile.png')] // ground right corner
 		private var TWELVE:Class;
-		[Embed(source = '../assets/images/leftCornerGroundTile.png')] // grass left corner
+		[Embed(source = '../assets/images/leftCornerGroundTile.png')] // ground left corner
 		private var THIRTEEN:Class;
 		[Embed(source = '../assets/images/portalTile.png')] // portal
 		private var FOURTEEN:Class;
@@ -91,30 +93,6 @@ package com.NJSquared.state
 			add(box2D);
 			
 			_levelOne = [
-
-/*			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 1],				
-			[1, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 8, 8, 8, 8, 0, 0, 5, 5, 5, 5, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1, 1, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 9, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-			[1, 5, 5, 5, 5, 8, 8, 1, 1, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 1],
-			[1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1],
-			[1, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1, 1, 1, 1, 1, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 5, 5, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
-			[1, 5, 5, 5, 5, 5, 5, 8, 8, 8, 5, 5, 5, 5, 5, 0, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1],
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]*/
-
 			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
@@ -134,7 +112,7 @@ package com.NJSquared.state
 			[01, 00, 00, 13, 01, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 10, 00, 00, 00, 00, 11, 05, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 10, 00, 00, 00, 05, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 14, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 05, 05, 05, 05, 05, 10, 08, 08, 08, 11, 05, 05, 05, 10, 00, 00, 11, 05, 05, 05, 05, 05, 05, 05, 05, 05, 01],
 			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01]
 			];
@@ -198,13 +176,8 @@ package com.NJSquared.state
 						{
 							image = new THIRTEEN();
 						}
-						
-						else if(level[i][j] == 14)
-						{
-							image = new FOURTEEN();
-						}
 					
-						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 9 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 14)
+						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13)
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
 							add(platform);
@@ -220,9 +193,23 @@ package com.NJSquared.state
 			bg.y = _height2 / 2 - 35;
 			add(bg);
 
+			var portal:Platform;
+			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
+			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
+			add(portal);
+			
 			addHero();
+
 			addEnemies();
 			addTiles();
+			
+/*			// if the coins are collected	
+			if(_totalCollectedTiles. == 14)
+			{
+				trace("bridge finished");
+				remove(_barrier);
+				_bridgeFinished = true;
+			}*/
 		}
 		
 		private function addHero():void
@@ -305,19 +292,19 @@ package com.NJSquared.state
 			var tile14:Tile;
 			
 			var tileImage1:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage2:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage2:Image = new Image(Texture.fromBitmap(new  THREE()));
 			var tileImage3:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage4:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage5:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage4:Image = new Image(Texture.fromBitmap(new  TWO()));
+			var tileImage5:Image = new Image(Texture.fromBitmap(new  THREE()));
 			var tileImage6:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage7:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage8:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage7:Image = new Image(Texture.fromBitmap(new  THREE()));
+			var tileImage8:Image = new Image(Texture.fromBitmap(new  TWO()));
 			var tileImage9:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage10:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage11:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage12:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage13:Image = new Image(Texture.fromBitmap(new  NINE()));
-			var tileImage14:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage10:Image = new Image(Texture.fromBitmap(new  TWO()));
+			var tileImage11:Image = new Image(Texture.fromBitmap(new  THREE()));
+			var tileImage12:Image = new Image(Texture.fromBitmap(new  TWO()));
+			var tileImage13:Image = new Image(Texture.fromBitmap(new  THREE()));
+			var tileImage14:Image = new Image(Texture.fromBitmap(new  TWO()));
 			
 			
 			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
@@ -371,17 +358,17 @@ package com.NJSquared.state
 		{
 			_citrusEngine.sound.playSound("Hurt");			
 		}
+	
+	override public function update(timeDelta:Number):void
+	{
+		super.update(timeDelta);
 		
-		override public function update(timeDelta:Number):void
+		if(_hero.x >= 1820 && _hero.y >= 1330)
 		{
-			super.update(timeDelta);
-			
-			if(/*_totalCollectedTiles._totalCollected == 14 &&*/ _hero.x >= 1880 && _hero.y == 1190)
-			{
-				trace("switch to bridge");
-				destroy();
-			}
+			trace("game over");
+			destroy();
 		}
+	}
 		
 		override public function destroy():void
 		{
