@@ -7,6 +7,7 @@ package com.NJSquared.state
 	import citrus.physics.box2d.Box2D;
 	import citrus.sounds.CitrusSoundGroup;
 	
+	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.TileManager;
 	
 	import flash.geom.Point;
@@ -183,18 +184,21 @@ package com.NJSquared.state
 				}
 			}
 			
-			_barrier = new Platform ("barrier", {x:245, y:525, height:500, width:70});
+			_barrier = new Platform ("barrier", {x:245, y:525, height:1000, width:70});
 			add(_barrier);
 			
 			var portal:Platform;
 			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
 			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
-			
+
 			var sign:Platform;
 			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
 			sign = new Platform("cloud", {x:170, y:480, height:70, width:70, view:signImage, oneWay:true});
 			add(sign);
+			
+			var fixPortal:Platform = new Platform ("barrier", {x:-10, y:600, height:1000, width:70});
+			add(fixPortal);
 			
 			addHud();
 			addHero();
@@ -210,18 +214,31 @@ package com.NJSquared.state
 			addChild(livesImage);
 			
 			var heartsTexture:Texture = Texture.fromBitmap(new HEART());
-			var heartsImageOne:Image = new Image(heartsTexture);
-			var heartsImageTwo:Image = new Image(heartsTexture);
-			var heartsImageThree:Image = new Image(heartsTexture);
-			heartsImageOne.y = heartsImageTwo.y = heartsImageThree.y = 34;
-			heartsImageOne.x = 140;
-			heartsImageTwo.x = 200;
-			heartsImageThree.x = 260;
-			_livesArray = [heartsImageOne, heartsImageTwo, heartsImageThree];
-			addChild(heartsImageOne);
-			addChild(heartsImageTwo);
-			addChild(heartsImageThree);
-			
+			if(LivesManager.livesCount >= 1)
+			{
+				var heartsImageOne:Image = new Image(heartsTexture);
+				heartsImageOne.x = 140;
+				heartsImageOne.y = 34;
+				addChild(heartsImageOne);
+				_livesArray.push(heartsImageOne);
+			}
+			else if(LivesManager.livesCount >= 2)
+			{
+				var heartsImageTwo:Image = new Image(heartsTexture);
+				heartsImageTwo.x = 200;
+				heartsImageTwo.y = 34;
+				addChild(heartsImageTwo);
+				_livesArray.push(heartsImageTwo);
+			}
+			else if(LivesManager.livesCount == 3)
+			{
+				var heartsImageThree:Image = new Image(heartsTexture);
+				heartsImageThree.x = 260;
+				heartsImageThree.y = 34;
+				addChild(heartsImageThree);
+				_livesArray.push(heartsImageThree);
+			}
+
 			// tile displays
 			// yellow tiles
 			var yellowDisplayTexture:Texture = Texture.fromBitmap(new YELLOW_DISPLAY());

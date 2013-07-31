@@ -13,7 +13,6 @@ package com.NJSquared.state
 	
 	public class GameOver extends StarlingState
 	{	
-		private var _citrusEngine:CitrusEngine;
 		
 		// embed button
 		[Embed(source="../assets/images/replayBtn.png")]
@@ -26,8 +25,7 @@ package com.NJSquared.state
 		public function GameOver()
 		{
 			trace("game over state");
-			_citrusEngine = CitrusEngine.getInstance();
-			_citrusEngine.sound.playSound("Gameover");
+			_ce.sound.playSound("Gameover");
 			
 		}
 		
@@ -71,8 +69,10 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
-			//stage.removeEventListener(Event.TRIGGERED, onRestart);
-			_ce.state = new BridgeGameState();
+			_ce.sound.removeSound("Gameover");
+			stage.removeEventListener(Event.TRIGGERED, onRestart);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
+			_ce.state = new ArrayGameState();
 		}
 	}
 }

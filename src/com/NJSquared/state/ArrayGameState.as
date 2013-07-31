@@ -12,6 +12,7 @@ package com.NJSquared.state
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.Assets;
+	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.Tile;
 	import com.NJSquared.gameCore.TileManager;
 	
@@ -95,10 +96,11 @@ package com.NJSquared.state
 		private var _blueTileCount:TextField;
 		private var _signMessage:Object;
 		
+		private var _isDead:Boolean = false;
+		
 		public function ArrayGameState()
 		{
 			super();
-
 			_ce = CitrusEngine.getInstance();
 			_ce.sound.playSound("Collector");
 		}
@@ -106,7 +108,7 @@ package com.NJSquared.state
 		override public function initialize():void 
 		{
 			super.initialize();
-			
+
 			Assets.init();
 			
 			var box2D:Box2D = new Box2D("box2D");
@@ -344,6 +346,22 @@ package com.NJSquared.state
 		
 		private function handleHeroTakeDamage():void {
 			_ce.sound.playSound("Hurt");
+			
+			if(LivesManager.livesCount > 0)
+			{
+				LivesManager.livesCount--;
+				trace("lives", LivesManager.livesCount);
+				
+				removeChild(_livesArray[LivesManager.livesCount]);
+				trace(_livesArray);
+			}
+			
+			if(LivesManager.livesCount <= 0)
+			{
+				trace("died...");
+				_isDead = true;
+				destroy();
+			}
 		}
 		
 		private function addEnemies():void
@@ -490,10 +508,22 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();
+//			super.destroy();
 			_ce.sound.removeSound("Collector");
 			_ce.sound.playSound("Start");
-			_ce.state = new BridgeGameState();
+			
+			if(_isDead  == true)
+			{
+				LivesManager.livesCount = 3;
+				TileManager.yellowTileCount = 0;
+				TileManager.blueTileCount = 0;
+				TileManager.redTileCount = 0;
+				_ce.state = new GameOver();
+			}
+			else
+			{
+				_ce.state = new BridgeGameState();
+			}
 		}	
 		
 		public function killed():void	
