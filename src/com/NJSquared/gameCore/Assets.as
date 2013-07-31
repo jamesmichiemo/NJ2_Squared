@@ -9,7 +9,7 @@ package com.NJSquared.gameCore
 		// get the assets
 		
 		//menu bg
-		[Embed(source="assets/images/gamestate_menubg.png")]
+		[Embed(source="assets/images/menu_bg.png")]
 		private const menuBG:Class;
 		public static var menuBGTexture:Texture;
 		

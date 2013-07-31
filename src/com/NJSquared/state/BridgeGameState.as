@@ -25,7 +25,7 @@ package com.NJSquared.state
 		
 		private var _tileXCount:uint = 0;
 		private var _tileYCount:uint = 0;
-		private var _tileYPos:uint = 665;
+		private var _tileYPos:uint = 595;
 		private var _lastColor:uint;
 		private var _currentColor:uint;
 		
@@ -266,7 +266,7 @@ package com.NJSquared.state
 			}
 			
 			// if the bridge is finished	
-			if(_tileYCount == 1 && _tileXCount == 14)
+			if(_tileYCount == 0 && _tileXCount == 14)
 			{
 				trace("bridge finished");
 				remove(_barrier);
