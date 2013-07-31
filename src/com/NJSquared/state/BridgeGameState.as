@@ -2,16 +2,18 @@ package com.NJSquared.state
 {
 	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
-	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
-	import citrus.sounds.CitrusSoundGroup;
 	
 	import com.NJSquared.gameCore.TileManager;
 	
+	import flash.events.Event;
+	import flash.events.GameInputEvent;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.media.Sound;
+	import flash.ui.GameInput;
+	import flash.ui.GameInputControl;
+	import flash.ui.GameInputDevice;
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
@@ -90,6 +92,9 @@ package com.NJSquared.state
 		private var _redTileCount:TextField;
 
 		private var _blueTileCount:TextField;
+		private var gameInput:GameInput;
+		private var _device:GameInputDevice;
+		
 
 		
 		public function BridgeGameState()
@@ -97,7 +102,77 @@ package com.NJSquared.state
 			super();
 			_citrusEngine = CitrusEngine.getInstance();
 			_citrusEngine.sound.playSound("Puzzle");
+			
+			trace(GameInput.isSupported);
+			
+			if(GameInput.isSupported){
+				gameInput = new GameInput();
+				gameInput.addEventListener(GameInputEvent.DEVICE_ADDED, handleDeviceAttached);
+				gameInput.addEventListener(GameInputEvent.DEVICE_REMOVED, handleDeviceRemoved);
+			}
 		}
+		
+		protected function handleDeviceRemoved(event:GameInputEvent):void
+		{
+			trace("Device is removed");
+		}
+		
+		protected function handleDeviceAttached(event:GameInputEvent):void
+		{
+			GameInputControlName.initialize(event.device);
+			
+			for(var k:Number=0;k<GameInput.numDevices;k++){
+				_device = GameInput.getDeviceAt(k);
+				var _controls:Vector.<String> = new Vector.<String>;
+				_device.enabled = true;
+				
+				for (var i:Number = 0; i < _device.numControls; i++) {
+					var control:GameInputControl = _device.getControlAt(i);
+					if(control.name == GameInputControlName.BUTTON_U){
+						control.addEventListener(Event.CHANGE,onBlue);
+					}
+					if(control.name == GameInputControlName.BUTTON_Y){
+						control.addEventListener(Event.CHANGE,onYellow);
+					}
+					if(control.name == GameInputControlName.BUTTON_A){
+						control.addEventListener(Event.CHANGE,onRed);
+					}
+					
+					
+					_controls[i] = control.id;
+				}
+				
+				//_device.startCachingSamples(30, _controls);
+		    }
+		
+		    for(var j:int=0; j<_controls.length; j++)
+		    {
+			  trace(_controls[j]);
+		    }
+
+		}
+		
+		protected function onRed(event:Event):void
+		{
+			trace("A");
+			buildBridge(_red);
+			_ce.sound.playSound("Pick");
+		}
+		
+		protected function onYellow(event:Event):void
+		{
+			trace("Y");
+			buildBridge(_yellow);
+			_ce.sound.playSound("Pick");
+		}
+		
+		protected function onBlue(event:Event):void
+		{
+			trace("U");
+			buildBridge(_blue);
+			_ce.sound.playSound("Pick");
+		}		
+
 		
 		override public function initialize():void 
 		{
