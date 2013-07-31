@@ -1,22 +1,23 @@
 package com.NJSquared.state
 {
-	import citrus.input.controllers.Keyboard;
+
 	
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
+	import citrus.core.CitrusEngine;
+	import citrus.core.IState;
+	import citrus.core.starling.StarlingState;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
 	
 	import starling.events.KeyboardEvent;
 	
 	public class GameOver extends StarlingState
 	{	
-		private var _ce:CitrusEngine;
+		private var _citrusEngine:CitrusEngine;
 		
 		public function GameOver()
 		{
 			trace("game over state");
-			_ce = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance();
 		}
 		
 		override public function initialize():void
@@ -35,7 +36,7 @@ package com.NJSquared.state
 		
 		private function onRestart(event:KeyboardEvent):void
 		{	
-			if(event.keyCode == Keyboard.R)
+			if(event.keyCode == 82)
 			{
 				trace("r");
 				destroy();

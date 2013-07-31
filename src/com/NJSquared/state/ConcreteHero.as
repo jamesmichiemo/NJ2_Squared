@@ -9,6 +9,7 @@ package com.NJSquared.state
 		{
 			super(name, params);
 			_ce.input.keyboard.addKeyAction("jump", citrus.input.controllers.Keyboard.ENTER);
+			
 		}
 		
 		

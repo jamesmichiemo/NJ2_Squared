@@ -1,17 +1,20 @@
 package com.NJSquared.state
 {
+	import citrus.core.IState;
 	import citrus.core.starling.StarlingState;
+
 	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
-	import com.NJSquared.gameCore.TileManager;
+	import com.NJSquared.gameCore.Key;
+	
+	import flash.events.KeyboardEvent;
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
-	import starling.textures.Texture;
 	
-	
+
 	public class BridgeGameState extends StarlingState
 	{
 		private var _bridgeFinished:Boolean = false;
@@ -63,7 +66,7 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
-			_ce.sound.playSound("Puzzle");
+			//_ce.sound.playSound("Puzzle");
 		}
 		
 		override public function initialize():void 
@@ -154,23 +157,23 @@ package com.NJSquared.state
 			//view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
 		}
 		
-		private function onKey(event:KeyboardEvent):void
+		private function onKey(event:com.NJSquared.state.Keyboard):void
 		{
-//		 	if(event.keyCode == Keyboard.A)
-//			{
-//				trace("a");
-//				buildBridge(_red);
-//			}
-//			else if(event.keyCode == Keyboard.S)
-//			{
-//				trace("s");
-//				buildBridge(_blue);
-//			}
-//			else if(event.keyCode == Keyboard.D)
-//			{
-//				trace("d");
-//				buildBridge(_yellow);
-//			}
+		 	if(event.keyCode == 65)
+			{
+				trace("a");
+				buildBridge(_red);
+			}
+			else if(event.keyCode == 83)
+			{
+				trace("s");
+				buildBridge(_blue);
+			}
+			else if(event.keyCode == 68)
+			{
+				trace("d");
+				buildBridge(_yellow);
+			}
 		}
 		
 		private function buildBridge(color:uint):void
