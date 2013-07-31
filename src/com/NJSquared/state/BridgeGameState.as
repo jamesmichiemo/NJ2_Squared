@@ -65,6 +65,13 @@ package com.NJSquared.state
 		private var BLUE:Class;
 		[Embed(source = '../assets/images/yellowBridgeTile.png')]
 		private var YELLOW:Class;
+		
+		[Embed(source = '../assets/images/livesText.png')] // lives text
+		private var LIVES:Class;
+		[Embed(source = '../assets/images/lifeHeart.png')] // lives text
+		private var HEART:Class;
+		
+		private var _livesArray:Array = [];
 
 		
 		public function BridgeGameState()
@@ -150,7 +157,31 @@ package com.NJSquared.state
 			_barrier = new Platform ("barrier", {x:245, y:525, height:370, width:70});
 			add(_barrier);
 			
+			addHud();
 			addHero();
+		}
+		
+		private function addHud():void
+		{
+			var livesTexture:Texture = Texture.fromBitmap(new LIVES());
+			var livesImage:Image = new Image(livesTexture);
+			livesImage.x = 20;
+			livesImage.y = 20;
+			addChild(livesImage);
+			
+			var heartsTexture:Texture = Texture.fromBitmap(new HEART());
+			var heartsImageOne:Image = new Image(heartsTexture);
+			var heartsImageTwo:Image = new Image(heartsTexture);
+			var heartsImageThree:Image = new Image(heartsTexture);
+			heartsImageOne.y = heartsImageTwo.y = heartsImageThree.y = 34;
+			heartsImageOne.x = 140;
+			heartsImageTwo.x = 200;
+			heartsImageThree.x = 260;
+			_livesArray = [heartsImageOne, heartsImageTwo, heartsImageThree];
+			addChild(heartsImageOne);
+			addChild(heartsImageTwo);
+			addChild(heartsImageThree);
+			
 		}
 		
 		private function addHero():void
