@@ -36,12 +36,22 @@ package com.NJSquared.state
 		private var FIVE:Class;
 		[Embed(source = '../assets/images/images_06.png')] //spikes
 		private var SIX:Class;
+		[Embed(source = '../assets/images/blockerMad.png')] //enemy
+		private var SEVEN:Class;
 		[Embed(source = '../assets/images/waterTile.png')] //water
 		private var EIGHT:Class;
 		[Embed(source = '../assets/images/keyYellow.png')] //tiles
 		private var NINE:Class;
-		[Embed(source = '../assets/images/blockerMad.png')] //enemy
-		private var SEVEN:Class;
+		[Embed(source = '../assets/images/rightCornerGrassTile.png')] // grass right corner
+		private var TEN:Class;
+		[Embed(source = '../assets/images/leftCornerGrassTile.png')] // grass left corner
+		private var ELEVEN:Class;
+		[Embed(source = '../assets/images/rightCornerGroundTile.png')] // grass right corner
+		private var TWELVE:Class;
+		[Embed(source = '../assets/images/leftCornerGroundTile.png')] // grass left corner
+		private var THIRTEEN:Class;
+		[Embed(source = '../assets/images/portalTile.png')] // portal
+		private var FOURTEEN:Class;
 
 		private var _height2:uint;
 
@@ -77,23 +87,23 @@ package com.NJSquared.state
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],				
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 8, 8, 8, 8, 5, 0, 5, 5, 5, 5, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1, 1, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 5, 5, 8, 8, 8, 8, 10, 0, 11, 5, 5, 5, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 1, 1, 1, 1, 5, 5, 5, 5, 1, 0, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-			[1, 5, 5, 5, 5, 8, 8, 1, 1, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 0, 11, 5, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+			[1, 5, 5, 5, 10, 8, 8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 1, 1, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 5, 5, 10, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 10, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 5, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-			[1, 0, 0, 0, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 5, 5, 1],
-			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 5, 5, 5, 5, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 10, 0, 0, 0, 0, 5, 5, 1],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 5, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-			[1, 5, 5, 5, 5, 5, 5, 8, 8, 8, 5, 5, 5, 5, 5, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1],
+			[1, 5, 5, 5, 5, 5, 10, 8, 8, 8, 11, 5, 5, 5, 10, 0, 0, 11, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1],
 			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 			];
 			
@@ -136,8 +146,33 @@ package com.NJSquared.state
 						{
 							image = new EIGHT();
 						}
+						
+						else if(level[i][j] == 10)
+						{
+							image = new TEN();
+						}
+						
+						else if(level[i][j] == 11)
+						{
+							image = new ELEVEN();
+						}
+						
+						else if(level[i][j] == 12)
+						{
+							image = new TWELVE();
+						}
+						
+						else if(level[i][j] == 13)
+						{
+							image = new THIRTEEN();
+						}
+						
+						else if(level[i][j] == 14)
+						{
+							image = new FOURTEEN();
+						}
 					
-						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8)
+						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 9 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 14)
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
 							add(platform);
