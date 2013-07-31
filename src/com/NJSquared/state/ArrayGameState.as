@@ -198,10 +198,11 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
-			var water:Platform;
-			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
-			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
-			add(portal);
+//			SPLOOSH!
+//			var water:Platform;
+//			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
+//			water = new Platform("cloud", {x:560, y:140, height:70, width:210, view:portalImage, oneWay:true});
+//			add(water);
 			
 			addHero();
 
