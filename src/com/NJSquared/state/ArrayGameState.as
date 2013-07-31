@@ -166,8 +166,9 @@ package com.NJSquared.state
 
 			add(_hero);
 
+			_hero.jumpHeight = 12;
 
-			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 5040, 1540), new Point(.25, .05));
+			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1920, 1500), new Point(.25, .05)); // x should be 1960 however not showing up beyond the bitmap
 
 		}
 		
@@ -204,11 +205,78 @@ package com.NJSquared.state
 		
 		private function addTiles():void
 		{
-			var tile:Tile;
+			var tile1:Tile;
+			var tile2:Tile;
+			var tile3:Tile;
+			var tile4:Tile;
+			var tile5:Tile;
+			var tile6:Tile;
+			var tile7:Tile;
+			var tile8:Tile;
+			var tile9:Tile;
+			var tile10:Tile;
+			var tile11:Tile;
+			var tile12:Tile;
+			var tile13:Tile;
+			var tile14:Tile;
 			
 			var tileImage1:Image = new Image(Texture.fromBitmap(new  NINE()));
-			tile = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
-			add(tile);
+			var tileImage2:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage3:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage4:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage5:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage6:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage7:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage8:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage9:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage10:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage11:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage12:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage13:Image = new Image(Texture.fromBitmap(new  NINE()));
+			var tileImage14:Image = new Image(Texture.fromBitmap(new  NINE()));
+			
+			
+			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
+			add(tile1);
+			
+			tile2 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage2});
+			add(tile2);
+			
+			tile3 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage3});
+			add(tile3);
+			
+			tile4 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage4});
+			add(tile4);
+			
+			tile5 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage5});
+			add(tile5);
+			
+			tile6 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage6});
+			add(tile6);
+			
+			tile7 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage7});
+			add(tile7);
+			
+			tile8 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage8});
+			add(tile8);
+			
+			tile9 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage9});
+			add(tile9);
+			
+			tile10 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage10});
+			add(tile10);
+			
+			tile11 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage11});
+			add(tile11);
+			
+			tile12 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage12});
+			add(tile12);
+			
+			tile13 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage13});
+			add(tile13);
+			
+			tile14 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage14});
+			add(tile14);
 		}
 		
 /*		override public function destroy():void
