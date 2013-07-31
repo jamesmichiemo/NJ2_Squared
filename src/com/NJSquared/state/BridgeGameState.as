@@ -293,7 +293,7 @@ package com.NJSquared.state
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
-			//_ce.state = new GameOver();
+			_ce.state = new GameOver();
 		}
 		
 	}
