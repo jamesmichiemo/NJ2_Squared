@@ -33,7 +33,6 @@ package com.NJSquared.state
 		private var _tiles:Vector.<CitrusObject>;
 		private var _totalCollectedTiles:TileManager;
 		
-		private var _citrusEngine:CitrusEngine;
 		
 		[Embed(source = '../assets/images/groundTile.png')] // dirt
 		private var ONE:Class;
@@ -76,9 +75,9 @@ package com.NJSquared.state
 		{
 			super();
 
-			_citrusEngine = CitrusEngine.getInstance();
+			_ce = CitrusEngine.getInstance();
 
-			_citrusEngine.sound.playSound("Collector");
+			_ce.sound.playSound("Collector");
 		}
 		
 		override public function initialize():void 
@@ -232,7 +231,7 @@ package com.NJSquared.state
 		}
 		
 		private function handleHeroJump():void {
-			//_ce.sound.playSound("Jump");
+			_ce.sound.playSound("Jump");
 		}
 		
 		private function handleHeroGiveDamage():void {
@@ -356,7 +355,7 @@ package com.NJSquared.state
 		
 		private function handleJewelCollected(contact:b2Contact):void
 		{
-			_citrusEngine.sound.playSound("Hurt");			
+			_ce.sound.playSound("Pick");			
 		}
 	
 	override public function update(timeDelta:Number):void
@@ -372,8 +371,10 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();			
+			super.destroy();
+			_ce.sound.removeSound("Collector");
 			_ce.state = new BridgeGameState();
+			
 		}		
 	}
 }

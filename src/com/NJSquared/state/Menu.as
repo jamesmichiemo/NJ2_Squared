@@ -28,6 +28,7 @@ package com.NJSquared.state
 		{
 			super();
 			_ce = CitrusEngine.getInstance();
+			_ce.sound.playSound("Title");
 		}
 		
 		override public function initialize():void
@@ -56,13 +57,16 @@ package com.NJSquared.state
 		{
 			if(event.keyCode == 65)
 			{
+				_ce.sound.playSound("Start");
 				destroy();
+				
 			}
 		}
 		
 		override public function destroy():void
 		{
 			super.destroy();
+			_ce.sound.removeSound("Title");
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
 			_ce.state = new ArrayGameState();
 		}
