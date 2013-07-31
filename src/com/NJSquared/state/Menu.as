@@ -79,6 +79,7 @@ package com.NJSquared.state
 				_ce.sound.playSound("Start");
 				destroy();
 			//}
+		}
 
 		
 		private function onPlay(event:KeyboardEvent):void
