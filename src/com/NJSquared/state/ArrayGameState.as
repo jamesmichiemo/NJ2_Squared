@@ -82,7 +82,6 @@ package com.NJSquared.state
 			super();
 
 			_ce = CitrusEngine.getInstance();
-
 			_ce.sound.playSound("Collector");
 		}
 		
@@ -394,6 +393,7 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Collector");
+			_ce.sound.playSound("Start");
 			_ce.state = new BridgeGameState();
 			
 		}		
