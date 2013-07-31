@@ -70,6 +70,7 @@ package com.NJSquared.state
 
 		private var level:Array;
 		private var _tile:Tile;
+		private var contact:b2Contact;
 		
 		public function ArrayGameState()
 		{
@@ -197,6 +198,11 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
+			var water:Platform;
+			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
+			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
+			add(portal);
+			
 			addHero();
 
 			addEnemies();
@@ -222,6 +228,7 @@ package com.NJSquared.state
 			_hero.onJump.add(handleHeroJump);
 			_hero.onGiveDamage.add(handleHeroGiveDamage);
 			_hero.onTakeDamage.add(handleHeroTakeDamage);
+			
 
 			_hero.jumpHeight = 12;
 
@@ -229,6 +236,7 @@ package com.NJSquared.state
 
 
 		}
+		
 		
 		private function handleHeroJump():void {
 			_ce.sound.playSound("Jump");
