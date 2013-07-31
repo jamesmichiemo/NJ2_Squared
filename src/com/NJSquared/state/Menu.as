@@ -32,6 +32,8 @@ package com.NJSquared.state
 		// embed bg
 		[Embed(source="../assets/images/menu_bg.png")]
 		private var bg:Class;
+
+		private var button:Button;
 		
 		public function Menu()
 		{
@@ -51,7 +53,7 @@ package com.NJSquared.state
 			addChild(bg);	
 			
 			var buttonImage:Texture = Texture.fromBitmap(new btn());
-			var button:Button = new Button(buttonImage);
+			button = new Button(buttonImage);
 			button.x = 400;
 			button.y = 350;
 			addChild(button);	
@@ -71,13 +73,9 @@ package com.NJSquared.state
 		
 		private function onPlayMouse(event:Event):void
 		{
-
-			//if(event.keyCode == 13)
-			//
 				_ce.sound.playSound("Start");
 				destroy();
-			//}
-
+		}
 		
 		private function onPlay(event:KeyboardEvent):void
 		{
@@ -92,7 +90,7 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			_ce.sound.removeSound("Title");
-			stage.removeEventListeners(KeyboardEvent.KEY_DOWN, onPlay);
+			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
 			_ce.state = new ArrayGameState();
 		}
 	}

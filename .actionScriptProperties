@@ -40,7 +40,6 @@
       </libraryPathEntry>
       <libraryPathEntry kind="1" linkType="1" path="libs"/>
       <libraryPathEntry kind="1" linkType="1" path="assets"/>
-      <libraryPathEntry kind="5" linkType="2" path="${DOCUMENTS}/OUYAControllerANETest/ane/OUYAControllerANE.ane"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>
