@@ -172,13 +172,16 @@ package com.NJSquared.state
 				}
 			}
 			
-			_barrier = new Platform ("barrier", {x:245, y:525, height:500, width:70});
+			_barrier = new Platform ("barrier", {x:245, y:525, height:1000, width:70});
 			add(_barrier);
 			
 			var portal:Platform;
 			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
 			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
+			
+			var fixPortal:Platform = new Platform ("barrier", {x:-10, y:600, height:1000, width:70});
+			add(fixPortal);
 			
 			addHud();
 			addHero();

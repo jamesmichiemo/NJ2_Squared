@@ -71,8 +71,9 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			super.destroy();
-			//stage.removeEventListener(Event.TRIGGERED, onRestart);
-			_ce.state = new BridgeGameState();
+			stage.removeEventListener(Event.TRIGGERED, onRestart);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
+			_ce.state = new ArrayGameState();
 		}
 	}
 }
