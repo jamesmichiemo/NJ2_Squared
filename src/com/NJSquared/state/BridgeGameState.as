@@ -85,6 +85,12 @@ package com.NJSquared.state
 		
 		private var _livesArray:Array = [];
 
+		private var _yellowTileCount:TextField;
+
+		private var _redTileCount:TextField;
+
+		private var _blueTileCount:TextField;
+
 		
 		public function BridgeGameState()
 		{
@@ -208,12 +214,12 @@ package com.NJSquared.state
 			yellowDisplayImage.y = 20;
 			addChild(yellowDisplayImage);
 			
-			var yellowTileCount:TextField = new TextField(100,100,"00", "Helvetica");
-			yellowTileCount.fontSize = 32;
-			yellowTileCount.color = 0x282828;
-			yellowTileCount.x = 885;
-			yellowTileCount.y = 10;
-			addChild(yellowTileCount);
+			_yellowTileCount = new TextField(100,100,"00", "Helvetica");
+			_yellowTileCount.fontSize = 32;
+			_yellowTileCount.color = 0x282828;
+			_yellowTileCount.x = 885;
+			_yellowTileCount.y = 10;
+			addChild(_yellowTileCount);
 			
 			// red tiles
 			var redDisplayTexture:Texture = Texture.fromBitmap(new RED_DISPLAY());
@@ -222,12 +228,12 @@ package com.NJSquared.state
 			redDisplayImage.y = 20;
 			addChild(redDisplayImage);
 			
-			var redTileCount:TextField = new TextField(100,100,"00", "Helvetica");
-			redTileCount.fontSize = 32;
-			redTileCount.color = 0x282828;
-			redTileCount.x = 1025;
-			redTileCount.y = 10;
-			addChild(redTileCount);
+			_redTileCount = new TextField(100,100,"00", "Helvetica");
+			_redTileCount.fontSize = 32;
+			_redTileCount.color = 0x282828;
+			_redTileCount.x = 1025;
+			_redTileCount.y = 10;
+			addChild(_redTileCount);
 			
 			// blue tiles
 			var blueDisplayTexture:Texture = Texture.fromBitmap(new BLUE_DISPLAY());
@@ -236,12 +242,12 @@ package com.NJSquared.state
 			blueDisplayImage.y = 20;
 			addChild(blueDisplayImage);
 			
-			var blueTileCount:TextField = new TextField(100,100,"00", "Helvetica");
-			blueTileCount.fontSize = 32;
-			blueTileCount.color = 0x282828;
-			blueTileCount.x = 1165;
-			blueTileCount.y = 10;
-			addChild(blueTileCount);
+			_blueTileCount = new TextField(100,100,"00", "Helvetica");
+			_blueTileCount.fontSize = 32;
+			_blueTileCount.color = 0x282828;
+			_blueTileCount.x = 1165;
+			_blueTileCount.y = 10;
+			addChild(_blueTileCount);
 			
 			
 		}
@@ -374,6 +380,10 @@ package com.NJSquared.state
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+			
+			_yellowTileCount.text = String(TileManager.yellowTileCount);
+			_redTileCount.text = String(TileManager.redTileCount);
+			_blueTileCount.text = String(TileManager.blueTileCount);
 
 			if(_hero.x == 0 && _hero.y >= 560)
 			{
