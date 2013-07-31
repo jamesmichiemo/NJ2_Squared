@@ -20,7 +20,7 @@ package com.NJSquared.state
 		private var btn:Class;
 		
 		// embed bg
-		[Embed(source="../assets/images/game_bg.png")]
+		[Embed(source="../assets/images/gameWin_bg.png")]
 		private var bg:Class;
 		
 		public function GameOver()
