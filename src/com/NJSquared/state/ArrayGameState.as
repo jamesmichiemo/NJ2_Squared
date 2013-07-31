@@ -12,7 +12,6 @@ package com.NJSquared.state
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.Assets;
-	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.Tile;
 	import com.NJSquared.gameCore.TileManager;
 	
@@ -65,6 +64,10 @@ package com.NJSquared.state
 		
 		[Embed(source = '../assets/images/livesText.png')] // lives text
 		private var LIVES:Class;
+		[Embed(source = '../assets/images/lifeHeart.png')] // lives text
+		private var HEART:Class;
+		
+		private var _livesArray:Array = [];
 
 		private var _height2:uint;
 
@@ -220,6 +223,24 @@ package com.NJSquared.state
 		
 		private function addHud():void
 		{
+			var livesTexture:Texture = Texture.fromBitmap(new LIVES());
+			var livesImage:Image = new Image(livesTexture);
+			livesImage.x = 20;
+			livesImage.y = 20;
+			addChild(livesImage);
+			
+			var heartsTexture:Texture = Texture.fromBitmap(new HEART());
+			var heartsImageOne:Image = new Image(heartsTexture);
+			var heartsImageTwo:Image = new Image(heartsTexture);
+			var heartsImageThree:Image = new Image(heartsTexture);
+			heartsImageOne.y = heartsImageTwo.y = heartsImageThree.y = 34;
+			heartsImageOne.x = 140;
+			heartsImageTwo.x = 200;
+			heartsImageThree.x = 260;
+			_livesArray = [heartsImageOne, heartsImageTwo, heartsImageThree];
+			addChild(heartsImageOne);
+			addChild(heartsImageTwo);
+			addChild(heartsImageThree);
 			
 		}
 		
@@ -239,8 +260,6 @@ package com.NJSquared.state
 			_hero.jumpHeight = 12;
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1920, 1500), new Point(.25, .05)); // x should be 1960 however not showing up beyond the bitmap
-
-
 		}
 		
 		
