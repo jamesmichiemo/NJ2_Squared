@@ -5,15 +5,25 @@ package com.NJSquared.state
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
+	import com.NJSquared.gameCore.Assets;
+	
+	import flash.display.Bitmap;
+	
+	import starling.display.Button;
+	import starling.display.Image;
+	import starling.events.Event;
 	import starling.events.KeyboardEvent;
+	import starling.textures.Texture;
 	
 	public class Menu extends StarlingState
 	{
-		[Embed(source="assets/images/play_btn.png")]
-		private const _playBtn:Class;
 		
 		//private var _ce:CitrusEngine;
 		
+		//[Embed(source = '../assets/images/playBtn.png')] // playBtn
+		private var _playBtn:Texture;
+		public var buttonUpTexture:Texture;
+
 		public function Menu()
 		{
 			super();
@@ -23,6 +33,13 @@ package com.NJSquared.state
 		override public function initialize():void
 		{
 			super.initialize();
+			
+	/*		var button:Button = new Button(Assets.btnTexture);
+			button.pivotX = _playBtn.width * 0.5;
+			button.x = 400;
+			button.y = 350;
+			addChild(button);	
+			button.addEventListener(Event.TRIGGERED, onPlay);*/
 			
 			trace("menu state");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
@@ -41,11 +58,6 @@ package com.NJSquared.state
 			{
 				destroy();
 			}
-		}
-		
-		override public function update(timeDelta:Number):void
-		{
-			// istate
 		}
 		
 		override public function destroy():void

@@ -118,13 +118,13 @@ package com.NJSquared.state
 			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 08, 10, 00, 11, 05, 05, 05, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 05, 12, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 01],
-			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 11, 10, 00, 00, 00, 00, 00, 00, 01],
+			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 10, 00, 00, 00, 00, 00, 00, 13, 01, 01, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
@@ -289,7 +289,6 @@ package com.NJSquared.state
 		
 		private function addTiles():void
 		{
-
 			var tile1:Tile;
 			var tile2:Tile;
 			var tile3:Tile;
@@ -324,43 +323,43 @@ package com.NJSquared.state
 			tile1 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage1});
 			add(tile1);
 			
-			tile2 = new Tile("blue", "coin", {x:420, y:1140, height:70, width:70, view: tileImage2});
+			tile2 = new Tile("blue", "coin", {x:420, y:1210, height:70, width:70, view: tileImage2});
 			add(tile2);
 			
-			tile3 = new Tile("red", "coin", {x:350, y:1140, height:70, width:70, view: tileImage3});
+			tile3 = new Tile("red", "coin", {x:350, y:1210, height:70, width:70, view: tileImage3});
 			add(tile3);
 			
-			tile4 = new Tile("yellow", "coin", {x:350, y:840, height:70, width:70, view: tileImage4});
+			tile4 = new Tile("yellow", "coin", {x:1820, y:1050, height:70, width:70, view: tileImage4});
 			add(tile4);
 			
-			tile5 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage5});
+			tile5 = new Tile("blue", "coin", {x:1220, y:1000, height:70, width:70, view: tileImage5});
 			add(tile5);
 			
-			tile6 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage6});
+			tile6 = new Tile("red", "coin", {x:140, y:1390, height:70, width:70, view: tileImage6});
 			add(tile6);
 			
-			tile7 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage7});
+			tile7 = new Tile("blue", "coin", {x:140, y:770, height:70, width:70, view: tileImage7});
 			add(tile7);
 			
-			tile8 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage8});
+			tile8 = new Tile("yellow", "coin", {x:850, y:910, height:70, width:70, view: tileImage8});
 			add(tile8);
 			
-			tile9 = new Tile("red", "coin", {x:350, y:840, height:70, width:70, view: tileImage9});
+			tile9 = new Tile("red", "coin", {x:1190, y:480, height:70, width:70, view: tileImage9});
 			add(tile9);
 			
-			tile10 = new Tile("red", "coin", {x:1050, y:450, height:70, width:70, view: tileImage10});
+			tile10 = new Tile("yellow", "coin", {x:1050, y:460, height:70, width:70, view: tileImage10});
 			add(tile10);
 			
-			tile11 = new Tile("red", "coin", {x:1400, y:470, height:70, width:70, view: tileImage11});
+			tile11 = new Tile("blue", "coin", {x:1400, y:470, height:70, width:70, view: tileImage11});
 			add(tile11);
 			
-			tile12 = new Tile("red", "coin", {x:1680, y:140, height:70, width:70, view: tileImage12});
+			tile12 = new Tile("yellow", "coin", {x:1680, y:140, height:70, width:70, view: tileImage12});
 			add(tile12);
 			
-			tile13 = new Tile("red", "coin", {x:770, y:280, height:70, width:70, view: tileImage13});
+			tile13 = new Tile("blue", "coin", {x:770, y:280, height:70, width:70, view: tileImage13});
 			add(tile13);
 			
-			tile14 = new Tile("red", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
+			tile14 = new Tile("yellow", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
 			add(tile14);
 
 			_tiles = getObjectsByType(Coin);

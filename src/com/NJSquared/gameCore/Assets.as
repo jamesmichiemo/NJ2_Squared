@@ -9,25 +9,21 @@ package com.NJSquared.gameCore
 		// get the assets
 		
 		//menu bg
-		[Embed(source="assets/images/menu_bg.png")]
+		[Embed(source="../assets/images/menu_bg.png")]
 		private const menuBG:Class;
 		public static var menuBGTexture:Texture;
 		
-		// game bg
-		[Embed(source="assets/tmx/tilemap1.png")]
-		private static var gameBG:Class;
-		public static var gameBGTexture:Texture;
-
-		//tileset png 
-		[Embed(source="assets/tmx/Tileset.png")]
-		private static var MapAtlasPng:Class;
-		public static var MapAtlasPngTexture:Texture;
+		// embed button
+		[Embed(source="../assets/images/playBtn.png")]
+		private static var btn:Class;
+		public static var btnTexture:Texture;
+		//public  var btnImage:Image = new Image(Texture.fromBitmap(new btn()));
 		
-		//image_1 png 
+/*		//image_1 png 
 		[Embed(source = "assets/images/images_01.png")]
-		private static var ONE:Class;
+		private static var ONE:Class;*/
 		
-		public static var oneImage:Image = new Image(Texture.fromBitmap(new ONE()));
+		//public static var oneImage:Image = new Image(Texture.fromBitmap(new ONE()));
 
 		public function Assets()
 		{
@@ -39,15 +35,9 @@ package com.NJSquared.gameCore
 		{
 		//	menuBGTexture = Texture.fromBitmap(new menuBG());
 			
-			gameBGTexture = Texture.fromBitmap(new gameBG());
-			
-			MapAtlasPngTexture = Texture.fromBitmap(new MapAtlasPng());
+			//btnTexture = Texture.fromBitmap(new btn());
 			
 			//oneImage = new Image(Texture.fromBitmap(new ONE()));
-
-			
-			//menuBGTexture = new TextureAtlas(Texture.fromBitmap(new menuBGTexture()), XML(new atlasXML()));
-			
 		}
 		
 	}
