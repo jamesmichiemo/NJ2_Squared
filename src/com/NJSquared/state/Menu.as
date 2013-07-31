@@ -21,9 +21,14 @@ package com.NJSquared.state
 		//private var _ce:CitrusEngine;
 		
 		//[Embed(source = '../assets/images/playBtn.png')] // playBtn
-		private var _playBtn:Texture;
-		public var buttonUpTexture:Texture;
+		/*private var _playBtn:Texture;
+		public var buttonUpTexture:Texture;*/
 
+		// embed button
+		[Embed(source="../assets/images/playBtn.png")]
+		private var btn:Class;
+		public static var btnTexture:Texture;
+		
 		public function Menu()
 		{
 			super();
@@ -35,12 +40,15 @@ package com.NJSquared.state
 		{
 			super.initialize();
 			
-	/*		var button:Button = new Button(Assets.btnTexture);
-			button.pivotX = _playBtn.width * 0.5;
+			//var button:Button;
+			var buttonImage1:Image = new Image(Texture.fromBitmap(new btn()));
+			
+			var button:Button = new Button(buttonImage1);
+			//button.pivotX = _playBtn.width * 0.5;
 			button.x = 400;
 			button.y = 350;
 			addChild(button);	
-			button.addEventListener(Event.TRIGGERED, onPlay);*/
+			button.addEventListener(Event.TRIGGERED, onPlay);
 			
 			trace("menu state");
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onPlay);
