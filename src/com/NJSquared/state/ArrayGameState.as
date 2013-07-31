@@ -12,6 +12,7 @@ package com.NJSquared.state
 	import citrus.physics.box2d.Box2D;
 	
 	import com.NJSquared.gameCore.Assets;
+	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.Tile;
 	import com.NJSquared.gameCore.TileManager;
 	
@@ -22,6 +23,7 @@ package com.NJSquared.state
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 	
 	
@@ -61,6 +63,9 @@ package com.NJSquared.state
 		private var THIRTEEN:Class;
 		[Embed(source = '../assets/images/portalTile.png')] // portal
 		private var FOURTEEN:Class;
+		
+		[Embed(source = '../assets/images/livesText.png')] // lives text
+		private var LIVES:Class;
 
 		private var _height2:uint;
 
@@ -198,18 +203,17 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
+			addHud();
+			
 			addHero();
 
 			addEnemies();
 			addTiles();
+		}
+		
+		private function addHud():void
+		{
 			
-/*			// if the coins are collected	
-			if(_totalCollectedTiles. == 14)
-			{
-				trace("bridge finished");
-				remove(_barrier);
-				_bridgeFinished = true;
-			}*/
 		}
 		
 		private function addHero():void
