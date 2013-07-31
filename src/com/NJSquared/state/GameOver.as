@@ -9,7 +9,7 @@ package com.NJSquared.state
 	
 	import starling.events.KeyboardEvent;
 	
-	public class GameOver extends StarlingState implements IStates
+	public class GameOver extends StarlingState
 	{	
 		private var _ce:CitrusEngine;
 		

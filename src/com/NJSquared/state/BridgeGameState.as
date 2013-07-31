@@ -12,7 +12,7 @@ package com.NJSquared.state
 	import starling.textures.Texture;
 	
 	
-	public class BridgeGameState extends StarlingState implements IStates
+	public class BridgeGameState extends StarlingState
 	{
 		private var _bridgeFinished:Boolean = false;
 		
@@ -151,26 +151,26 @@ package com.NJSquared.state
 			
 			_hero = new ConcreteHero("hero", {x:150, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-//			view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
+			//view.setupCamera(_hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new MathVector(.25, .05));
 		}
 		
 		private function onKey(event:KeyboardEvent):void
 		{
-		 	if(event.keyCode == Keyboard.A)
-			{
-				trace("a");
-				buildBridge(_red);
-			}
-			else if(event.keyCode == Keyboard.S)
-			{
-				trace("s");
-				buildBridge(_blue);
-			}
-			else if(event.keyCode == Keyboard.D)
-			{
-				trace("d");
-				buildBridge(_yellow);
-			}
+//		 	if(event.keyCode == Keyboard.A)
+//			{
+//				trace("a");
+//				buildBridge(_red);
+//			}
+//			else if(event.keyCode == Keyboard.S)
+//			{
+//				trace("s");
+//				buildBridge(_blue);
+//			}
+//			else if(event.keyCode == Keyboard.D)
+//			{
+//				trace("d");
+//				buildBridge(_yellow);
+//			}
 		}
 		
 		private function buildBridge(color:uint):void
@@ -280,7 +280,7 @@ package com.NJSquared.state
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
-			_ce.state = new GameOver();
+			//_ce.state = new GameOver();
 		}
 		
 	}

@@ -8,10 +8,11 @@ package com.NJSquared.state
 	import com.citrusengine.physics.box2d.Box2D;
 	
 	import starling.display.Image;
+	import starling.display.Stage;
 	import starling.events.KeyboardEvent;
 	import starling.textures.Texture;
 	
-	public class Menu extends StarlingState implements IStates
+	public class Menu extends StarlingState
 	{
 		[Embed(source="assets/images/play_btn.png")]
 		private const _playBtn:Class;
@@ -40,11 +41,11 @@ package com.NJSquared.state
 		}
 		
 		private function onPlay(event:KeyboardEvent):void
-		{
-			if(event.keyCode == Keyboard.P)
-			{
-				destroy();
-			}
+//		{
+//			if(event.keyCode == Keyboard.P)
+//			{
+//				destroy();
+//			}
 		}
 		
 		override public function update(timeDelta:Number):void
@@ -56,7 +57,7 @@ package com.NJSquared.state
 		{
 			super.destroy();
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
-			CitrusEngine.getInstance().state = new BridgeGameState();
+			//CitrusEngine.getInstance().state = new BridgeGameState();
 		}
 	}
 }
