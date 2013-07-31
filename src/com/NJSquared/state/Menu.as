@@ -83,7 +83,7 @@ package com.NJSquared.state
 		private function onPlay(event:KeyboardEvent):void
 		{
 			_ce.sound.playSound("Start");
-			if(event.keyCode == 65)
+			if(event.keyCode == 13)
 			{
 			destroy();
 			}
