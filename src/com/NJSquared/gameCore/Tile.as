@@ -29,7 +29,6 @@ package com.NJSquared.gameCore
 		override public function handleBeginContact(contact:b2Contact):void
 		{
 			var collider:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
-			trace("COLLIDER ", collider);
 			
 			if(collider is Hero)
 			{
