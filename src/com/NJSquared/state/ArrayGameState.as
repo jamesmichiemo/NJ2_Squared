@@ -23,6 +23,7 @@ package com.NJSquared.state
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
+	import starling.events.KeyboardEvent;
 	import starling.text.TextField;
 	import starling.textures.Texture;
 	
@@ -486,29 +487,24 @@ package com.NJSquared.state
 			_ce.sound.playSound("Pick");			
 		}
 	
-	override public function update(timeDelta:Number):void
-	{
-		super.update(timeDelta);
-		
-		_yellowTileCount.text = String(TileManager.yellowTileCount);
-		_redTileCount.text = String(TileManager.redTileCount);
-		_blueTileCount.text = String(TileManager.blueTileCount);
-		
-		if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
+		override public function update(timeDelta:Number):void
 		{
-			trace("game over");
-			destroy();
+			super.update(timeDelta);
+			
+			_yellowTileCount.text = String(TileManager.yellowTileCount);
+			_redTileCount.text = String(TileManager.redTileCount);
+			_blueTileCount.text = String(TileManager.blueTileCount);
+			
+			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
+			{
+				trace("game over");
+				destroy();
+			}
 		}
-		
-/*		if(enemy.hit())
-		{	
-			killed();
-		}*/
-	}
 		
 		override public function destroy():void
 		{
-//			super.destroy();
+			//super.destroy();
 			_ce.sound.removeSound("Collector");
 			_ce.sound.playSound("Start");
 			
@@ -525,15 +521,5 @@ package com.NJSquared.state
 				_ce.state = new BridgeGameState();
 			}
 		}	
-		
-		public function killed():void	
-		{
-			super.destroy();
-			
-			//stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
-			_ce.sound.removeSound("Puzzle");
-			//_ce.sound.playSound("Victory");
-			_ce.state = new GameOver();
-		}
 	}
 }

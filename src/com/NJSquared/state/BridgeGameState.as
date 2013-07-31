@@ -117,7 +117,7 @@ package com.NJSquared.state
 			
 			trace("bridge state");
 			
-			stage.color = 0x8becfb;
+			stage.color = 0xaedfe8;
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			
@@ -291,7 +291,6 @@ package com.NJSquared.state
 			
 			_hero = new ConcreteHero("hero", {x:120, y:200, height:40, width:30, view: heroImage});
 			add(_hero);
-			
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new Point(.25, .05));
 			
