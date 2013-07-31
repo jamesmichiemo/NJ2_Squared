@@ -71,8 +71,11 @@ package com.NJSquared.state
 		private var BLUE_DISPLAY:Class;
 		[Embed(source = '../assets/images/redTileDisplay.png')] // red tile display
 		private var RED_DISPLAY:Class;
-		[Embed(source = '../assets/images/yellowTileDisplay.png')] // blue tile display
+		[Embed(source = '../assets/images/yellowTileDisplay.png')] // yellow tile display
 		private var YELLOW_DISPLAY:Class;
+		
+		[Embed(source = '../assets/images/signMainGame.png')]
+		private var SIGN:Class;
 		
 		private var _livesArray:Array = [];
 
@@ -90,6 +93,7 @@ package com.NJSquared.state
 		private var _yellowTileCount:TextField;
 		private var _redTileCount:TextField;
 		private var _blueTileCount:TextField;
+		private var _signMessage:Object;
 		
 		public function ArrayGameState()
 		{
@@ -101,7 +105,6 @@ package com.NJSquared.state
 		
 		override public function initialize():void 
 		{
-			
 			super.initialize();
 			
 			Assets.init();
@@ -216,6 +219,18 @@ package com.NJSquared.state
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
 			
+/*			var signImage:Texture = Texture.fromBitmap(new SIGN());
+			var sign:Image = new Image(signImage);
+			//button.pivotX = _playBtn.width * 0.5;
+			sign.x = 210;
+			sign.y = 560;
+			addChild(sign);*/
+			
+			var sign:Platform;
+			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
+			sign = new Platform("cloud", {x:210, y:480, height:70, width:70, view:signImage, oneWay:true});
+			add(sign);
+			
 
 //			SPLOOSH!
 //			var water:Platform;
@@ -224,7 +239,6 @@ package com.NJSquared.state
 //			add(water);
 
 			addHud();
-
 			
 			addHero();
 

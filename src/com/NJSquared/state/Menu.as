@@ -49,7 +49,6 @@ package com.NJSquared.state
 			super.initialize();
 			
 			var bgImage:Texture = Texture.fromBitmap(new bg());
-			
 			var bg:Image = new Image(bgImage);
 			//button.pivotX = _playBtn.width * 0.5;
 			addChild(bg);	
@@ -98,7 +97,7 @@ package com.NJSquared.state
 
 			stage.removeEventListeners(Event.TRIGGERED);
 
-			_ce.state = new ArrayGameState();
+			_ce.state = new BridgeGameState();
 		}
 	}
 }
