@@ -8,6 +8,7 @@ package com.NJSquared.state
 	
 	import com.NJSquared.gameCore.TileManager;
 	
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
