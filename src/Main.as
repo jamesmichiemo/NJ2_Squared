@@ -21,8 +21,12 @@ package
 			sound.addSound("Collector", {sound:"../sounds/collector.mp3", group:CitrusSoundGroup.BGM});
 			sound.addSound("Puzzle", {sound:"../sounds/puzzle.mp3", group:CitrusSoundGroup.BGM});
 			sound.addSound("Gameover", {sound:"../sounds/gameover.mp3", group:CitrusSoundGroup.BGM});
+			sound.addSound("Start", {sound:"../sounds/start.mp3", group:CitrusSoundGroup.SFX});
 			sound.addSound("Hurt", {sound:"../sounds/hurt.mp3", group:CitrusSoundGroup.SFX});
 			sound.addSound("Kill", {sound:"../sounds/kill.mp3", group:CitrusSoundGroup.SFX});
+			sound.addSound("Sploosh", {sound:"../sounds/sploosh.mp3", group:CitrusSoundGroup.SFX});
+			sound.addSound("Jump", {sound:"../sounds/jump.mp3", group:CitrusSoundGroup.SFX});
+			sound.addSound("Pick", {sound:"../sounds/pick.mp3", group:CitrusSoundGroup.SFX});
 
 			state = new Menu();
 
