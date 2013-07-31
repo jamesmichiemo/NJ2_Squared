@@ -297,7 +297,7 @@ package com.NJSquared.state
 				addChild(heartsImageOne);
 				_livesArray.push(heartsImageOne);
 			}
-			else if(LivesManager.livesCount >= 2)
+			if(LivesManager.livesCount >= 2)
 			{
 				var heartsImageTwo:Image = new Image(heartsTexture);
 				heartsImageTwo.x = 200;
@@ -305,7 +305,7 @@ package com.NJSquared.state
 				addChild(heartsImageTwo);
 				_livesArray.push(heartsImageTwo);
 			}
-			else if(LivesManager.livesCount == 3)
+			if(LivesManager.livesCount == 3)
 			{
 				var heartsImageThree:Image = new Image(heartsTexture);
 				heartsImageThree.x = 260;
