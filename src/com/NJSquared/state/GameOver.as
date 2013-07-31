@@ -15,6 +15,8 @@ package com.NJSquared.state
 		{
 			trace("game over state");
 			_citrusEngine = CitrusEngine.getInstance();
+			_citrusEngine.sound.playSound("Gameover");
+			
 		}
 		
 		override public function initialize():void

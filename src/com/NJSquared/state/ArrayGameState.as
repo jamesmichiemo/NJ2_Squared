@@ -1,8 +1,12 @@
 package com.NJSquared.state
 {	
+	import Box2D.Dynamics.Contacts.b2Contact;
+	
 	import citrus.core.CitrusEngine;
+	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
+	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
@@ -25,6 +29,7 @@ package com.NJSquared.state
 		private var _levelOne:Array = [];
 		private var _levelOneBit:BitmapData;
 		private var _hero:ConcreteHero;
+		private var _tiles:Vector.<CitrusObject>;
 		
 		private var _citrusEngine:CitrusEngine;
 		
@@ -36,12 +41,22 @@ package com.NJSquared.state
 		private var FIVE:Class;
 		[Embed(source = '../assets/images/images_06.png')] //spikes
 		private var SIX:Class;
+		[Embed(source = '../assets/images/blockerMad.png')] //enemy
+		private var SEVEN:Class;
 		[Embed(source = '../assets/images/waterTile.png')] //water
 		private var EIGHT:Class;
 		[Embed(source = '../assets/images/keyYellow.png')] //tiles
 		private var NINE:Class;
-		[Embed(source = '../assets/images/blockerMad.png')] //enemy
-		private var SEVEN:Class;
+		[Embed(source = '../assets/images/rightCornerGrassTile.png')] // grass right corner
+		private var TEN:Class;
+		[Embed(source = '../assets/images/leftCornerGrassTile.png')] // grass left corner
+		private var ELEVEN:Class;
+		[Embed(source = '../assets/images/rightCornerGroundTile.png')] // grass right corner
+		private var TWELVE:Class;
+		[Embed(source = '../assets/images/leftCornerGroundTile.png')] // grass left corner
+		private var THIRTEEN:Class;
+		[Embed(source = '../assets/images/portalTile.png')] // portal
+		private var FOURTEEN:Class;
 
 		private var _height2:uint;
 
@@ -51,14 +66,15 @@ package com.NJSquared.state
 		private var _levelOneTwo:Array;
 
 		private var level:Array;
+		private var _tile:Tile;
 		
 		public function ArrayGameState()
 		{
 			super();
 
-			_ce = CitrusEngine.getInstance();
+			_citrusEngine = CitrusEngine.getInstance();
 
-			_ce.sound.playSound("Collector");
+			_citrusEngine.sound.playSound("Collector");
 		}
 		
 		override public function initialize():void 
@@ -73,7 +89,8 @@ package com.NJSquared.state
 			add(box2D);
 			
 			_levelOne = [
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+
+/*			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 1],				
 			[1, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -94,7 +111,30 @@ package com.NJSquared.state
 			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
 			[1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 9, 1],
 			[1, 5, 5, 5, 5, 5, 5, 8, 8, 8, 5, 5, 5, 5, 5, 0, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1],
-			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]*/
+
+			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 09, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 08, 08, 08, 08, 10, 00, 11, 05, 05, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01, 01, 05, 05, 05, 05, 12, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 01],
+			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 10, 00, 00, 00, 00, 00, 00, 13, 01, 01, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 01, 01, 01, 01, 01, 05, 05, 05, 05, 10, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 11, 05, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 13, 01, 01, 01, 12, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 10, 00, 00, 00, 00, 11, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 10, 00, 00, 00, 05, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 14, 01],
+			[01, 05, 05, 05, 05, 05, 10, 08, 08, 08, 11, 05, 05, 05, 10, 00, 00, 11, 05, 05, 05, 05, 05, 05, 05, 05, 05, 01],
+			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01]
 			];
 			
 			placeTiles();
@@ -136,8 +176,33 @@ package com.NJSquared.state
 						{
 							image = new EIGHT();
 						}
+						
+						else if(level[i][j] == 10)
+						{
+							image = new TEN();
+						}
+						
+						else if(level[i][j] == 11)
+						{
+							image = new ELEVEN();
+						}
+						
+						else if(level[i][j] == 12)
+						{
+							image = new TWELVE();
+						}
+						
+						else if(level[i][j] == 13)
+						{
+							image = new THIRTEEN();
+						}
+						
+						else if(level[i][j] == 14)
+						{
+							image = new FOURTEEN();
+						}
 					
-						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8)
+						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 9 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 14)
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
 							add(platform);
@@ -165,11 +230,29 @@ package com.NJSquared.state
 			_hero = new ConcreteHero("hero", {x:200, y:300, height:40, width:30, view: heroImage});
 
 			add(_hero);
+			
+			_hero.onJump.add(handleHeroJump);
+			_hero.onGiveDamage.add(handleHeroGiveDamage);
+			_hero.onTakeDamage.add(handleHeroTakeDamage);
+
 
 			_hero.jumpHeight = 12;
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1920, 1500), new Point(.25, .05)); // x should be 1960 however not showing up beyond the bitmap
 
+
+		}
+		
+		private function handleHeroJump():void {
+			//_ce.sound.playSound("Jump");
+		}
+		
+		private function handleHeroGiveDamage():void {
+			_ce.sound.playSound("Kill");
+		}
+		
+		private function handleHeroTakeDamage():void {
+			_ce.sound.playSound("Hurt");
 		}
 		
 		private function addEnemies():void
@@ -205,6 +288,7 @@ package com.NJSquared.state
 		
 		private function addTiles():void
 		{
+
 			var tile1:Tile;
 			var tile2:Tile;
 			var tile3:Tile;
@@ -277,6 +361,15 @@ package com.NJSquared.state
 			
 			tile14 = new Tile("red", "coin", {x:350, y:210, height:70, width:70, view: tileImage14});
 			add(tile14);
+
+			_tiles = getObjectsByType(Coin);
+			for each (var tile:Coin in _tiles)
+			  tile.onBeginContact.add(handleJewelCollected);
+		}
+		
+		private function handleJewelCollected(contact:b2Contact):void
+		{
+			_citrusEngine.sound.playSound("Hurt");			
 		}
 		
 /*		override public function destroy():void
