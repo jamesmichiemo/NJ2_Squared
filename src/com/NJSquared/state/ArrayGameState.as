@@ -261,19 +261,19 @@ package com.NJSquared.state
 			var enemyImage4:Image = new Image(Texture.fromBitmap(new SEVEN()));
 			var enemyImage5:Image = new Image(Texture.fromBitmap(new SEVEN()));
 			
-			enemy = new Enemy("enemy", {x:350, y:400, height:70, width:70, view: enemyImage1, leftBound:0});
+			enemy = new Enemy("enemy", {x:350, y:400, height:68, width:68, view: enemyImage1, leftBound:0});
 			add(enemy);
 			
-			enemyTwo = new Enemy("enemy", {x:630, y:420, height:70, width:70, view: enemyImage2, leftBound:0});
+			enemyTwo = new Enemy("enemy", {x:630, y:420, height:68, width:68, view: enemyImage2, leftBound:0});
 			add(enemyTwo);
 			
-			enemyThree = new Enemy("enemy", {x:1400, y:140, height:70, width:70, view: enemyImage3, leftBound:0});
+			enemyThree = new Enemy("enemy", {x:1400, y:140, height:68, width:68, view: enemyImage3, leftBound:0});
 			add(enemyThree);
 			
-			enemyFour = new Enemy("enemy", {x:800, y:840, height:70, width:70, view: enemyImage4, leftBound:0});
+			enemyFour = new Enemy("enemy", {x:800, y:840, height:68, width:68, view: enemyImage4, leftBound:0});
 			add(enemyFour);
 			
-			enemyFive = new Enemy("enemy", {x:1610, y:840, height:70, width:70, view: enemyImage5, leftBound:0});
+			enemyFive = new Enemy("enemy", {x:1610, y:840, height:68, width:68, view: enemyImage5, leftBound:0});
 			add(enemyFive);
 			
 		}
