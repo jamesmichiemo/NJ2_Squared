@@ -199,10 +199,10 @@ package com.NJSquared.state
 			}
 			
 			// if the bridge isn't finished
-			if(_tileYCount <= 1)
+			if(_tileYCount < 1)
 			{
 				// first tile must be red
-				if(_lastColor == 0 && _currentColor == _red)
+				if(_lastColor == 0 && _currentColor == _red && TileManager.redTileCount != 0)
 				{	
 					var tileOne:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: redTile});
 					add(tileOne);
@@ -217,7 +217,7 @@ package com.NJSquared.state
 					trace("wrongg");
 				}
 				// blue can only go after red
-				else if(_lastColor == _red && _currentColor == _blue)
+				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
 				{	
 					var tileBlue:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: blueTile});
 					add(tileBlue);
@@ -232,7 +232,7 @@ package com.NJSquared.state
 					trace("wrongg");
 				}
 				// yellow can only go after blue
-				else if(_lastColor == _blue && _currentColor == _yellow)
+				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
 				{	
 					var tileyellow:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: yellowTile});
 					add(tileyellow);
@@ -247,7 +247,7 @@ package com.NJSquared.state
 					trace("wrongg");
 				}
 				// red can only go after yellow
-				else if(_lastColor == _yellow && _currentColor == _red)
+				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
 				{	
 					var tileRed:Platform = new Platform("platform", {x:245 + (70*_tileXCount), y:_tileYPos, height:70, width:70, view: redTile});
 					add(tileRed);

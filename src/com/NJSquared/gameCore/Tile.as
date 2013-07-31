@@ -18,9 +18,9 @@ package com.NJSquared.gameCore
 		
 		override public function handleBeginContact(contact:b2Contact):void
 		{
-			TileManager.increaseTileCount(_color);
-
+			trace("collected tile");
 			super.handleBeginContact(contact);	
+			TileManager.increaseTileCount(_color);
 		}
 	}
 }
