@@ -25,7 +25,6 @@ package com.NJSquared.state
 
 	public class BridgeGameState extends StarlingState
 	{
-		private var _citrusEngine:CitrusEngine;
 		
 		private var _bridgeFinished:Boolean = false;
 		
@@ -105,8 +104,8 @@ package com.NJSquared.state
 		public function BridgeGameState()
 		{
 			super();
-			_citrusEngine = CitrusEngine.getInstance();
-			_citrusEngine.sound.playSound("Puzzle");
+			_ce = CitrusEngine.getInstance();
+			_ce.sound.playSound("Puzzle");
 			_ce.sound.setVolume("Puzzle", 0.5);
 			
 			trace(GameInput.isSupported);
@@ -514,22 +513,24 @@ package com.NJSquared.state
 			{
 				trace("game over");
 				destroy();
-				_ce.sound.playSound("Victory");
+				_ce.sound.stopAllPlayingSounds();
+				_ce.sound.playSound("Start");
 				_ce.state = new GameWin();
 			}
 		}
 		
 		override public function destroy():void
 		{
-			super.destroy();
-			
+			//super.destroy();
+			_ce.sound.stopAllPlayingSounds();
+	
 			LivesManager.livesCount = 3;
 			TileManager.yellowTileCount = 0;
 			TileManager.blueTileCount = 0;
 			TileManager.redTileCount = 0;
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
-			_ce.sound.removeSound("Puzzle");
+			
 		}
 	}
 }

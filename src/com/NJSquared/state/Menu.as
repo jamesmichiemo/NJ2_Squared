@@ -83,8 +83,8 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();
-			_ce.sound.removeSound("Title");
+			//super.destroy();
+			_ce.sound.stopSound("Title");
 
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);
 
