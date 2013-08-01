@@ -505,8 +505,6 @@ package com.NJSquared.state
 			{
 				trace("game over");
 				destroy();
-				_ce.sound.stopAllPlayingSounds();
-				_ce.sound.playSound("Start");
 				_ce.state = new GameWin();
 			}
 		}
@@ -515,6 +513,7 @@ package com.NJSquared.state
 		{
 			//super.destroy();
 			_ce.sound.stopAllPlayingSounds();
+			_ce.sound.playSound("Start");
 	
 			LivesManager.livesCount = 3;
 			TileManager.yellowTileCount = 0;
