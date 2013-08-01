@@ -460,7 +460,7 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
-						trace("wrongg");
+						//wrong tile used
 						_ce.sound.playSound("Hurt");
 				}
 				// red can only go after yellow
@@ -477,15 +477,14 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-						trace("wrongg");
-						_ce.sound.playSound("Hurt");
+					//wrong tile used
+					_ce.sound.playSound("Hurt");
 				}
 			}
 			
 			// if the bridge is finished	
 			if(_tileYCount == 0 && _tileXCount == 14)
 			{
-				trace("bridge finished");
 				remove(_barrier);
 				_ce.sound.playSound("Start");
 				_bridgeFinished = true;
@@ -518,8 +517,6 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();
-			
 			LivesManager.livesCount = 3;
 			TileManager.yellowTileCount = 0;
 			TileManager.blueTileCount = 0;

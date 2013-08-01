@@ -32,9 +32,6 @@ package
 			sound.addSound("Pick", {sound:"../sounds/pick.mp3", group:CitrusSoundGroup.SFX});
 
 			state = new Menu();
-			
-			//stage.scaleMode = StageScaleMode.EXACT_FIT;
-
 		}	
 	}
 }

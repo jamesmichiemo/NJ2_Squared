@@ -43,7 +43,6 @@ package com.NJSquared.state
 			
 			var bgImage:Texture = Texture.fromBitmap(new bg());
 			var bg:Image = new Image(bgImage);
-			//button.pivotX = _playBtn.width * 0.5;
 			addChild(bg);	
 			
 			var buttonImage:Texture = Texture.fromBitmap(new btn());
@@ -83,7 +82,6 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			//super.destroy();
 			_ce.sound.stopSound("Title");
 
 			stage.removeEventListeners(KeyboardEvent.KEY_DOWN);

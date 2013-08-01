@@ -13,7 +13,6 @@ package com.NJSquared.state
 	
 	public class GameWin extends StarlingState
 	{	
-		
 		// embed button
 		[Embed(source="../assets/images/replayBtn.png")]
 		private var btn:Class;
@@ -24,7 +23,7 @@ package com.NJSquared.state
 
 		public function GameWin()
 		{
-			trace("win");
+			// win
 			_ce.sound.playSound("Victory");
 		}
 		
