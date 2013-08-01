@@ -504,6 +504,7 @@ package com.NJSquared.state
 			if(_bridgeFinished == true && _hero.x >= 1290)
 			{
 				trace("game over");
+				_ce.sound.playSound("Victory");
 				destroy();
 				_ce.state = new GameWin();
 			}
@@ -512,8 +513,7 @@ package com.NJSquared.state
 		override public function destroy():void
 		{
 			//super.destroy();
-			_ce.sound.stopAllPlayingSounds();
-			_ce.sound.playSound("Start");
+			_ce.sound.stopSound("Puzzle");
 	
 			LivesManager.livesCount = 3;
 			TileManager.yellowTileCount = 0;
