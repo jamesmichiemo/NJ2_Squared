@@ -88,26 +88,14 @@ package com.NJSquared.state
 		[Embed(source = '../assets/images/signBridgeGame.png')] // sign
 		private var SIGN:Class;
 		
-		[Embed(source = '../assets/images/wrongTile.png')]
-		private var WRONG:Class;
-
-		
 		private var _livesArray:Array = [];
-
+		
 		private var _yellowTileCount:TextField;
-
 		private var _redTileCount:TextField;
-
 		private var _blueTileCount:TextField;
+		
 		private var gameInput:GameInput;
 		private var _device:GameInputDevice;
-		
-
-		private var _wrongTileSign:Image;
-		private var wrongTile:Boolean = false;
-
-		private var wrongtileImage2:Texture;
-
 		
 		public function BridgeGameState()
 		{
@@ -149,8 +137,6 @@ package com.NJSquared.state
 					if(control.name == GameInputControlName.BUTTON_A){
 						control.addEventListener(Event.CHANGE,onRed);
 					}
-					
-					
 					_controls[i] = control.id;
 				}
 				
@@ -185,7 +171,6 @@ package com.NJSquared.state
 			_ce.sound.playSound("Pick");
 		}		
 
-		
 		override public function initialize():void 
 		{
 			super.initialize();
@@ -368,7 +353,6 @@ package com.NJSquared.state
 			add(_hero);
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1440, 770), new Point(.25, .05));
-			
 		}
 		
 		private function onKey(event:KeyboardEvent):void
@@ -427,10 +411,8 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-
 						trace("wrongg");
-						_ce.sound.playSound("Hurt");
-						
+						_ce.sound.playSound("Hurt");	
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
@@ -441,16 +423,15 @@ package com.NJSquared.state
 					_tileXCount++;
 					_lastColor = color;
 					
-					removeChild(_wrongTileSign);
-					
 					TileManager.decreaseTileCount("blue");
 					
 					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
-						trace("wrongg");
-						_ce.sound.playSound("Hurt");
+					trace("wrongg");
+					_ce.sound.playSound("Hurt");
+					_ce.sound.setVolume("Hurt", 20);
 				}
 				// yellow can only go after blue
 				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
@@ -468,6 +449,7 @@ package com.NJSquared.state
 				{	
 						trace("wrongg");
 						_ce.sound.playSound("Hurt");
+						_ce.sound.setVolume("Hurt", 20);
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
@@ -479,13 +461,13 @@ package com.NJSquared.state
 					_lastColor = color;
 					
 					TileManager.decreaseTileCount("red");
-					
 					_ce.sound.playSound("Pick");
 				}
 				else if(_lastColor == _yellow && (_currentColor == _blue || _currentColor == _yellow))
 				{	
 						trace("wrongg");
 						_ce.sound.playSound("Hurt");
+						_ce.sound.setVolume("Hurt", 20);
 				}
 			}
 			
@@ -494,7 +476,7 @@ package com.NJSquared.state
 			{
 				trace("bridge finished");
 				remove(_barrier);
-				
+				_ce.sound.playSound("Start");
 				_bridgeFinished = true;
 			}
 		}
@@ -509,7 +491,7 @@ package com.NJSquared.state
 
 			if(_hero.x == 0 && _hero.y >= 560)
 			{
-				trace("game over");
+				trace("startOver");
 				destroy();
 				_ce.state = new ArrayGameState();
 			}
@@ -518,6 +500,8 @@ package com.NJSquared.state
 			{
 				trace("game over");
 				destroy();
+				_ce.sound.playSound("Victory");
+				_ce.state = new GameWin();
 			}
 		}
 		
@@ -532,9 +516,6 @@ package com.NJSquared.state
 			
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKey);
 			_ce.sound.removeSound("Puzzle");
-			//_ce.sound.playSound("Victory");
-		
-			_ce.state = new GameWin();
 		}
 	}
 }
