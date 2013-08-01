@@ -103,6 +103,8 @@ package com.NJSquared.state
 		private var _signMessage:Object;
 		
 		private var _isDead:Boolean = false;
+
+		private var water:Platform;
 		
 		public function ArrayGameState()
 		{
@@ -244,12 +246,12 @@ package com.NJSquared.state
 			add(sign);
 			
 
-//			SPLOOSH!
-//			var water:Platform;
-//			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
-//			water = new Platform("cloud", {x:560, y:140, height:70, width:210, view:portalImage, oneWay:true});
-//			add(water);
-
+			//SPLOOSH!
+			
+/*			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
+			water = new Platform("cloud", {x:300, y:500, height:70, width:210, view:waterImage, oneWay:true});
+			add(water);
+*/
 			addHud();
 			
 			addHero();
@@ -338,8 +340,7 @@ package com.NJSquared.state
 			_hero.onJump.add(handleHeroJump);
 			_hero.onGiveDamage.add(handleHeroGiveDamage);
 			_hero.onTakeDamage.add(handleHeroTakeDamage);
-			
-
+		
 			_hero.jumpHeight = 12;
 
 			view.camera.setUp(_hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1920, 1500), new Point(.25, .05)); // x should be 1960 however not showing up beyond the bitmap
@@ -367,6 +368,13 @@ package com.NJSquared.state
 			}
 			
 			if(LivesManager.livesCount <= 0)
+			{
+				trace("died...");
+				_isDead = true;
+				destroy();
+			}
+			
+			if(_hero.x == water.x)
 			{
 				trace("died...");
 				_isDead = true;
