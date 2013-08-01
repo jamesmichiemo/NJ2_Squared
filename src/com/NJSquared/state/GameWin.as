@@ -24,7 +24,7 @@ package com.NJSquared.state
 
 		public function GameWin()
 		{
-			trace("game over state");
+			trace("win");
 			_ce.sound.playSound("Victory");
 		}
 		
@@ -64,9 +64,9 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();
-			_ce.sound.removeSound("Gameover");
-			_ce.sound.removeSound("Victory");
+			//super.destroy();
+			_ce.sound.stopAllPlayingSounds();
+			_ce.sound.playSound("Start");
 			stage.removeEventListener(Event.TRIGGERED, onRestart);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
 			_ce.state = new ArrayGameState();

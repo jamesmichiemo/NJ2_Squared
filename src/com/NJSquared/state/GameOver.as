@@ -69,8 +69,8 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			super.destroy();
-			_ce.sound.removeSound("Gameover");
+			//super.destroy();
+			_ce.sound.stopAllPlayingSounds();
 			_ce.sound.playSound("Start");
 			_button.removeEventListener(Event.TRIGGERED, onRestart);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
