@@ -425,8 +425,8 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == 0 && (_currentColor == _blue || _currentColor == _yellow))
 				{	
-						trace("wrongg");
-						_ce.sound.playSound("Hurt");	
+					//wrong tile used
+					_ce.sound.playSound("Hurt");	
 				}
 				// blue can only go after red
 				else if(_lastColor == _red && _currentColor == _blue && TileManager.blueTileCount != 0)
@@ -443,7 +443,7 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == _red && (_currentColor == _yellow || _currentColor == _red))
 				{	
-					trace("wrongg");
+					//wrong tile used
 					_ce.sound.playSound("Hurt");
 				}
 				// yellow can only go after blue
@@ -460,8 +460,8 @@ package com.NJSquared.state
 				}
 				else if(_lastColor == _blue && (_currentColor == _blue || _currentColor == _red))
 				{	
-						//wrong tile used
-						_ce.sound.playSound("Hurt");
+					//wrong tile used
+					_ce.sound.playSound("Hurt");
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)

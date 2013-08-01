@@ -34,7 +34,6 @@ package com.NJSquared.state
 			var bgImage:Texture = Texture.fromBitmap(new bg());
 			
 			var bg:Image = new Image(bgImage);
-			//button.pivotX = _playBtn.width * 0.5;
 			addChild(bg);
 			
 			
@@ -57,13 +56,12 @@ package com.NJSquared.state
 		
 		private function onRestart(event:Event):void
 		{	
-			trace("restart");
+			// restart game
 			destroy();
 		}
 		
 		override public function destroy():void
 		{
-			//super.destroy();
 			_ce.sound.stopAllPlayingSounds();
 			_ce.sound.playSound("Start");
 			stage.removeEventListener(Event.TRIGGERED, onRestart);

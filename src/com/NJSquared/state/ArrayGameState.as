@@ -510,7 +510,7 @@ package com.NJSquared.state
 			
 			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14) 
 			{
-				//trace("game over");
+				// game over
 				destroy();
 			}
 		}
@@ -532,7 +532,6 @@ package com.NJSquared.state
 			{
 				_ce.state = new BridgeGameState();
 			}
-			//super.destroy();
 		}	
 	}
 }

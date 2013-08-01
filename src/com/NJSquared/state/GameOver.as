@@ -26,7 +26,7 @@ package com.NJSquared.state
 		
 		public function GameOver()
 		{
-			trace("game over state");
+			// play game over sound
 			_ce.sound.playSound("Gameover");
 
 		}
@@ -38,7 +38,6 @@ package com.NJSquared.state
 			var bgImage:Texture = Texture.fromBitmap(new bg());
 			
 			var bg:Image = new Image(bgImage);
-			//button.pivotX = _playBtn.width * 0.5;
 			addChild(bg);
 						
 			var buttonImage:Texture = Texture.fromBitmap(new btn());
@@ -60,16 +59,12 @@ package com.NJSquared.state
 		
 		private function onRestart(event:Event):void
 		{	
-			/*if(event.keyCode == 65)
-			{*/
 				trace("restart");
 				destroy();
-			//}
 		}
 		
 		override public function destroy():void
 		{
-			//super.destroy();
 			_ce.sound.stopAllPlayingSounds();
 			_ce.sound.playSound("Start");
 			_button.removeEventListener(Event.TRIGGERED, onRestart);
