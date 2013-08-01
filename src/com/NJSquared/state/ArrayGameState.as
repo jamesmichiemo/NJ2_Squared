@@ -12,7 +12,6 @@ package com.NJSquared.state
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
 	
-	import com.NJSquared.gameCore.Assets;
 	import com.NJSquared.gameCore.LivesManager;
 	import com.NJSquared.gameCore.Tile;
 	import com.NJSquared.gameCore.TileManager;
