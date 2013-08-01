@@ -88,6 +88,11 @@ package com.NJSquared.state
 		[Embed(source = '../assets/images/signBridgeGame.png')] // sign
 		private var SIGN:Class;
 		
+		[Embed(source = '../assets/images/cloudOne.png')] // big cloud 
+		private var CLOUDONE:Class;
+		[Embed(source = '../assets/images/cloudTwo.png')] // small cloud
+		private var CLOUDTWO:Class;
+		
 		private var _livesArray:Array = [];
 		
 		private var _yellowTileCount:TextField;
@@ -249,17 +254,30 @@ package com.NJSquared.state
 			add(_barrier);
 			
 			var portal:Platform;
-			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
+			var portalImage:Image = new Image(Texture.fromBitmap(new FOURTEEN()));
 			portal = new Platform("cloud", {x:35, y:525, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
-
-			var sign:Platform;
-			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
-			sign = new Platform("cloud", {x:170, y:466, height:70, width:70, view:signImage, oneWay:true});
-			add(sign);
 			
 			var fixPortal:Platform = new Platform ("barrier", {x:-10, y:600, height:1000, width:70});
 			add(fixPortal);
+			
+			var sign:Platform;
+			var signImage:Image = new Image(Texture.fromBitmap(new SIGN()));
+			sign = new Platform("cloud", {x:170, y:466, height:70, width:70, view:signImage, oneWay:true});
+			add(sign);
+			
+			var cloudOne:Platform;
+			var cloudOneImage:Image = new Image(Texture.fromBitmap(new CLOUDONE()));
+			cloudOne = new Platform("cloud", {x:670, y:266, height:70, width:70, view: cloudOneImage, oneWay:true});
+			add(cloudOne);
+			
+			var cloudTwoImage:Image = new Image(Texture.fromBitmap(new CLOUDTWO()));
+			var cloudTwo:Platform = new Platform("cloud", {x:360, y:200, height:70, width:70, view: cloudTwoImage, oneWay:true});
+			add(cloudTwo);
+			
+			var cloudThreeImage:Image = new Image(Texture.fromBitmap(new CLOUDTWO()));
+			var cloudThree:Platform = new Platform("cloud", {x:980, y:160, height:70, width:70, view: cloudThreeImage, oneWay:true});
+			add(cloudThree);
 			
 			addHud();
 			addHero();
