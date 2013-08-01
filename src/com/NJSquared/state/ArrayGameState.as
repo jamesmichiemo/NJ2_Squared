@@ -105,6 +105,7 @@ package com.NJSquared.state
 		private var _isDead:Boolean = false;
 
 		private var water:Platform;
+		private var _waterPlatArray:Array = [];
 		
 		public function ArrayGameState()
 		{
@@ -219,7 +220,14 @@ package com.NJSquared.state
 							image = new SEVENTEEN();
 						}
 					
-						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 15 || level[i][j] == 16 || level[i][j] == 17)
+						if(level[i][j] == 8)
+						{
+							water = new Platform("cloud", {x:j*70+35, y:i*70+35, height:70, width:70});
+							add(water);
+							bd1.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
+							_waterPlatArray.push(water);
+						} 
+						else(level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 15 || level[i][j] == 16 || level[i][j] == 17)
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
 							add(platform);
@@ -252,10 +260,9 @@ package com.NJSquared.state
 			water = new Platform("cloud", {x:300, y:500, height:70, width:210, view:waterImage, oneWay:true});
 			add(water);
 */
-			addHud();
-			
-			addHero();
 
+			addHud();
+			addHero();
 			addEnemies();
 			addTiles();
 		}
@@ -325,8 +332,7 @@ package com.NJSquared.state
 			_blueTileCount.color = 0x282828;
 			_blueTileCount.x = 1165;
 			_blueTileCount.y = 10;
-			addChild(_blueTileCount);
-			
+			addChild(_blueTileCount);	
 		}
 		
 		private function addHero():void
@@ -374,13 +380,22 @@ package com.NJSquared.state
 				destroy();
 			}
 			
-			if(_hero.x == water.x)
+			for each(var waterTile:Platform in _waterPlatArray)
 			{
-				trace("died...");
-				_isDead = true;
-				destroy();
+				
+				if(_hero.x == waterTile.x-35)
+				{
+					trace("I'm working");
+					_isDead = true;
+					destroy();
+				}
 			}
 		}
+		
+/*		override public function handleBeginContact()
+		{
+
+		}*/
 		
 		private function addEnemies():void
 		{
@@ -514,7 +529,7 @@ package com.NJSquared.state
 			
 			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
 			{
-				trace("game over");
+				//trace("game over");
 				destroy();
 			}
 		}
@@ -527,7 +542,7 @@ package com.NJSquared.state
 			_ce.sound.removeSound("Pick");
 			_ce.sound.playSound("Start");
 			
-			if(_isDead  == true)
+			if(_isDead == true)
 			{
 				LivesManager.livesCount = 3;
 				TileManager.yellowTileCount = 0;

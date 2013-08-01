@@ -20,13 +20,6 @@ package com.NJSquared.state
 	
 	public class Menu extends StarlingState
 	{
-		
-		//private var _ce:CitrusEngine;
-		
-		//[Embed(source = '../assets/images/playBtn.png')] // playBtn
-		/*private var _playBtn:Texture;
-		public var buttonUpTexture:Texture;*/
-
 		// embed button
 		[Embed(source="../assets/images/playBtn.png")]
 		private var btn:Class;

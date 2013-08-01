@@ -58,20 +58,18 @@ package com.NJSquared.state
 		
 		private function onRestart(event:Event):void
 		{	
-			/*if(event.keyCode == 65)
-			{*/
 			trace("restart");
 			destroy();
-			//}
 		}
 		
 		override public function destroy():void
 		{
 			super.destroy();
 			_ce.sound.removeSound("Gameover");
+			_ce.sound.removeSound("Victory");
 			stage.removeEventListener(Event.TRIGGERED, onRestart);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onRestart);
-			_ce.state = new Menu();
+			_ce.state = new ArrayGameState();
 		}
 	}
 }
