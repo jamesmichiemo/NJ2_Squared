@@ -102,6 +102,7 @@ package com.NJSquared.state
 			super();
 			_citrusEngine = CitrusEngine.getInstance();
 			_citrusEngine.sound.playSound("Puzzle");
+			_ce.sound.setVolume("Puzzle", 0.5);
 			
 			trace(GameInput.isSupported);
 			
@@ -340,9 +341,7 @@ package com.NJSquared.state
 			_blueTileCount.color = 0x282828;
 			_blueTileCount.x = 1165;
 			_blueTileCount.y = 10;
-			addChild(_blueTileCount);
-			
-			
+			addChild(_blueTileCount);	
 		}
 		
 		private function addHero():void
@@ -431,7 +430,6 @@ package com.NJSquared.state
 				{	
 					trace("wrongg");
 					_ce.sound.playSound("Hurt");
-					_ce.sound.setVolume("Hurt", 20);
 				}
 				// yellow can only go after blue
 				else if(_lastColor == _blue && _currentColor == _yellow && TileManager.yellowTileCount != 0)
@@ -449,7 +447,6 @@ package com.NJSquared.state
 				{	
 						trace("wrongg");
 						_ce.sound.playSound("Hurt");
-						_ce.sound.setVolume("Hurt", 20);
 				}
 				// red can only go after yellow
 				else if(_lastColor == _yellow && _currentColor == _red && TileManager.redTileCount != 0)
@@ -467,7 +464,6 @@ package com.NJSquared.state
 				{	
 						trace("wrongg");
 						_ce.sound.playSound("Hurt");
-						_ce.sound.setVolume("Hurt", 20);
 				}
 			}
 			
