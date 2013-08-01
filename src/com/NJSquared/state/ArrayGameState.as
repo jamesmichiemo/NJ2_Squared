@@ -7,6 +7,7 @@ package com.NJSquared.state
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Coin;
+	import citrus.objects.platformer.box2d.Crate;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
@@ -23,6 +24,7 @@ package com.NJSquared.state
 	import flash.geom.Rectangle;
 	
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.events.KeyboardEvent;
 	import starling.text.TextField;
 	import starling.textures.Texture;
@@ -103,9 +105,6 @@ package com.NJSquared.state
 		private var _signMessage:Object;
 		
 		private var _isDead:Boolean = false;
-
-		private var water:Platform;
-		private var _waterPlatArray:Array = [];
 		
 		public function ArrayGameState()
 		{
@@ -131,11 +130,11 @@ package com.NJSquared.state
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],				
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 08, 08, 08, 11, 10, 00, 15, 05, 05, 05, 01],
-			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 15, 01, 01, 01, 01, 05, 05, 05, 01, 12, 00, 00, 00, 00, 00, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 05, 05, 05, 05, 10, 00, 15, 05, 05, 05, 01],
+			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 15, 01, 01, 01, 01, 01, 01, 01, 01, 12, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 11, 05, 05, 10, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 05, 05, 05, 10, 08, 08, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 15, 16, 00, 00, 00, 00, 00, 00, 01],
+			[01, 05, 05, 05, 05, 05, 05, 01, 01, 01, 01, 00, 00, 00, 00, 00, 00, 00, 00, 15, 16, 00, 00, 00, 00, 00, 00, 01],
 			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 16, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01, 01, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 05, 05, 05, 10, 00, 00, 00, 00, 00, 00, 13, 01, 01, 01],
@@ -147,7 +146,7 @@ package com.NJSquared.state
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 15, 05, 16, 00, 00, 00, 17, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 11, 01],
 			[01, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 01],
-			[01, 05, 05, 05, 05, 05, 10, 08, 08, 08, 11, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 01],
+			[01, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 05, 01],
 			[01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01]
 			];
 			
@@ -219,15 +218,8 @@ package com.NJSquared.state
 						{
 							image = new SEVENTEEN();
 						}
-					
-						if(level[i][j] == 8)
-						{
-							water = new Platform("cloud", {x:j*70+35, y:i*70+35, height:70, width:70});
-							add(water);
-							bd1.draw(image, new Matrix(1, 0, 0, 1, j*70+35, i*70+35));
-							_waterPlatArray.push(water);
-						} 
-						else(level[i][j] == 5 || level[i][j] == 8 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 15 || level[i][j] == 16 || level[i][j] == 17)
+				
+						if(level[i][j] == 1 || level[i][j] == 5 || level[i][j] == 10 || level[i][j] == 11 || level[i][j] == 12 || level[i][j] == 13 || level[i][j] == 15 || level[i][j] == 16 || level[i][j] == 17)
 						{
 							var platform:Platform = new Platform("platform", {x:j*70+35, y:i*70+35, height:70, width:70});
 							add(platform);
@@ -252,14 +244,6 @@ package com.NJSquared.state
 			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
 			sign = new Platform("cloud", {x:210, y:466, height:70, width:70, view:signImage, oneWay:true});
 			add(sign);
-			
-
-			//SPLOOSH!
-			
-/*			var waterImage:Image = new Image(Texture.fromBitmap(new  EIGHT()));
-			water = new Platform("cloud", {x:300, y:500, height:70, width:210, view:waterImage, oneWay:true});
-			add(water);
-*/
 
 			addHud();
 			addHero();
@@ -353,15 +337,18 @@ package com.NJSquared.state
 		}
 		
 		
-		private function handleHeroJump():void {
+		private function handleHeroJump():void 
+		{
 			_ce.sound.playSound("Jump");
 		}
 		
-		private function handleHeroGiveDamage():void {
+		private function handleHeroGiveDamage():void 
+		{
 			_ce.sound.playSound("Kill");
 		}
 		
-		private function handleHeroTakeDamage():void {
+		private function handleHeroTakeDamage():void 
+		{
 			_ce.sound.playSound("Hurt");
 			
 			if(LivesManager.livesCount > 0)
@@ -379,23 +366,7 @@ package com.NJSquared.state
 				_isDead = true;
 				destroy();
 			}
-			
-			for each(var waterTile:Platform in _waterPlatArray)
-			{
-				
-				if(_hero.x == waterTile.x-35)
-				{
-					trace("I'm working");
-					_isDead = true;
-					destroy();
-				}
-			}
 		}
-		
-/*		override public function handleBeginContact()
-		{
-
-		}*/
 		
 		private function addEnemies():void
 		{
