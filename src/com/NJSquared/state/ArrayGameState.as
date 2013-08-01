@@ -115,8 +115,10 @@ package com.NJSquared.state
 		override public function initialize():void 
 		{
 			super.initialize();
-
-			Assets.init();
+			
+			_ce.sound.playSound("Title");
+			
+			//Assets.init();
 			
 			var box2D:Box2D = new Box2D("box2D");
 			//box2D.visible = true;
@@ -527,6 +529,8 @@ package com.NJSquared.state
 		{
 			//super.destroy();
 			_ce.sound.removeSound("Collector");
+			_ce.sound.removeSound("Title");
+			_ce.sound.removeSound("Pick");
 			_ce.sound.playSound("Start");
 			
 			if(_isDead  == true)
