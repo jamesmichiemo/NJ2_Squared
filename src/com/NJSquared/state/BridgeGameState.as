@@ -15,6 +15,7 @@ package com.NJSquared.state
 	import flash.ui.GameInput;
 	import flash.ui.GameInputControl;
 	import flash.ui.GameInputDevice;
+	import flash.ui.Keyboard;
 	
 	import starling.display.Image;
 	import starling.events.KeyboardEvent;
@@ -115,6 +116,10 @@ package com.NJSquared.state
 				gameInput = new GameInput();
 				gameInput.addEventListener(GameInputEvent.DEVICE_ADDED, handleDeviceAttached);
 				gameInput.addEventListener(GameInputEvent.DEVICE_REMOVED, handleDeviceRemoved);
+				trace("GameDevice Count:",GameInput.numDevices);
+				if(GameInput.numDevices > 0){
+					handleDeviceAttached(null);
+				}
 			}
 		}
 		
@@ -125,10 +130,10 @@ package com.NJSquared.state
 		
 		protected function handleDeviceAttached(event:GameInputEvent):void
 		{
-			GameInputControlName.initialize(event.device);
 			
 			for(var k:Number=0;k<GameInput.numDevices;k++){
 				_device = GameInput.getDeviceAt(k);
+				GameInputControlName.initialize(_device);
 				var _controls:Vector.<String> = new Vector.<String>;
 				_device.enabled = true;
 				
@@ -160,21 +165,21 @@ package com.NJSquared.state
 		{
 			trace("A");
 			buildBridge(_red);
-			_ce.sound.playSound("Pick");
+			//_ce.sound.playSound("Pick");
 		}
 		
 		protected function onYellow(event:Event):void
 		{
 			trace("Y");
 			buildBridge(_yellow);
-			_ce.sound.playSound("Pick");
+			//_ce.sound.playSound("Pick");
 		}
 		
 		protected function onBlue(event:Event):void
 		{
 			trace("U");
 			buildBridge(_blue);
-			_ce.sound.playSound("Pick");
+			//_ce.sound.playSound("Pick");
 		}		
 
 		override public function initialize():void 

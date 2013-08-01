@@ -22,6 +22,7 @@ package com.NJSquared.state
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.ui.Keyboard;
 	
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -508,7 +509,7 @@ package com.NJSquared.state
 			_redTileCount.text = String(TileManager.redTileCount);
 			_blueTileCount.text = String(TileManager.blueTileCount);
 			
-			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14)
+			if(_hero.x >= 1820 && _hero.y >= 1330 && TileManager.totalCollected >= 14) 
 			{
 				//trace("game over");
 				destroy();
@@ -517,8 +518,7 @@ package com.NJSquared.state
 		
 		override public function destroy():void
 		{
-			//super.destroy();
-			_ce.sound.stopAllPlayingSounds();
+			_ce.sound.stopSound("Collector");
 			_ce.sound.playSound("Start");
 			
 			if(_isDead == true)
@@ -533,6 +533,7 @@ package com.NJSquared.state
 			{
 				_ce.state = new BridgeGameState();
 			}
+			//super.destroy();
 		}	
 	}
 }
