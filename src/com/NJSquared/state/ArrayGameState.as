@@ -36,7 +36,6 @@ package com.NJSquared.state
 		private var _tiles:Vector.<CitrusObject>;
 		private var _totalCollectedTiles:TileManager;
 		
-		
 		[Embed(source = '../assets/images/groundTile.png')] // dirt
 		private var ONE:Class;
 		[Embed(source = '../assets/images/yellowTile.png')] // yellow tile
@@ -158,17 +157,11 @@ package com.NJSquared.state
 			
 			_width2 = _levelOne[0].length * 70;
 			_height2 = _levelOne.length * 70;
-			
-			trace(_height2);
-			
-			
-			trace(_width2);
-			
+
 			var bd1:BitmapData=new BitmapData(_width2,_height2, false, 0xaedfe8);
 			
 			for(var i:int = 0; i < level.length; i++)
 			{
-				
 				for(var j:int = 0; j < level[i].length; j++)
 				{
 					var image:Bitmap;
@@ -244,13 +237,6 @@ package com.NJSquared.state
 			var portalImage:Image = new Image(Texture.fromBitmap(new  FOURTEEN()));
 			portal = new Platform("cloud", {x:1855, y:1365, height:70, width:70, view:portalImage, oneWay:true});
 			add(portal);
-			
-/*			var signImage:Texture = Texture.fromBitmap(new SIGN());
-			var sign:Image = new Image(signImage);
-			//button.pivotX = _playBtn.width * 0.5;
-			sign.x = 210;
-			sign.y = 560;
-			addChild(sign);*/
 			
 			var sign:Platform;
 			var signImage:Image = new Image(Texture.fromBitmap(new  SIGN()));
