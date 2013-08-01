@@ -90,7 +90,7 @@ package com.NJSquared.state
 
 			stage.removeEventListeners(Event.TRIGGERED);
 
-			_ce.state = new ArrayGameState();
+			_ce.state = new BridgeGameState();
 		}
 	}
 }
