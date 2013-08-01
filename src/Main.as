@@ -9,6 +9,8 @@ package
 	import com.NJSquared.state.GameOver;
 	import com.NJSquared.state.Menu;
 	
+	import flash.display.StageScaleMode;
+	
 	[SWF(frameRate="60", width="1280", height="720", backgroundColor="0xe8f2fe")]
 	public class Main extends StarlingCitrusEngine
 	{	
@@ -30,6 +32,8 @@ package
 			sound.addSound("Pick", {sound:"../sounds/pick.mp3", group:CitrusSoundGroup.SFX});
 
 			state = new Menu();
+			
+			//stage.scaleMode = StageScaleMode.EXACT_FIT;
 
 		}	
 	}
