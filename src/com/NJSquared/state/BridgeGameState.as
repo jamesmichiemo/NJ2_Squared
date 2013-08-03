@@ -371,19 +371,19 @@ package com.NJSquared.state
 		
 		private function onKey(event:KeyboardEvent):void
 		{
-		 	if(event.keyCode == 65)
+		 	if(event.keyCode == 79)
 			{
 				trace("a");
 				buildBridge(_red);
 				_ce.sound.playSound("Pick");
 			}
-			else if(event.keyCode == 83)
+			else if(event.keyCode == 85)
 			{
 				trace("s");
 				buildBridge(_blue);
 				_ce.sound.playSound("Pick");
 			}
-			else if(event.keyCode == 68)
+			else if(event.keyCode == 89)
 			{
 				trace("d");
 				buildBridge(_yellow);
